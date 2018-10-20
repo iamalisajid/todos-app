@@ -1,14 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {Component} from 'react';
 
-const index
-.
-js = (props) => {
-  return (
-
-  );
+class Contacts extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Contacts</h2>
+      </div>
+    );
+  }
 }
 
-index.js.propTypes = {}
-
-export default index.js
+export default Contacts;

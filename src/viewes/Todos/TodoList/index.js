@@ -1,39 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
 import TodoItem from '../TodoItem';
-import {TODOS_LIST} from '../../../utils/constants';
+import {object, func} from 'prop-types';
 
-class TodoList extends Component {
-    state = {
-        todos: TODOS_LIST
-    };
+const TodoList = ({todos, onSelection, onDeletion}) => (
+  <div className="container">
+    <h2>Todos</h2>
 
-    onSelection = (id) => {
-        console.info(id)
-    }
+    <ul className="list-group">
+      {todos.map(todo =>
+        <TodoItem
+          key={todo.id}
+          id={todo.id}
+          onSelection={onSelection}
+          text={todo.text}
+          onDeletion={onDeletion}/>)
+      }
+    </ul>
+  </div>
+);
 
-    onDeletion = (id) => {
-        console.info(id);
-    }
-
-    render() {
-        const {todos} = this.state;
-        return (
-            <div className="container">
-                <h2>Todos</h2>
-                <ul className="list-group">
-                    {todos.map(todo =>
-                        <TodoItem
-                            key={todo.id}
-                            id={todo.id}
-                            onSelection={this.onSelection}
-                            text={todo.text}
-                            onDeletion={this.onDeletion}/>)
-                    }
-                </ul>
-            </div>
-        );
-    }
-
+TodoList.propType = {
+  todo: object.isRequired,
+  onSelection: func.isRequired,
+  onDeletion: func.onDeletion
 }
-
 export default TodoList;
+
+
