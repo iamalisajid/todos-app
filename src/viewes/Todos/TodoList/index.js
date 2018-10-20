@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import TodoItem from '../TodoItem';
-import { TODOS_LIST }  from '../../../utils/constants';
+import {TODOS_LIST} from '../../../utils/constants';
 
 class TodoList extends Component {
-     state = {
-            todos:  TODOS_LIST
-        };
+    state = {
+        todos: TODOS_LIST
+    };
 
     onSelection = (id) => {
         console.info(id)
@@ -16,8 +16,8 @@ class TodoList extends Component {
     }
 
     render() {
-         const { todos } = this.state;
-        return(
+        const {todos} = this.state;
+        return (
             <div className="container">
                 <h2>Todos</h2>
                 <ul className="list-group">
