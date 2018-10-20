@@ -5,7 +5,6 @@ const TodoItem = ({ text, onSelection, onDeletion }) => {
     return (
         <li className="list-group-item" onClick={onSelection}>
             {text}
-
             <button className="btn btn-danger float-right" onClick={onDeletion}>
                 Delete
             </button>
@@ -19,4 +18,4 @@ TodoItem.propTypes = {
     onDeletion: PropTypes.func.isRequired
 }
 
-export default TodoItem
+export default Index
