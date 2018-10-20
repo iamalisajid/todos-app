@@ -1,21 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { string, number, func } from 'prop-types'
+import { BTN_ACTIONS } from '../../../utils/constants'
 
-const TodoItem = ({ text, onSelection, onDeletion }) => {
+const TodoItem = ({ text, onSelection, onDeletion, id }) => {
     return (
-        <li className="list-group-item" onClick={onSelection}>
+        <li className="list-group-item" onClick={onSelection.bind(this, id)}>
             {text}
-            <button className="btn btn-danger float-right" onClick={onDeletion}>
-                Delete
+            <button className="btn btn-danger float-right" onClick={onDeletion.bind(this, id)}>
+                {BTN_ACTIONS.DELETE}
             </button>
         </li>
     );
 }
 
 TodoItem.propTypes = {
-    text: PropTypes.string.isRequired,
-    onSelection: PropTypes.func.isRequired,
-    onDeletion: PropTypes.func.isRequired
+    id: number.isRequired,
+    text: string.isRequired,
+    onSelection: func.isRequired,
+    onDeletion: func.isRequired
 }
 
-export default Index
+export default TodoItem;

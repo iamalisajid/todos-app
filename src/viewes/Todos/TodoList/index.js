@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
-import TodoItem from '../../viewes/TodoItem';
+import TodoItem from '../TodoItem';
+import { TODOS_LIST }  from '../../../utils/constants';
 
 class TodoList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            todos: [
-                {id: 1, name: "abc", completed: true},
-                {id: 2, name: "react", completed: false},
-                {id: 3, name: "redux", completed: false}
-                ]
-        }
+     state = {
+            todos:  TODOS_LIST
+        };
+
+    onSelection = (id) => {
+        console.info(id)
     }
 
+    onDeletion = (id) => {
+        console.info(id);
+    }
 
-    onSelection = () => {
-        console.log('selection');
-    }
-    onDeletion = (event) => {
-        event.stopPropagation();
-        console.log('deleteion');
-    }
     render() {
+         const { todos } = this.state;
         return(
             <div className="container">
                 <h2>Todos</h2>
                 <ul className="list-group">
-                    {this.state.todos.map(todos =>
+                    {todos.map(todo =>
                         <TodoItem
-                            key={todos.id}
+                            key={todo.id}
+                            id={todo.id}
                             onSelection={this.onSelection}
-                            text={todos.name}
+                            text={todo.text}
                             onDeletion={this.onDeletion}/>)
                     }
                 </ul>

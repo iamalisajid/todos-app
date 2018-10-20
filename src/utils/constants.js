@@ -1,4 +1,4 @@
-export const todos =[
+export const TODOS_LIST = [
     {
         "id": 1,
         "text": "abc",
@@ -10,3 +10,9 @@ export const todos =[
         "isComplete": true
     }
 ];
+
+export const BTN_ACTIONS = {
+    DELETE: 'Delete'
+}
+
+
