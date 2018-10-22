@@ -24,6 +24,7 @@
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
 .idea/inspectionProfiles
+.idea/codeStyles
 
 npm-debug.log*
 yarn-debug.log*
