@@ -42,5 +42,3 @@ export const APP_ROUTES = {
   CONTACTS: `${ROUTE_PREFIX}contacts/`,
   TODOS: `${ROUTE_PREFIX}todos/`
 };
-
-
