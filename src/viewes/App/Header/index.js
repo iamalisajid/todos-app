@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => (
     <header className="App-header">
-        <h3>Todos App</h3>
+      <h2 className="App-title">Contacts Todo App</h2>
     </header>
 );
 

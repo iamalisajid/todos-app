@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App-header {
+    background-color: #3cb5f9;
+    color: white;
+    margin: 0 0 15px;
+    overflow: hidden;
+    padding: 10px 15px;
+}
+.App-title {
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin: 10px 0 4px;
+    text-transform: uppercase;
+    word-spacing: 5px;
+}
+
+

@@ -7,26 +7,24 @@ class Todos extends Component {
     todos: TODOS_LIST
   };
 
-  onSelection = (id) => {
-    console.info(id)
-  }
-
-  onDeletion = (id) => {
-    console.log('Deletion');
-    console.info(id);
-  }
-
   render() {
     return (
       <div>
         <TodoList
           todos={this.state.todos}
-          onSelection={this.onSelection}
-          onDeletion={this.onDeletion}
+          onSelection={onSelection}
+          onDeletion={onDeletion}
         />
       </div>
     );
   }
 }
+const onSelection = (id) => {
+    console.info(id);
+}
 
+const onDeletion = (id) => {
+  console.log('Deletion');
+  console.info(id);
+}
 export default Todos;
