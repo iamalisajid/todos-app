@@ -25,5 +25,3 @@ TodoList.propType = {
   onDeletion: func.onDeletion
 }
 export default TodoList;
-
-

@@ -23,5 +23,3 @@ ContactList.propType = {
   onDeletion: func.onDeletion
 };
 export default ContactList;
-
-
