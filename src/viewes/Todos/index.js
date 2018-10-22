@@ -1,13 +1,38 @@
 import React, {Component} from 'react';
+import Loader from 'react-loader-spinner'
 import TodoList from './TodoList';
-import {TODOS_LIST} from "../../utils/constants";
+import ApiCaller from '../../utils/apiCaller'
+import changeCaseObject from "change-case-object";
 
 class Todos extends Component {
   state = {
-    todos: TODOS_LIST
+    todos: [],
+    loading: true
   };
 
+  componentDidMount() {
+    ApiCaller.fetchTodos().then(json =>
+      this.setState({
+        todos: changeCaseObject.camelCase(json),
+        loading: false
+      }));
+  }
+
   render() {
+    if (this.state.loading)
+      return (
+        <div className="Loader">
+          <div className="Loader-center">
+            <Loader
+              type="Triangle"
+              color="#00BFFF"
+              height="100"
+              width="100"
+            />
+          </div>
+        </div>
+      );
+
     return (
       <div>
         <TodoList

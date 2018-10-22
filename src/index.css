@@ -28,3 +28,18 @@ code {
   text-transform: uppercase;
   word-spacing: 5px;
 }
+.Loader
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+}
+.Loader-center {
+  margin: auto;
+  max-height: 100%;
+}

@@ -1,0 +1,42 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "abc",
+      "is_complete": true
+    },
+    {
+      "id": 2,
+      "text": "def",
+      "is_complete": true
+    },
+    {
+      "text": "ali here",
+      "is_complete": false,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "text": "ali there",
+      "is_complete": false
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "first_name": "Ali",
+      "last_name": "Sajid",
+      "mobile": "+92 322 7901620",
+      "email": "imalisajid@gmail.com",
+      "avatar": "./avatars/avatar-image.png"
+    },
+    {
+      "id": 2,
+      "first_name": "Sajid",
+      "last_name": "Ali",
+      "mobile": "+92 346 1234567",
+      "email": "ali.sajid@aribsoft.com",
+      "avatar": "./avatars/avatar-image.png"
+    }
+  ]
+}
