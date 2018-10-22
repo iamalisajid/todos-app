@@ -19,8 +19,9 @@ class Todos extends Component {
     );
   }
 }
+
 const onSelection = (id) => {
-    console.info(id);
+  console.info(id);
 }
 
 const onDeletion = (id) => {

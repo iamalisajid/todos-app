@@ -11,7 +11,7 @@ const Dashboard = ({props}) => (
             Welcome
           </h1>
           <div className="error-details">
-           Add Todos & Contacts
+            Add Todos & Contacts
           </div>
           <div className="error-actions">
             <Link className="btn btn-success btn-lg" to="/todos">Todos</Link>

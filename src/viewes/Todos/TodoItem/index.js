@@ -2,7 +2,7 @@ import React from 'react'
 import {string, number, func} from 'prop-types'
 import {BTN_ACTIONS} from '../../../utils/constants'
 
-const TodoItem = ({text, onSelection, onDeletion,id}) => {
+const TodoItem = ({text, onSelection, onDeletion, id}) => {
 
   const wrapDeletion = (id) => {
     onDeletion(id);

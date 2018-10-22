@@ -7,7 +7,6 @@ class Contacts extends Component {
     contacts: CONTACTS_LIST
   };
 
-
   render() {
     return (
       <div>
@@ -24,5 +23,6 @@ class Contacts extends Component {
 const onDeletion = (id) => {
   console.log('Deletion');
   console.info(id);
-}
+};
+
 export default Contacts;

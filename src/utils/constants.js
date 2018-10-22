@@ -1,14 +1,14 @@
 export const TODOS_LIST = [
-    {
-        "id": 1,
-        "text": "abc",
-        "isComplete": true
-    },
-    {
-        "id": 2,
-        "text": "def",
-        "isComplete": true
-    }
+  {
+    "id": 1,
+    "text": "abc",
+    "isComplete": true
+  },
+  {
+    "id": 2,
+    "text": "def",
+    "isComplete": true
+  }
 ];
 
 export const CONTACTS_LIST = [
@@ -31,8 +31,8 @@ export const CONTACTS_LIST = [
 ];
 
 export const BTN_ACTIONS = {
-    DELETE: 'Delete'
-}
+  DELETE: 'Delete'
+};
 
 const ROUTE_PREFIX = "/";
 

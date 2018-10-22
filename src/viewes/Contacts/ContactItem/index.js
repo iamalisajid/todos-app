@@ -20,7 +20,7 @@ const ContactItem = ({contact, onDeletion}) => {
           <span className="text-muted small">{contact.mobile}</span>
           <br/>
 
-          <span className="fa fa-envelope fa-fw text-muted" />
+          <span className="fa fa-envelope fa-fw text-muted"/>
           <span className="text-muted small text-truncate">{contact.email}</span>
 
         </div>
