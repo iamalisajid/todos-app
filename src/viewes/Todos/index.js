@@ -66,11 +66,11 @@ class Todos extends Component {
     event.stopPropagation();
     const id = parseInt(event.target.value);
 
-       _delete(`${API_ROUTES.TODOS}/${id}`).then(res => {
-          this.setState({
-            todos: todos.filter(todo => todo.id !== id)
-          })
-        })
+    _delete(`${API_ROUTES.TODOS}/${id}`).then(res => {
+      this.setState({
+        todos: todos.filter(todo => todo.id !== id)
+      })
+    })
   };
 
 
@@ -93,6 +93,14 @@ class Todos extends Component {
           toggleTodo={this.toggleTodo}
           handleDelete={this.handleDelete}
         />
+        <div id='toolbar'>
+          <div className='wrapper text-center'>
+            <div className="btn-group">
+              <button onClick="showActive" className="btn btn-warning">Active</button>
+              <button type="button" className="btn btn-info">Completed</button>
+            </div>
+          </div>
+        </div>
       </Fragment>
     );
   }

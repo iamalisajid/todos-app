@@ -12,7 +12,7 @@
     },
     {
       "text": "hello",
-      "is_complete": true,
+      "is_complete": false,
       "id": 6
     },
     {
