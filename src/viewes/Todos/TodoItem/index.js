@@ -1,27 +1,31 @@
 import React from 'react'
-import {string, number, func} from 'prop-types'
+import {string, number, bool, func} from 'prop-types'
 import {BTN_ACTIONS} from '../../../utils/constants'
 
-const TodoItem = ({text, onSelection, onDeletion, id}) => {
-
-  const wrapDeletion = (id) => {
-    onDeletion(id);
-  }
+const TodoItem = ({text, isComplete, toggleTodo, handleDelete, id}) => {
   return (
-    <li className="list-group-item" onClick={onSelection.bind(this, id)}>
-      {text}
-      <button className="btn btn-danger float-right" onClick={wrapDeletion(id)}>
-        {BTN_ACTIONS.DELETE}
-      </button>
+    <li className="list-group-item">
+      <div className="form-group">
+        <input type="checkbox"
+               onChange={toggleTodo}
+               value={id}
+               checked={isComplete}
+        />
+        {text}
+        <button className="btn btn-danger float-right" value={id} onClick={handleDelete}>
+          {BTN_ACTIONS.DELETE}
+        </button>
+      </div>
     </li>
   );
-}
+};
 
 TodoItem.propTypes = {
   id: number.isRequired,
   text: string.isRequired,
-  onSelection: func.isRequired,
-  onDeletion: func.isRequired
+  isComplete: bool.isRequired,
+  toggleTodo: func.isRequired,
+  handleDelete: func.isRequired
 }
 
 export default TodoItem;

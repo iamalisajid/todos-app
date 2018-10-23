@@ -1,17 +1,18 @@
 import React from 'react';
 import './style.scss';
 import {Link} from "react-router-dom";
+import {WELCOME} from "../../utils/copies";
 
-const Dashboard = ({props}) => (
+const Dashboard = () => (
   <div className="container">
     <div className="row">
       <div className="col-md-12">
-        <div className="wlecome-template">
+        <div className="welcome-template">
           <h1>
-            Welcome
+            {WELCOME.TITLE}
           </h1>
           <div className="error-details">
-            Add Todos & Contacts
+            {WELCOME.MESSAGE}
           </div>
           <div className="error-actions">
             <Link className="btn btn-success btn-lg" to="/todos">Todos</Link>

@@ -1,81 +1,46 @@
+import axios from 'axios';
 import changeCaseObject from 'change-case-object';
 import {API_ROUTES} from './endpoints';
 
-class ApiCaller {
-  static fetchTodos = () => {
-    return fetch(API_ROUTES.TODOS)
-      .then(response => response.json());
-  };
-
-  static createTodo = (todo) => {
-    return fetch(API_ROUTES.TODOS, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(changeCaseObject.snakeCase(todo))
+export const fetchTodos = () => {
+  return axios.get(API_ROUTES.TODOS)
+    .then(res => {
+      return changeCaseObject.camelCase(res.data);
     })
-      .then(res => res.json())
-  };
+};
 
-  static updateTodo = (todo) => {
-    return fetch(`${API_ROUTES.TODOS}/${todo.id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(changeCaseObject.snakeCase(todo))
+export const createTodo = (todo) => {
+  return axios.post(API_ROUTES.TODOS, changeCaseObject.snakeCase(todo))
+    .then((response) => {
+      return changeCaseObject.camelCase(response.data)
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  };
+};
 
-  static deleteTodo = (id) => {
-    return fetch(`${API_ROUTES.TODOS}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
+export const updateTodo = (todo) => {
+  return axios.put(`${API_ROUTES.TODOS}/${todo.id}`, (changeCaseObject.snakeCase(todo)))
+    .then((response) => {
+      return changeCaseObject.camelCase(response.data)
     })
-  };
-  static fetchContacts = () => {
-    return fetch(API_ROUTES.CONTACTS)
-      .then(response => response.json());
-  };
-
-  static createContact = (contact) => {
-    return fetch(API_ROUTES.CONTACTS, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(changeCaseObject.snakeCase(contact))
-    })
-      .then(res => res.json())
-  };
-
-  static ypdateContact = (contact) => {
-    return fetch(`${API_ROUTES.CONTACTS}/${contact.id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(changeCaseObject.snakeCase(contact))
+    .catch((error) => {
+      console.log(error);
     });
-  };
+};
 
-  static deleteContact = (id) => {
-    return fetch(`${API_ROUTES.CONTACTS}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
+export const deleteTodo = (id) => {
+  return axios.delete(`${API_ROUTES.TODOS}/${id}`)
+    .then((response) => {
+      console.log(response);
     })
-  };
-}
-
-export default ApiCaller;
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const fetchContacts = () => {
+  return axios.get(API_ROUTES.CONTACTS)
+    .then(res => {
+      return changeCaseObject.camelCase(res.data);
+    })
+};

@@ -2,18 +2,19 @@ import React from 'react';
 import TodoItem from '../TodoItem';
 import {object, func} from 'prop-types';
 
-const TodoList = ({todos, onSelection, onDeletion}) => {
+const TodoList = ({todos, toggleTodo, handleDelete}) => {
   return (
     <div className="container">
-      <h2>Todos</h2>
+      <h6>Todos</h6>
       <ul className="list-group">
         {todos.map(todo =>
           <TodoItem
             key={todo.id}
             id={todo.id}
-            onSelection={onSelection}
             text={todo.text}
-            onDeletion={onDeletion}/>)
+            isComplete={todo.isComplete}
+            toggleTodo={toggleTodo}
+            handleDelete={handleDelete}/>)
         }
       </ul>
     </div>
@@ -22,8 +23,8 @@ const TodoList = ({todos, onSelection, onDeletion}) => {
 
 TodoList.propType = {
   todo: object.isRequired,
-  onSelection: func.isRequired,
-  onDeletion: func.onDeletion
+  toggleTodo: func.isRequired,
+  handleDelete: func.onDeletion
 };
 
 export default TodoList;

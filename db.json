@@ -1,24 +1,14 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "abc",
-      "is_complete": true
+      "text": "things to do",
+      "is_complete": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "text": "def",
-      "is_complete": true
-    },
-    {
-      "text": "ali here",
-      "is_complete": false,
-      "id": 3
-    },
-    {
-      "id": 4,
-      "text": "ali there",
-      "is_complete": false
+      "text": "hello",
+      "is_complete": true,
+      "id": 4
     }
   ],
   "contacts": [

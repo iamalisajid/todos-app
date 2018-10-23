@@ -1,5 +1,6 @@
 export const BTN_ACTIONS = {
-  DELETE: 'Delete'
+  DELETE: 'Delete',
+  ADD: 'Add'
 };
 
 const ROUTE_PREFIX = "/";
@@ -10,3 +11,8 @@ export const APP_ROUTES = {
   CONTACTS: `${ROUTE_PREFIX}contacts/`,
   TODOS: `${ROUTE_PREFIX}todos/`
 };
+
+export const HEADER = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+}

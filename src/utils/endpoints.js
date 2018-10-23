@@ -1,6 +1,7 @@
-const ROUTE_PREFIX = "http://localhost:3000";
+const BASE_URL = "http://localhost";
+const PORT = ":3000";
 
 export const API_ROUTES = {
-  TODOS: `${ROUTE_PREFIX}/todos`,
-  CONTACTS: `${ROUTE_PREFIX}/contacts`
+  TODOS: `${BASE_URL}${PORT}/todos`,
+  CONTACTS: `${BASE_URL}${PORT}/contacts`
 };

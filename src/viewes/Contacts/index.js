@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import ContactsList from './ContactList';
-import ApiCaller from "../../utils/apiCaller";
+import {fetchContacts} from "../../utils/apiCaller";
 import changeCaseObject from "change-case-object";
-import Loader from "react-loader-spinner";
+import AppLoader from '../../shared/loader';
+import AddContacts from "./AddContact";
 
 class Contacts extends Component {
   state = {
@@ -11,44 +12,34 @@ class Contacts extends Component {
   };
 
   componentDidMount() {
-    ApiCaller.fetchContacts().then(json =>
+    fetchContacts().then(json =>
       this.setState({
         contacts: changeCaseObject.camelCase(json),
         loading: false
       }));
   }
 
-  render() {
+  onDeletion = (id) => {
+    console.log('Deletion');
+    console.info(id);
+  };
 
-    if (this.state.loading)
-      return (
-        <div className="Loader">
-          <div className="Loader-center">
-            <Loader
-              type="Triangle"
-              color="#00BFFF"
-              height="100"
-              width="100"
-            />
-          </div>
-        </div>
-      );
+  render() {
+    const {loading, contacts} = this.state;
+
+    if (loading)
+      return <AppLoader/>;
 
     return (
       <div>
+        <AddContacts/>
         <ContactsList
-          contacts={this.state.contacts}
-          onDeletion={onDeletion}
+          contacts={contacts}
+          onDeletion={this.onDeletion}
         />
       </div>
     );
   }
 }
-
-
-const onDeletion = (id) => {
-  console.log('Deletion');
-  console.info(id);
-};
 
 export default Contacts;
