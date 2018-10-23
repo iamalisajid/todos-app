@@ -1,6 +1,6 @@
 import React from 'react'
 import {string, func} from 'prop-types';
-import {BTN_ACTIONS} from "../../../utils/constants";
+import {BTN_ACTIONS} from '../../../utils/constants';
 
 const TodoForm = ({currentTodo, handleInput, handleSubmit}) => {
   return (
@@ -14,7 +14,10 @@ const TodoForm = ({currentTodo, handleInput, handleSubmit}) => {
             value={currentTodo}
             placeholder="Add todo"/>
           <div className="input-group-append">
-            <input type="submit" className="btn btn-success" value={BTN_ACTIONS.ADD}/>
+            <input
+              type="submit"
+              className="btn btn-success"
+              value={BTN_ACTIONS.ADD}/>
           </div>
         </div>
       </form>
@@ -26,6 +29,6 @@ TodoForm.propTypes = {
   currentTodo: string.isRequired,
   handleInput: func.isRequired,
   handleSubmit: func.isRequired
-}
+};
 
 export default TodoForm;

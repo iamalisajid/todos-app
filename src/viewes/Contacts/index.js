@@ -3,7 +3,7 @@ import ContactsList from './ContactList';
 import AddContacts from './AddContact';
 import AppLoader from '../../shared/loader';
 import {get} from '../../utils/apiCaller';
-import {API_ROUTES} from "../../utils/endpoints";
+import {API_ROUTES} from '../../utils/endpoints';
 
 class Contacts extends Component {
   state = {
