@@ -3,7 +3,7 @@ export const BTN_ACTIONS = {
   ADD: 'Add'
 };
 
-const ROUTE_PREFIX = "/";
+const ROUTE_PREFIX = '/';
 
 export const APP_ROUTES = {
   BASE: ROUTE_PREFIX,

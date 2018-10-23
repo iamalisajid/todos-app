@@ -1,46 +1,36 @@
 import axios from 'axios';
 import changeCaseObject from 'change-case-object';
-import {API_ROUTES} from './endpoints';
 
-export const fetchTodos = () => {
-  return axios.get(API_ROUTES.TODOS)
-    .then(res => {
-      return changeCaseObject.camelCase(res.data);
-    })
-};
+let api = null;
 
-export const createTodo = (todo) => {
-  return axios.post(API_ROUTES.TODOS, changeCaseObject.snakeCase(todo))
-    .then((response) => {
-      return changeCaseObject.camelCase(response.data)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+function getInitializedApi() {
+  if (api) return api;
+  return (api = axios.create({
+    responseType: 'json',
+    withCredentials: true
+  }));
+}
 
-export const updateTodo = (todo) => {
-  return axios.put(`${API_ROUTES.TODOS}/${todo.id}`, (changeCaseObject.snakeCase(todo)))
-    .then((response) => {
-      return changeCaseObject.camelCase(response.data)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+export function get(url) {
+  return getInitializedApi()
+    .get(url)
+    .then(response => changeCaseObject.camelCase(response.data));
+}
 
-export const deleteTodo = (id) => {
-  return axios.delete(`${API_ROUTES.TODOS}/${id}`)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-export const fetchContacts = () => {
-  return axios.get(API_ROUTES.CONTACTS)
-    .then(res => {
-      return changeCaseObject.camelCase(res.data);
-    })
-};
+export function post(url, data) {
+  return getInitializedApi()
+    .post(url, changeCaseObject.snakeCase(data))
+    .then(response =>
+      changeCaseObject.camelCase(response.data));
+}
+
+export function put(url, data) {
+  return getInitializedApi()
+    .put(url, changeCaseObject.snakeCase(data))
+    .then(response =>
+      changeCaseObject.camelCase(response.data));
+}
+
+export function _delete(url) {
+  return getInitializedApi().delete(url);
+}

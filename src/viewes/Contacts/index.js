@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ContactsList from './ContactList';
-import {fetchContacts} from "../../utils/apiCaller";
-import changeCaseObject from "change-case-object";
+import AddContacts from './AddContact';
 import AppLoader from '../../shared/loader';
-import AddContacts from "./AddContact";
+import {get} from '../../utils/apiCaller';
+import {API_ROUTES} from "../../utils/endpoints";
 
 class Contacts extends Component {
   state = {
@@ -12,9 +12,9 @@ class Contacts extends Component {
   };
 
   componentDidMount() {
-    fetchContacts().then(json =>
+    get(API_ROUTES.CONTACTS).then(contacts =>
       this.setState({
-        contacts: changeCaseObject.camelCase(json),
+        contacts,
         loading: false
       }));
   }
@@ -31,13 +31,13 @@ class Contacts extends Component {
       return <AppLoader/>;
 
     return (
-      <div>
+      <Fragment>
         <AddContacts/>
         <ContactsList
           contacts={contacts}
           onDeletion={this.onDeletion}
         />
-      </div>
+      </Fragment>
     );
   }
 }

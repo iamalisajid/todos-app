@@ -1,5 +1,5 @@
 import React from 'react';
-import {HEADER_TITILE} from "../../../utils/copies";
+import {HEADER_TITILE} from '../../../utils/copies';
 
 const Header = () => (
   <header className="App-header">

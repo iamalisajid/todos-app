@@ -6,13 +6,17 @@ const TodoItem = ({text, isComplete, toggleTodo, handleDelete, id}) => {
   return (
     <li className="list-group-item">
       <div className="form-group">
-        <input type="checkbox"
-               onChange={toggleTodo}
-               value={id}
-               checked={isComplete}
+        <input
+          type="checkbox"
+          onChange={toggleTodo}
+          value={id}
+          checked={isComplete}
         />
         {text}
-        <button className="btn btn-danger float-right" value={id} onClick={handleDelete}>
+        <button
+          className="btn btn-danger float-right"
+          value={id}
+          onClick={handleDelete}>
           {BTN_ACTIONS.DELETE}
         </button>
       </div>

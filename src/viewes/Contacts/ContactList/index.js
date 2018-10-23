@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactItem from '../ContactItem';
 import {object, func} from 'prop-types';
+import ContactItem from '../ContactItem';
 
 const ContactList = ({contacts, onDeletion}) => (
   <div className="container">

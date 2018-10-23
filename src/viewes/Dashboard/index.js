@@ -1,7 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {WELCOME} from '../../utils/copies';
 import './style.scss';
-import {Link} from "react-router-dom";
-import {WELCOME} from "../../utils/copies";
 
 const Dashboard = () => (
   <div className="container">
