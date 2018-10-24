@@ -46,7 +46,6 @@ class Todos extends Component {
   };
 
   toggleTodo = event => {
-    debugger;
     const {todos} = this.state;
 
     const id = parseInt(event.target.value);
