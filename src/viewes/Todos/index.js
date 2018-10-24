@@ -17,10 +17,11 @@ class Todos extends Component {
   };
 
   componentDidMount() {
-    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET).then(response => this.setState({
-      todos: response.data,
-      loading: false
-    }));
+    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET)
+      .then(response => this.setState({
+        todos: response.data,
+        loading: false
+      }));
   }
 
   handleInput = event => {
@@ -31,18 +32,20 @@ class Todos extends Component {
   };
 
   handleSubmit = event => {
-    const {todos, currentTodo} = this.state;
-
     event.preventDefault();
+
+    const {todos, currentTodo} = this.state;
     let todo = {
       text: currentTodo,
       isComplete: false
     };
-    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.POST, todo).then(response => this.setState({
-      todos: todos.concat(response.data),
-      currentTodo: '',
-      loading: false
-    }));
+
+    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.POST, todo)
+      .then(response => this.setState({
+        todos: todos.concat(response.data),
+        currentTodo: '',
+        loading: false
+      }));
   };
 
   toggleTodo = event => {
@@ -52,26 +55,28 @@ class Todos extends Component {
     const todo = this.state.todos.find(todo => todo.id === id);
     const toggled = {...todo, isComplete: !todo.isComplete};
 
-    ApiCaller(`${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled).then(response => {
-      this.setState({
-        todos: todos.map(todo => todo.id === response.data.id ? response.data : todo),
-        currentTodo: ''
-      })
-    });
+    ApiCaller(`${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled)
+      .then(response => {
+        this.setState({
+          todos: todos.map(todo => todo.id === response.data.id ? response.data : todo),
+          currentTodo: ''
+        })
+      });
   };
 
   handleDelete = event => {
-    const {todos} = this.state;
-
     event.stopPropagation();
+
+    const {todos} = this.state;
     const id = parseInt(event.target.value);
 
-    ApiCaller(`${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE).then(response => {
-      this.setState({
-        todos: todos.filter(todo => todo.id !== id),
-        currentTodo: ''
-      })
-    });
+    ApiCaller(`${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE)
+      .then(response => {
+        this.setState({
+          todos: todos.filter(todo => todo.id !== id),
+          currentTodo: ''
+        })
+      });
   };
 
   handleFilter = event => {
@@ -82,7 +87,6 @@ class Todos extends Component {
   }
 
   visibleTodos = () => {
-
     const {todos, filter} = this.state;
 
     switch (filter) {
@@ -95,7 +99,7 @@ class Todos extends Component {
       default:
         return todos
     }
-  }
+  };
 
   render() {
     const {loading, currentTodo, errors} = this.state;

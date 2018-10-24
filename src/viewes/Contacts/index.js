@@ -13,9 +13,9 @@ class Contacts extends Component {
   };
 
   componentDidMount() {
-    ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET).then(contacts =>
+    ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET).then(response =>
       this.setState({
-        contacts,
+        contacts: response.data,
         loading: false
       }));
   }
