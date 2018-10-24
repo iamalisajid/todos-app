@@ -1,7 +1,7 @@
 import axios from 'axios';
 import changeCaseObject from 'change-case-object';
 
-export const ApiCaller = (URL, REQUEST_TYPE, DATA = {}) =>
+const ApiCaller = (URL, REQUEST_TYPE, DATA = {}) =>
   axios({
     method: REQUEST_TYPE,
     url: URL,
@@ -18,3 +18,5 @@ export const ApiCaller = (URL, REQUEST_TYPE, DATA = {}) =>
       return changeCaseObject.camelCase(data);
     }]
   });
+
+export default ApiCaller;

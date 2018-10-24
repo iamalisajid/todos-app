@@ -3,7 +3,8 @@ export const BTN_ACTIONS = {
   ADD: 'Add',
   ALL: 'All',
   ACTIVE: 'Active',
-  COMPLETED: 'Completed'
+  COMPLETED: 'Completed',
+  UPDATE: 'Update'
 };
 
 const ROUTE_PREFIX = '/';

@@ -1,7 +1,7 @@
 import React from 'react'
 import {object, func} from 'prop-types'
 
-const ContactItem = ({contact, onDeletion}) => {
+const ContactItem = ({contact, onDeletion, handleUpdate}) => {
 
   return (
     <li className="list-group-item">
@@ -14,15 +14,19 @@ const ContactItem = ({contact, onDeletion}) => {
         </div>
 
         <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+
           <span
-            className="fa fa-trash text-danger float-right"
-            onClick={onDeletion.bind(this, contact.id)}
+            className="fa fa-pencil text-default float-right"
+            onClick={handleUpdate.bind(this, contact)}
           />
           <label className="name lead">
             {contact.firstName} {contact.lastName}
           </label>
           <br/>
-
+          <span
+            className="fa fa-trash text-danger float-right"
+            onClick={onDeletion.bind(this, contact.id)}
+          />
           <span className="fa fa-phone fa-fw text-muted"/>
           <span className="text-muted small">{contact.mobile}</span>
           <br/>
@@ -38,7 +42,8 @@ const ContactItem = ({contact, onDeletion}) => {
 
 ContactItem.propTypes = {
   contact: object.isRequired,
-  onDeletion: func.isRequired
+  onDeletion: func.isRequired,
+  handleUpdate: func.isRequired
 };
 
 export default ContactItem;

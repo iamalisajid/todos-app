@@ -3,7 +3,7 @@ import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import TodoFilter from "./TodoFilter";
 import AppLoader from '../../shared/loader';
-import {ApiCaller} from '../../utils/apiCaller';
+import ApiCaller from '../../utils/apiCaller';
 import {API_ROUTES} from '../../utils/endpoints';
 import {REQUEST_TYPE, FILTERS} from '../../utils/constants';
 
@@ -34,6 +34,7 @@ class Todos extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
+    this.setState({loading: true});
     const {todos, currentTodo} = this.state;
     let todo = {
       text: currentTodo,
@@ -49,6 +50,7 @@ class Todos extends Component {
   };
 
   toggleTodo = event => {
+    this.setState({loading: true});
     const {todos} = this.state;
 
     const id = parseInt(event.target.value);
@@ -59,7 +61,8 @@ class Todos extends Component {
       .then(response => {
         this.setState({
           todos: todos.map(todo => todo.id === response.data.id ? response.data : todo),
-          currentTodo: ''
+          currentTodo: '',
+          loading: false
         })
       });
   };
@@ -67,6 +70,7 @@ class Todos extends Component {
   handleDelete = event => {
     event.stopPropagation();
 
+    this.setState({loading: true});
     const {todos} = this.state;
     const id = parseInt(event.target.value);
 
@@ -74,7 +78,8 @@ class Todos extends Component {
       .then(response => {
         this.setState({
           todos: todos.filter(todo => todo.id !== id),
-          currentTodo: ''
+          currentTodo: '',
+          loading: false
         })
       });
   };

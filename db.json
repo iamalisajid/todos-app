@@ -1,37 +1,20 @@
 {
   "todos": [
     {
-      "text": "hey there",
-      "is_complete": true,
-      "id": 11
-    },
-    {
-      "text": "hello",
-      "is_complete": true,
-      "id": 12
-    },
-    {
       "text": "new todo",
       "is_complete": true,
       "id": 13
-    }
-  ],
-  "contacts": [
-    {
-      "id": 1,
-      "first_name": "Ali",
-      "last_name": "Sajid",
-      "mobile": "+92 322 7901620",
-      "email": "imalisajid@gmail.com",
-      "avatar": "./avatars/avatar-image.png"
     },
     {
-      "id": 2,
-      "first_name": "Sajid",
-      "last_name": "Ali",
-      "mobile": "+92 346 1234567",
-      "email": "ali.sajid@aribsoft.com",
-      "avatar": "./avatars/avatar-image.png"
+      "text": "fdfds",
+      "is_complete": true,
+      "id": 14
+    },
+    {
+      "text": "sdasd",
+      "is_complete": true,
+      "id": 15
     }
-  ]
+  ],
+  "contacts": []
 }

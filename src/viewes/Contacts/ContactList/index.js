@@ -2,7 +2,7 @@ import React from 'react';
 import {object, func} from 'prop-types';
 import ContactItem from '../ContactItem';
 
-const ContactList = ({contacts, onDeletion}) => (
+const ContactList = ({contacts, onDeletion, handleUpdate}) => (
   <div className="container">
     <h2>Contacts</h2>
 
@@ -12,6 +12,7 @@ const ContactList = ({contacts, onDeletion}) => (
           key={contact.id}
           contact={contact}
           onDeletion={onDeletion}
+          handleUpdate={handleUpdate}
         />)
       }
     </ul>
@@ -20,6 +21,7 @@ const ContactList = ({contacts, onDeletion}) => (
 
 ContactList.propType = {
   contacts: object.isRequired,
-  onDeletion: func.onDeletion
+  onDeletion: func.isRequired,
+  handleUpdate: func.isRequired
 };
 export default ContactList;
