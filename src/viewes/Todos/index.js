@@ -1,24 +1,26 @@
 import React, {Component, Fragment} from 'react';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
+import TodoFilter from "./TodoFilter";
 import AppLoader from '../../shared/loader';
-import {get, post, put, _delete} from '../../utils/apiCaller';
+import {ApiCaller} from '../../utils/apiCaller';
 import {API_ROUTES} from '../../utils/endpoints';
+import {REQUEST_TYPE, FILTERS} from '../../utils/constants';
 
 class Todos extends Component {
   state = {
     todos: [],
     currentTodo: '',
     loading: true,
-    errors: ''
+    errors: '',
+    filter: FILTERS.SHOW_ALL
   };
 
   componentDidMount() {
-    get(API_ROUTES.TODOS).then(todos =>
-      this.setState({
-        todos,
-        loading: false
-      }));
+    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET).then(response => this.setState({
+      todos: response.data,
+      loading: false
+    }));
   }
 
   handleInput = event => {
@@ -36,29 +38,28 @@ class Todos extends Component {
       text: currentTodo,
       isComplete: false
     };
-
-    post(API_ROUTES.TODOS, todo).then(res =>
-      this.setState({
-        todos: todos.concat(res),
-        currentTodo: ''
-      })
-    );
+    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.POST, todo).then(response => this.setState({
+      todos: todos.concat(response.data),
+      currentTodo: '',
+      loading: false
+    }));
   };
 
   toggleTodo = event => {
+    debugger;
     const {todos} = this.state;
 
     const id = parseInt(event.target.value);
     const todo = this.state.todos.find(todo => todo.id === id);
     const toggled = {...todo, isComplete: !todo.isComplete};
 
-    put(`${API_ROUTES.TODOS}/${toggled.id}`, toggled).then(res => {
+    ApiCaller(`${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled).then(response => {
       this.setState({
-        todos: todos.map(todo => todo.id === res.id ? res : todo),
+        todos: todos.map(todo => todo.id === response.data.id ? response.data : todo),
         currentTodo: ''
       })
-    })
-  }
+    });
+  };
 
   handleDelete = event => {
     const {todos} = this.state;
@@ -66,16 +67,39 @@ class Todos extends Component {
     event.stopPropagation();
     const id = parseInt(event.target.value);
 
-    _delete(`${API_ROUTES.TODOS}/${id}`).then(res => {
+    ApiCaller(`${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE).then(response => {
       this.setState({
-        todos: todos.filter(todo => todo.id !== id)
+        todos: todos.filter(todo => todo.id !== id),
+        currentTodo: ''
       })
-    })
+    });
   };
 
+  handleFilter = event => {
+    const filter = event.target.value;
+    this.setState({
+      filter
+    });
+  }
+
+  visibleTodos = () => {
+
+    const {todos, filter} = this.state;
+
+    switch (filter) {
+      case FILTERS.SHOW_ALL:
+        return todos;
+      case FILTERS.SHOW_ACTIVE:
+        return todos.filter(todo => !todo.isComplete);
+      case FILTERS.SHOW_COMPLETED:
+        return todos.filter(todo => todo.isComplete);
+      default:
+        return todos
+    }
+  }
 
   render() {
-    const {loading, todos, currentTodo, errors} = this.state;
+    const {loading, currentTodo, errors} = this.state;
 
     if (loading)
       return <AppLoader/>;
@@ -89,18 +113,13 @@ class Todos extends Component {
           handleSubmit={this.handleSubmit}
         />
         <TodoList
-          todos={todos}
+          todos={this.visibleTodos()}
           toggleTodo={this.toggleTodo}
           handleDelete={this.handleDelete}
         />
-        <div id='toolbar'>
-          <div className='wrapper text-center'>
-            <div className="btn-group">
-              <button onClick="showActive" className="btn btn-warning">Active</button>
-              <button type="button" className="btn btn-info">Completed</button>
-            </div>
-          </div>
-        </div>
+        <TodoFilter
+          handleFilter={this.handleFilter}
+        />
       </Fragment>
     );
   }

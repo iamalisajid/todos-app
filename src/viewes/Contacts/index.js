@@ -2,8 +2,9 @@ import React, {Component, Fragment} from 'react';
 import ContactsList from './ContactList';
 import AddContacts from './AddContact';
 import AppLoader from '../../shared/loader';
-import {get} from '../../utils/apiCaller';
+import {ApiCaller} from '../../utils/apiCaller';
 import {API_ROUTES} from '../../utils/endpoints';
+import {REQUEST_TYPE} from '../../utils/constants';
 
 class Contacts extends Component {
   state = {
@@ -12,7 +13,7 @@ class Contacts extends Component {
   };
 
   componentDidMount() {
-    get(API_ROUTES.CONTACTS).then(contacts =>
+    ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET).then(contacts =>
       this.setState({
         contacts,
         loading: false

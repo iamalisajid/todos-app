@@ -1,6 +1,9 @@
 export const BTN_ACTIONS = {
   DELETE: 'Delete',
-  ADD: 'Add'
+  ADD: 'Add',
+  ALL: 'All',
+  ACTIVE: 'Active',
+  COMPLETED: 'Completed'
 };
 
 const ROUTE_PREFIX = '/';
@@ -12,7 +15,15 @@ export const APP_ROUTES = {
   TODOS: `${ROUTE_PREFIX}todos/`
 };
 
-export const HEADER = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-}
+export const REQUEST_TYPE = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE'
+};
+
+export const FILTERS = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
+};
