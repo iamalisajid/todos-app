@@ -27,6 +27,7 @@ class Login extends React.Component {
       return <AppLoader/>;
     else if (user.length > 0)
       return (<Redirect to={APP_ROUTES.DASHBOARD}/>);
+
     return (
       <div className="container">
         <div className="row">
