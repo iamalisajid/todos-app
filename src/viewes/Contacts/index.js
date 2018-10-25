@@ -5,12 +5,18 @@ import AppLoader from '../../shared/loader';
 import ApiCaller from '../../utils/apiCaller';
 import {API_ROUTES} from '../../utils/endpoints';
 import {REQUEST_TYPE} from '../../utils/constants';
-import {CONTACT_MODEL} from '../../utils/initialState';
 
 class Contacts extends Component {
   state = {
     contacts: [],
-    currentContact: Object.assign({}, CONTACT_MODEL),
+    currentContact: {
+      id: '',
+      firstName: '',
+      lastName: '',
+      mobile: '',
+      email: '',
+      avatar: './avatars/avatar-image.png'
+    },
     loading: true
   };
 
@@ -25,13 +31,20 @@ class Contacts extends Component {
 
   onDeletion = id => {
     this.setState({loading: true});
-    const {contacts, currentContact} = this.state;
+    const {contacts} = this.state;
 
     ApiCaller(`${API_ROUTES.CONTACTS}/${id}`, REQUEST_TYPE.DELETE)
       .then(response => this.setState({
         contacts: contacts.filter(contact => contact.id !== id),
         loading: false,
-        currentContact: Object.assign(currentContact, CONTACT_MODEL)
+        currentContact: {
+          id: '',
+          firstName: '',
+          lastName: '',
+          mobile: '',
+          email: '',
+          avatar: './avatars/avatar-image.png'
+        }
       }));
   }
 
@@ -59,13 +72,27 @@ class Contacts extends Component {
       ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.POST, currentContact)
         .then(response => this.setState({
           contacts: contacts.concat(response.data),
-          currentContact: Object.assign(currentContact, CONTACT_MODEL)
+          currentContact: {
+            id: '',
+            firstName: '',
+            lastName: '',
+            mobile: '',
+            email: '',
+            avatar: './avatars/avatar-image.png'
+          }
         }));
     else
       ApiCaller(`${API_ROUTES.CONTACTS}/${currentContact.id}`, REQUEST_TYPE.PUT, currentContact)
         .then(response => this.setState({
           contacts: contacts.map(contact => contact.id === response.data.id ? response.data : contact),
-          currentContact: Object.assign(currentContact, CONTACT_MODEL)
+          currentContact: {
+            id: '',
+            firstName: '',
+            lastName: '',
+            mobile: '',
+            email: '',
+            avatar: './avatars/avatar-image.png'
+          }
         }));
 
   };

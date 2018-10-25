@@ -1,20 +1,20 @@
 import axios from 'axios';
 import changeCaseObject from 'change-case-object';
 
-const ApiCaller = (URL, REQUEST_TYPE, DATA = {}) =>
+const ApiCaller = (url, method, data = {}) =>
   axios({
-    method: REQUEST_TYPE,
-    url: URL,
-    data: DATA,
+    method,
+    url,
+    data,
 
     headers: {'Content-Type': 'application/json; charset=utf-8', Accept: 'application/json'},
     responseType: 'json',
 
-    transformRequest: [function (data, headers) {
+    transformRequest: [(data, headers) => {
       return JSON.stringify(changeCaseObject.snakeCase(data));
     }],
 
-    transformResponse: [function (data) {
+    transformResponse: [(data) => {
       return changeCaseObject.camelCase(data);
     }]
   });
