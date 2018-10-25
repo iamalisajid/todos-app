@@ -1,16 +1,7 @@
 import * as types from '../viewes/Login/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  user: [],
-  loading: false,
-  error: '',
-  currentUser: {
-    email: '',
-    password: ''
-  }
-};
-
-const todos = (state = initialState, action) => {
+const login = (state = initialState.login, action) => {
   switch (action.type) {
     case types.LOGIN_INPUT:
       return {
@@ -44,4 +35,4 @@ const todos = (state = initialState, action) => {
   }
 };
 
-export default todos;
+export default login;

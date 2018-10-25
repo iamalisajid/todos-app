@@ -24,6 +24,11 @@
       "text": "asas",
       "is_complete": false,
       "id": 10
+    },
+    {
+      "text": "redux done",
+      "is_complete": true,
+      "id": 11
     }
   ],
   "contacts": [
