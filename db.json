@@ -19,7 +19,28 @@
       "text": "happybirthday",
       "is_complete": true,
       "id": 9
+    },
+    {
+      "text": "asas",
+      "is_complete": false,
+      "id": 10
     }
   ],
-  "contacts": []
+  "contacts": [
+    {
+      "id": 1,
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 322 7901620",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./avatars/avatar-image.png"
+    }
+  ],
+  "users": [
+    {
+      "email": "ali.sajid@arbisoft.com",
+      "password": 123,
+      "id": 1
+    }
+  ]
 }
