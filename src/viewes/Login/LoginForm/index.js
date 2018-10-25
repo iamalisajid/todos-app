@@ -41,7 +41,7 @@ const LoginForm = ({currentUser, error, handleInput, handleSubmit}) => {
 
 LoginForm.propTypes = {
   currentUser: object.isRequired,
-  error: string.isRequired,
+  error: string,
   handleSubmit: func.isRequired,
   handleInput: func.isRequired
 };

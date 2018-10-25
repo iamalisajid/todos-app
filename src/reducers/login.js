@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 const login = (state = initialState.login, action) => {
   switch (action.type) {
-    case types.LOGIN_INPUT:
+    case types.LOGIN_INPUT_UPDATE:
       return {
         ...state,
         currentUser: Object.assign({}, action.payload)
@@ -18,11 +18,6 @@ const login = (state = initialState.login, action) => {
         ...state,
         loading: false,
         user: action.payload,
-        currentUser: {
-          email: '',
-          password: ''
-        },
-        error: ''
       };
     case types.LOGIN_FAILURE:
       return {

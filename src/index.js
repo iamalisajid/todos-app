@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom';
 import App from './viewes/App';
-import configureStore from './store/configureStore'
+import getStore from './store'
 import initialState from './reducers/initialState'
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-const store = configureStore(initialState);
+const store = getStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>

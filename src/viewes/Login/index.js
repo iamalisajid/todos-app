@@ -26,7 +26,7 @@ class Login extends React.Component {
     if (loading)
       return <AppLoader/>;
     else if (user.length > 0)
-      return (<Redirect to={APP_ROUTES.DASHBOARD}/>);
+      return <Redirect to={APP_ROUTES.DASHBOARD}/>;
 
     return (
       <div className="container">
@@ -45,8 +45,7 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = (store) => {
-  const {login} = store;
+const mapStateToProps = ({login}) => {
   return {
     currentUser: login.currentUser,
     user: login.user,

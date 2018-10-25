@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "all": "0.0.0",
     "axios": "^0.18.0",
     "change-case-object": "^2.0.0",
     "json-server": "^0.14.0",
@@ -12,12 +13,12 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-loader-spinner": "^2.0.6",
-    "react-redux": "^5.0.7",
+    "react-redux": "^5.1.0",
+    "react-router": "latest",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "react-router": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +34,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "stylelint": "^9.6.0"
+  }
 }

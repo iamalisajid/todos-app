@@ -2,10 +2,11 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
-const configureStore = initialState => createStore(
+const middlewares = [thunk];
+const getStore = initialState => createStore(
   rootReducer,
   initialState,
-  applyMiddleware(thunk)
+  applyMiddleware(...middlewares)
 );
 
-export default configureStore;
+export default getStore;

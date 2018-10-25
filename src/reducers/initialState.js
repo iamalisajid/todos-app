@@ -2,7 +2,7 @@ export default {
   login: {
     user: [],
     loading: false,
-    error: '',
+    error: null,
     currentUser: {
       email: '',
       password: ''
