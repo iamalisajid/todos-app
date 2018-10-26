@@ -36,6 +36,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "redux-devtools-extension": "^2.13.5",
     "stylelint": "^9.6.0"
   }
 }
