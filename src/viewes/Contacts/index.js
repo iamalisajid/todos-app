@@ -16,10 +16,10 @@ class Contacts extends Component {
   handleUpdate = contact => this.props.actions.updateContactField(contact);
 
   handleContactState = event => {
+    let {currentContact, actions} = this.props;
     const field = event.target.name;
-    let currentContact = this.props.currentContact;
     currentContact[field] = event.target.value;
-    this.props.actions.updateContactField(currentContact);
+    actions.updateContactField(currentContact);
   };
 
   handleSubmit = event => {
@@ -73,4 +73,3 @@ const mapDispatchToProps = dispatch => ({
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
-
