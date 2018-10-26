@@ -1,7 +1,7 @@
 import * as types from '../viewes/Todos/actionTypes';
 import initialState from './initialState';
 
-const todo = (state = initialState.todo, action) => {
+const todos = (state = initialState.todos, action) => {
   switch (action.type) {
     case types.TODO_INPUT_UPDATE:
       return {
@@ -23,7 +23,8 @@ const todo = (state = initialState.todo, action) => {
       return {
         ...state,
         loading: false,
-        todos: state.todos.concat(action.payload)
+        todos: state.todos.concat(action.payload),
+        currentTodo: initialState.todos.currentTodo
       };
     case  types.TOGGLE_TODO_SUCCESS:
       return {
@@ -59,4 +60,4 @@ const todo = (state = initialState.todo, action) => {
   }
 };
 
-export default todo;
+export default todos;

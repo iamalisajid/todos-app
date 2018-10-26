@@ -16,9 +16,9 @@
       "id": 9
     },
     {
-      "text": "new rodo",
-      "is_complete": false,
-      "id": 10
+      "text": "new todo with redux",
+      "is_complete": true,
+      "id": 11
     }
   ],
   "contacts": [
@@ -32,10 +32,10 @@
     },
     {
       "id": 2,
-      "first_name": "hey",
-      "last_name": "ali",
-      "mobile": "+02 3434 454545",
-      "email": "ali.sajid@arbisoft.com",
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "imalisajid@gmail.com",
       "avatar": "./avatars/avatar-image.png"
     }
   ],

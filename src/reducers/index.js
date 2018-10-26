@@ -1,10 +1,12 @@
 import {combineReducers} from 'redux';
 import login from './login';
-import todo from './todo';
+import todos from './todos';
+import contacts from './contacts';
 
 const rootReducer = combineReducers({
   login,
-  todo
+  todos,
+  contacts
 });
 
 export default rootReducer;

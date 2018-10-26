@@ -80,14 +80,15 @@ const visibleTodos = (todos, filter = FILTERS.SHOW_ALL) => {
     case FILTERS.SHOW_COMPLETED:
       return todos.filter(todo => todo.isComplete);
     default:
-      return todos
+      return todos;
   }
 };
-const mapStateToProps = ({todo}) => ({
-    currentTodo: todo.currentTodo,
-    todos: visibleTodos(todo.todos, todo.filter),
-    loading: todo.loading,
-    error: todo.error
+
+const mapStateToProps = ({todos}) => ({
+    currentTodo: todos.currentTodo,
+    todos: visibleTodos(todos.todos, todos.filter),
+    loading: todos.loading,
+    error: todos.error
   }
 );
 
@@ -95,4 +96,5 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(todoActions, dispatch)
   }
 );
+
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);
