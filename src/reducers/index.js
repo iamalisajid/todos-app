@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import login from './login'
+import login from './login';
+import todo from './todo';
 
 const rootReducer = combineReducers({
-  login
+  login,
+  todo
 });
 
 export default rootReducer;

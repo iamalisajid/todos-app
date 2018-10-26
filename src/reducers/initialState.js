@@ -7,5 +7,12 @@ export default {
       email: '',
       password: ''
     }
+  },
+  todo: {
+    todos: [],
+    currentTodo: '',
+    loading: true,
+    errors: null,
+    filter: null
   }
 };
