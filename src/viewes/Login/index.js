@@ -11,15 +11,15 @@ class Login extends React.Component {
 
   updateLoginFields = event => {
     const field = event.target.name;
-    let {currentUser} = this.props;
+    let {currentUser, actions} = this.props;
     currentUser[field] = event.target.value;
-    this.props.updateLoginFields(currentUser)
+    actions.updateLoginFields(currentUser)
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const {loginUser, currentUser} = this.props;
-    loginUser(currentUser);
+    const {currentUser,actions} = this.props;
+    actions.loginUser(currentUser);
   };
 
   render() {
