@@ -1,10 +1,11 @@
 import React from 'react'
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import {APP_ROUTES} from '../../utils/constants';
-import {updateLoginFields, loginUser} from './actions';
+import * as loginActions from "./actions";
 
 class Login extends React.Component {
 
@@ -45,16 +46,17 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = ({login}) => {
-  return {
+const mapStateToProps = ({login}) => ({
     currentUser: login.currentUser,
     user: login.user,
     loading: login.loading,
     error: login.error
   }
-};
+);
 
-export default connect(mapStateToProps, {
-  updateLoginFields,
-  loginUser
-})(Login);
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(loginActions, dispatch)
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
