@@ -18,6 +18,7 @@ const login = (state = initialState.login, action) => {
         ...state,
         loading: false,
         user: action.payload,
+        loginForm: initialState.loginForm
       };
     case types.LOGIN_FAILURE:
       return {

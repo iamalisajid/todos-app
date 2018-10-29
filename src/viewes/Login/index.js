@@ -8,6 +8,9 @@ import {APP_ROUTES} from '../../utils/constants';
 import * as loginActions from './actions';
 
 class Login extends React.Component {
+  componentDidMount(){
+    this.props.actions.logoutUser();
+  }
 
   updateLoginFields = event => {
     const field = event.target.name;

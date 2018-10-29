@@ -5,7 +5,8 @@ export const BTN_ACTIONS = {
   ACTIVE: 'Active',
   COMPLETED: 'Completed',
   UPDATE: 'Update',
-  LOGIN: 'LogIn'
+  LOGIN: 'LogIn',
+  LOGOUT: 'LogOut'
 };
 
 const ROUTE_PREFIX = '/';

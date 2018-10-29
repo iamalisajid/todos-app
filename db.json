@@ -1,24 +1,14 @@
 {
   "todos": [
     {
-      "text": "things to do",
-      "is_complete": true,
+      "text": "hello",
+      "is_complete": false,
       "id": 1
     },
     {
-      "text": "hello",
+      "text": "new",
       "is_complete": true,
-      "id": 4
-    },
-    {
-      "text": "happy",
-      "is_complete": true,
-      "id": 8
-    },
-    {
-      "text": "new todo",
-      "is_complete": true,
-      "id": 9
+      "id": 2
     }
   ],
   "contacts": [
