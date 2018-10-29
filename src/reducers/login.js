@@ -6,7 +6,7 @@ const login = (state = initialState.login, action) => {
     case types.LOGIN_INPUT_UPDATE:
       return {
         ...state,
-        currentUser: Object.assign({}, action.payload)
+        loginForm: Object.assign({}, action.payload)
       };
     case types.LOGIN_REQUEST:
       return {

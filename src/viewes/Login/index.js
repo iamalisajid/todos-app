@@ -5,28 +5,28 @@ import {Redirect} from 'react-router';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import {APP_ROUTES} from '../../utils/constants';
-import * as loginActions from "./actions";
+import * as loginActions from './actions';
 
 class Login extends React.Component {
 
   updateLoginFields = event => {
     const field = event.target.name;
-    let {currentUser, actions} = this.props;
-    currentUser[field] = event.target.value;
-    actions.updateLoginFields(currentUser)
+    let {loginForm, actions} = this.props;
+    loginForm[field] = event.target.value;
+    actions.updateLoginFields(loginForm)
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const {currentUser,actions} = this.props;
-    actions.loginUser(currentUser);
+    const {loginForm, actions} = this.props;
+    actions.loginUser(loginForm);
   };
 
   render() {
-    const {currentUser, loading, error, user} = this.props;
+    const {loginForm, loading, error, user} = this.props;
     if (loading)
       return <AppLoader/>;
-    else if (user.length > 0)
+    else if (user != null)
       return <Redirect to={APP_ROUTES.DASHBOARD}/>;
 
     return (
@@ -34,7 +34,7 @@ class Login extends React.Component {
         <div className="row">
           <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <LoginForm
-              currentUser={currentUser}
+              loginForm={loginForm}
               error={error}
               handleInput={this.updateLoginFields}
               handleSubmit={this.handleSubmit}
@@ -47,7 +47,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = ({login}) => ({
-    currentUser: login.currentUser,
+    loginForm: login.loginForm,
     user: login.user,
     loading: login.loading,
     error: login.error

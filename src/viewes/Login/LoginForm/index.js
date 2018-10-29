@@ -3,7 +3,7 @@ import {object, string, func} from 'prop-types';
 import {BTN_ACTIONS} from '../../../utils/constants';
 import './index.css';
 
-const LoginForm = ({currentUser, error, handleInput, handleSubmit}) => {
+const LoginForm = ({loginForm, error, handleInput, handleSubmit}) => {
   return (
     <div className="card card-signin my-5">
       <div className="card-body">
@@ -13,7 +13,7 @@ const LoginForm = ({currentUser, error, handleInput, handleSubmit}) => {
             <input
               type="email"
               name="email"
-              value={currentUser.email}
+              value={loginForm.email}
               onChange={handleInput}
               className="form-control"/>
             <label htmlFor="inputEmail">Email address</label>
@@ -22,7 +22,7 @@ const LoginForm = ({currentUser, error, handleInput, handleSubmit}) => {
             <input
               type="password"
               name="password"
-              value={currentUser.password}
+              value={loginForm.password}
               onChange={handleInput}
               className="form-control"/>
             <label htmlFor="inputEmail">Password</label>
@@ -40,7 +40,7 @@ const LoginForm = ({currentUser, error, handleInput, handleSubmit}) => {
 };
 
 LoginForm.propTypes = {
-  currentUser: object.isRequired,
+  loginForm: object.isRequired,
   error: string,
   handleSubmit: func.isRequired,
   handleInput: func.isRequired

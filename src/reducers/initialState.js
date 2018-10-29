@@ -1,23 +1,23 @@
 export default {
   login: {
-    user: [],
+    user: null,
     loading: false,
     error: null,
-    currentUser: {
+    loginForm: {
       email: '',
       password: ''
     }
   },
   todos: {
     todos: [],
-    currentTodo: '',
+    todoForm: '',
     loading: true,
     errors: null,
     filter: null
   },
   contacts: {
     contacts: [],
-    currentContact: {
+    contactForm: {
       id: '',
       firstName: '',
       lastName: '',

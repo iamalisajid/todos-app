@@ -3,12 +3,12 @@ import {API_ROUTES} from '../../utils/endpoints';
 import {REQUEST_TYPE} from '../../utils/constants';
 import * as types from './actionTypes';
 
-export const updateTodoField = currentTodo => ({type: types.TODO_INPUT_UPDATE, payload: currentTodo});
+export const updateTodoField = todoForm => ({type: types.TODO_INPUT_UPDATE, payload: todoForm});
 export const updateTodosFilter = filter => ({type: types.TODOS_FILTER_UPDATE, payload: filter});
 
-const fetchTodosRequest = () => ({type: types.FETCH_TODOS_REQUEST});
-const fetchTodosSuccess = todo => ({type: types.FETCH_TODOS_SUCCESS, payload: todo});
-const fetchTodosFailure = msg => ({type: types.FETCH_TODOS_FAILURE, payload: msg});
+const fetchTodoRequest = () => ({type: types.FETCH_TODO_REQUEST});
+const fetchTodoSuccess = todo => ({type: types.FETCH_TODO_SUCCESS, payload: todo});
+const fetchTodoFailure = msg => ({type: types.FETCH_TODO_FAILURE, payload: msg});
 
 const createTodoRequest = () => ({type: types.CREATE_TODO_REQUEST});
 const createTodoSuccess = todo => ({type: types.CREATE_TODO_SUCCESS, payload: todo});
@@ -24,10 +24,10 @@ const deleteTodoFailure = msg => ({type: types.DELETE_TODO_FAILURE, payload: msg
 
 export const fetchTodos = () => {
   return (dispatch) => {
-    dispatch(fetchTodosRequest());
+    dispatch(fetchTodoRequest());
     apiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET)
-      .then(response => dispatch(fetchTodosSuccess(response.data)))
-      .catch(error => dispatch(fetchTodosFailure(error)))
+      .then(response => dispatch(fetchTodoSuccess(response.data)))
+      .catch(error => dispatch(fetchTodoFailure(error)))
   }
 };
 

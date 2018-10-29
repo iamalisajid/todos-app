@@ -6,10 +6,9 @@ const contacts = (state = initialState.contacts, action) => {
     case types.CONTACT_INPUT_UPDATE:
       return {
         ...state,
-        currentContact: Object.assign({}, action.payload)
-
+        contactForm: Object.assign({}, action.payload)
       };
-    case  types.FETCH_CONTACTS_SUCCESS:
+    case  types.FETCH_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -19,15 +18,15 @@ const contacts = (state = initialState.contacts, action) => {
       return {
         ...state,
         loading: false,
-        contacts: state.contacts.concat(action.payload),
-        currentContact: initialState.contacts.currentContact
+        contacts: [...state.contacts, action.payload],
+        contactForm: initialState.contacts.contactForm
       };
     case  types.UPDATE_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
         contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact),
-        currentContact: initialState.contacts.currentContact
+        contactForm: initialState.contacts.contactForm
       };
     case  types.DELETE_CONTACT_SUCCESS:
       return {
@@ -35,7 +34,7 @@ const contacts = (state = initialState.contacts, action) => {
         loading: false,
         contacts: state.contacts.filter(contact => contact.id !== action.payload)
       };
-    case types.FETCH_CONTACTS_REQUEST:
+    case types.FETCH_CONTACT_REQUEST:
     case types.CREATE_CONTACT_REQUEST:
     case types.DELETE_CONTACT_REQUEST:
     case types.UPDATE_CONTACT_REQUEST:
@@ -43,7 +42,7 @@ const contacts = (state = initialState.contacts, action) => {
         ...state,
         loading: true
       };
-    case types.FETCH_CONTACTS_FAILURE:
+    case types.FETCH_CONTACT_FAILURE:
     case types.CREATE_CONTACT_FAILURE:
     case types.DELETE_CONTACT_FAILURE:
     case types.UPDATE_CONTACT_FAILURE:

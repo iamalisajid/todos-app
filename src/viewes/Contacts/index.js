@@ -16,21 +16,20 @@ class Contacts extends Component {
   handleUpdate = contact => this.props.actions.updateContactField(contact);
 
   handleContactState = event => {
-    let {currentContact, actions} = this.props;
+    let {contactForm, actions} = this.props;
     const field = event.target.name;
-    currentContact[field] = event.target.value;
-    actions.updateContactField(currentContact);
+    contactForm[field] = event.target.value;
+    actions.updateContactField(contactForm);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const {currentContact, actions} = this.props;
-    currentContact.id ? actions.updateContact(currentContact) : actions.createContact(currentContact)
+    const {contactForm, actions} = this.props;
+    contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm)
   };
 
   render() {
-    const {currentContact, contacts, loading} = this.props;
-
+    const {contactForm, contacts, loading} = this.props;
     if (loading)
       return <AppLoader/>;
 
@@ -40,7 +39,7 @@ class Contacts extends Component {
           <div className="row">
             <div className="col-md-6">
               <ContactForm
-                currentContact={currentContact}
+                contactForm={contactForm}
                 handleContactState={this.handleContactState}
                 handleSubmit={this.handleSubmit}
               />
@@ -61,7 +60,7 @@ class Contacts extends Component {
 
 
 const mapStateToProps = ({contacts}) => ({
-    currentContact: contacts.currentContact,
+    contactForm: contacts.contactForm,
     contacts: contacts.contacts,
     loading: contacts.loading,
     error: contacts.error

@@ -6,14 +6,14 @@ const todos = (state = initialState.todos, action) => {
     case types.TODO_INPUT_UPDATE:
       return {
         ...state,
-        currentTodo: action.payload
+        todoForm: action.payload
       };
     case types.TODOS_FILTER_UPDATE:
       return {
         ...state,
         filter: action.payload
       };
-    case  types.FETCH_TODOS_SUCCESS:
+    case  types.FETCH_TODO_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -23,8 +23,8 @@ const todos = (state = initialState.todos, action) => {
       return {
         ...state,
         loading: false,
-        todos: state.todos.concat(action.payload),
-        currentTodo: initialState.todos.currentTodo
+        todos: [...state.todos, action.payload],
+        todoForm: initialState.todos.todoForm
       };
     case  types.TOGGLE_TODO_SUCCESS:
       return {
@@ -38,7 +38,7 @@ const todos = (state = initialState.todos, action) => {
         loading: false,
         todos: state.todos.filter(todo => todo.id !== action.payload)
       };
-    case types.FETCH_TODOS_REQUEST:
+    case types.FETCH_TODO_REQUEST:
     case types.CREATE_TODO_REQUEST:
     case types.DELETE_TODO_REQUEST:
     case types.TOGGLE_TODO_REQUEST:
@@ -46,7 +46,7 @@ const todos = (state = initialState.todos, action) => {
         ...state,
         loading: true
       };
-    case types.FETCH_TODOS_FAILURE:
+    case types.FETCH_TODO_FAILURE:
     case types.CREATE_TODO_FAILURE:
     case types.DELETE_TODO_FAILURE:
     case types.TOGGLE_TODO_FAILURE:

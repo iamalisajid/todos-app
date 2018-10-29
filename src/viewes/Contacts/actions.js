@@ -3,11 +3,11 @@ import {API_ROUTES} from '../../utils/endpoints';
 import {REQUEST_TYPE} from '../../utils/constants';
 import * as types from './actionTypes';
 
-export const updateContactField = currentContact => ({type: types.CONTACT_INPUT_UPDATE, payload: currentContact});
+export const updateContactField = contactForm => ({type: types.CONTACT_INPUT_UPDATE, payload: contactForm});
 
-const fetchContactsRequest = () => ({type: types.FETCH_CONTACTS_REQUEST});
-const fetchContactsSuccess = contact => ({type: types.FETCH_CONTACTS_SUCCESS, payload: contact});
-const fetchContactsFailure = msg => ({type: types.FETCH_CONTACTS_FAILURE, payload: msg});
+const fetchContactRequest = () => ({type: types.FETCH_CONTACT_REQUEST});
+const fetchContactSuccess = contact => ({type: types.FETCH_CONTACT_SUCCESS, payload: contact});
+const fetchContactFailure = msg => ({type: types.FETCH_CONTACT_FAILURE, payload: msg});
 
 const createContactRequest = () => ({type: types.CREATE_CONTACT_REQUEST});
 const createContactSuccess = contact => ({type: types.CREATE_CONTACT_SUCCESS, payload: contact});
@@ -23,10 +23,10 @@ const deleteContactFailure = msg => ({type: types.DELETE_CONTACT_FAILURE, payloa
 
 export const fetchContacts = () => {
   return (dispatch) => {
-    dispatch(fetchContactsRequest());
+    dispatch(fetchContactRequest());
     apiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET)
-      .then(response => dispatch(fetchContactsSuccess(response.data)))
-      .catch(error => dispatch(fetchContactsFailure(error)))
+      .then(response => dispatch(fetchContactSuccess(response.data)))
+      .catch(error => dispatch(fetchContactFailure(error)))
   }
 };
 

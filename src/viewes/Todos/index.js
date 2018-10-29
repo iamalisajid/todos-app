@@ -14,13 +14,13 @@ class Todos extends Component {
   }
 
   handleInput = event => {
-    let currentTodo = event.target.value;
-    this.props.actions.updateTodoField(currentTodo);
+    let todoForm = event.target.value;
+    this.props.actions.updateTodoField(todoForm);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.actions.createTodo({text: this.props.currentTodo, isComplete: false});
+    this.props.actions.createTodo({text: this.props.todoForm, isComplete: false});
   };
 
   toggleTodo = event => {
@@ -45,16 +45,16 @@ class Todos extends Component {
   };
 
   render() {
-    const {todos, loading, currentTodo, errors} = this.props;
+    const {todos, loading, todoForm, error} = this.props;
 
     if (loading)
       return <AppLoader/>;
 
     return (
       <Fragment>
-        <p>{errors}</p>
+        <p>{error}</p>
         <TodoForm
-          currentTodo={currentTodo}
+          todoForm={todoForm}
           handleInput={this.handleInput}
           handleSubmit={this.handleSubmit}
         />
@@ -85,7 +85,7 @@ const visibleTodos = (todos, filter = FILTERS.SHOW_ALL) => {
 };
 
 const mapStateToProps = ({todos}) => ({
-    currentTodo: todos.currentTodo,
+    todoForm: todos.todoForm,
     todos: visibleTodos(todos.todos, todos.filter),
     loading: todos.loading,
     error: todos.error
