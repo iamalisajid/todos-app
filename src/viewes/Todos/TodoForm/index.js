@@ -2,7 +2,7 @@ import React from 'react'
 import {string, func} from 'prop-types';
 import {BTN_ACTIONS} from '../../../utils/constants';
 
-const TodoForm = ({currentTodo, handleInput, handleSubmit}) => {
+const TodoForm = ({todoForm, handleInput, handleSubmit}) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -11,7 +11,7 @@ const TodoForm = ({currentTodo, handleInput, handleSubmit}) => {
             type="text"
             onChange={handleInput}
             className="form-control add-todo"
-            value={currentTodo}
+            value={todoForm}
             placeholder="Add todo"/>
           <div className="input-group-append">
             <input
@@ -26,7 +26,7 @@ const TodoForm = ({currentTodo, handleInput, handleSubmit}) => {
 }
 
 TodoForm.propTypes = {
-  currentTodo: string.isRequired,
+  todoForm: string.isRequired,
   handleInput: func.isRequired,
   handleSubmit: func.isRequired
 };

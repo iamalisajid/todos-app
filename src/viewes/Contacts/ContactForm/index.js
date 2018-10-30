@@ -2,7 +2,7 @@ import React from 'react';
 import {object, func} from 'prop-types'
 import {BTN_ACTIONS} from '../../../utils/constants';
 
-const ContactForm = ({currentContact, handleContactState, handleSubmit}) => (
+const ContactForm = ({contactForm, handleContactState, handleSubmit}) => (
   <div className="container">
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
@@ -14,7 +14,7 @@ const ContactForm = ({currentContact, handleContactState, handleSubmit}) => (
             name="firstName"
             className="form-control"
             placeholder="First Name"
-            value={currentContact.firstName}
+            value={contactForm.firstName}
             onChange={handleContactState}
           />
         </div>
@@ -25,7 +25,7 @@ const ContactForm = ({currentContact, handleContactState, handleSubmit}) => (
             name="lastName"
             className="form-control"
             placeholder="Last Name"
-            value={currentContact.lastName}
+            value={contactForm.lastName}
             onChange={handleContactState}
           />
         </div>
@@ -37,7 +37,7 @@ const ContactForm = ({currentContact, handleContactState, handleSubmit}) => (
           name="mobile"
           className="form-control"
           placeholder="+92 322 7901620"
-          value={currentContact.mobile}
+          value={contactForm.mobile}
           onChange={handleContactState}
         />
       </div>
@@ -48,20 +48,20 @@ const ContactForm = ({currentContact, handleContactState, handleSubmit}) => (
           name="email"
           className="form-control"
           placeholder="Email"
-          value={currentContact.email}
+          value={contactForm.email}
           onChange={handleContactState}
         />
       </div>
 
       <button type="submit" className="btn btn-success">
-        {currentContact.id ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
+        {contactForm.id ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
       </button>
     </form>
   </div>
 );
 
 ContactForm.propTypes = {
-  currentContact: object.isRequired,
+  contactForm: object.isRequired,
   handleContactState: func.isRequired,
   handleSubmit: func.isRequired
 };
