@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,7 +38,28 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "eslint": "^5.8.0",
+    "husky": "^1.1.2",
+    "lint-staged": "^8.0.3",
+    "prettier": "^1.14.3",
     "redux-devtools-extension": "^2.13.5",
-    "stylelint": "^9.6.0"
+    "stylelint": "^9.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ],
+    "**/*.{css,scss}": [
+      "stylefmt",
+      "stylelint --syntax scss",
+      "git add"
+    ]
   }
 }
