@@ -5,7 +5,7 @@ import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import TodoFilter from './TodoFilter';
 import AppLoader from '../../shared/loader';
-import { FILTERS } from '../../utils/constants';
+import { getVisibleTodos } from '../../selectors';
 import * as todoActions from './actions';
 
 class Todos extends Component {
@@ -70,22 +70,11 @@ class Todos extends Component {
     );
   }
 }
-const visibleTodos = (todos, filter = FILTERS.SHOW_ALL) => {
-  switch (filter) {
-    case FILTERS.SHOW_ALL:
-      return todos;
-    case FILTERS.SHOW_ACTIVE:
-      return todos.filter((todo) => !todo.isComplete);
-    case FILTERS.SHOW_COMPLETED:
-      return todos.filter((todo) => todo.isComplete);
-    default:
-      return todos;
-  }
-};
+
 
 const mapStateToProps = ({ todos }) => ({
   todoForm: todos.todoForm,
-  todos: visibleTodos(todos.todos, todos.filter),
+  todos: getVisibleTodos(todos),
   loading: todos.loading,
   error: todos.error
 });
