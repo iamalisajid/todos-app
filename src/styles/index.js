@@ -36,13 +36,12 @@ export const Button = styled.button`
   transition: color .15s 
   color: #fff;
   background: ${props => {
-
-  if (props.primary) return '#007bff;';
-  if (props.success) return '#28a745;';
-  if (props.danger) return '#dc3545;';
-
-  return '#a965cc;';
-}}
+    if (props.primary) return '#007bff;';
+    if (props.success) return '#28a745;';
+    if (props.danger) return '#dc3545;';
+    
+    return '#a965cc;';
+  }}
   &:hover {
     color: #fff;
     text-decoration: none;
