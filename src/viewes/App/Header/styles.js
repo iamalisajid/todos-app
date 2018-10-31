@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from '../../../styles';
+import { LinkButton } from '../../../styles';
 
 export const AppHeader = styled.div`
   grid-area: header;
@@ -21,6 +20,6 @@ export const AppTitle = styled.h2`
   word-spacing: 5px;
 `;
 
-export const LogoutButton = styled(Button, Link)`
+export const LogoutButton = styled(LinkButton)`
   float: right
  `;

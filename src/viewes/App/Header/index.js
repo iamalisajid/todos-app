@@ -11,7 +11,7 @@ const Header = ({ location }) => (
     <AppTitle>{HEADER_TITILE}</AppTitle>
     {(location.pathname !== APP_ROUTES.BASE && location.pathname !== APP_ROUTES.LOGIN) &&
     <div>
-      <LogoutButton as="a" danger href={APP_ROUTES.LOGIN}>
+      <LogoutButton danger as="a" href={APP_ROUTES.LOGIN}>
         <span className="fa fa-sign-out"/>{BTN_ACTIONS.LOGOUT}
       </LogoutButton>
     </div>

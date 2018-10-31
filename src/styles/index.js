@@ -1,5 +1,23 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-image: url('/bg.png');
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  }
+`;
 export const Button = styled.button`
   display: inline-block;
   font-weight: 400;
@@ -18,18 +36,34 @@ export const Button = styled.button`
   transition: color .15s 
   color: #fff;
   background: ${props => {
-  if (props.success) return 'limegreen;';
-  if (props.warning) return 'tomato;';
+
+  if (props.primary) return '#007bff;';
+  if (props.success) return '#28a745;';
   if (props.danger) return '#dc3545;';
+
   return '#a965cc;';
 }}
   &:hover {
     color: #fff;
-    background-color: #c82333;
-    border-color: #bd2130;
-  text-decoration: none;
+    text-decoration: none;
+    background-color: ${props => {
+      if (props.primary) return '#007bff;';
+      if (props.success) return '#28a745;';
+      if (props.danger) return '#dc3545;';
+    
+      return '#a965cc;';
+    }}
+    border-color: ${props => {
+      if (props.primary) return '#007bff;';
+      if (props.success) return '#28a745;';
+      if (props.danger) return '#dc3545;';
+    
+      return '#a965cc;';
+    }}
   }
   &:focus {
     text-decoration: none;
   }
 `;
+
+export const LinkButton = styled(Button, Link)``;
