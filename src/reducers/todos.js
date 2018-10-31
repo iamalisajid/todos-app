@@ -30,7 +30,7 @@ const todos = (state = initialState.todos, action) => {
       return {
         ...state,
         loading: false,
-        todos: state.todos.map(todo => todo.id === action.payload.id ? action.payload : todo),
+        todos: state.todos.map(todo => todo.id === action.payload.id ? action.payload : todo)
       };
     case  types.DELETE_TODO_SUCCESS:
       return {

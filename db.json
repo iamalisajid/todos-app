@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "text": "hello",
-      "is_complete": true,
-      "id": 4
-    },
-    {
       "text": "happy",
       "is_complete": true,
       "id": 8
