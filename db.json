@@ -17,7 +17,7 @@
     },
     {
       "text": "new todo",
-      "is_complete": false,
+      "is_complete": true,
       "id": 10
     }
   ],

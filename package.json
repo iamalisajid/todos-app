@@ -31,7 +31,7 @@
     "lint": "esw",
     "lint:watch": "esw --watch",
     "format": "prettier --config .prettierrc --write 'src/**/*.{js,jsx}'",
-    "format:watch": "onchange '**/*.js' -- npm format",
+    "format:watch": "onchange '**/*.js' -- yarn format",
     "precommit": "lint-staged"
   },
   "eslintConfig": {
@@ -71,7 +71,6 @@
       "git add"
     ],
     "**/*.{css,scss}": [
-      "stylefmt",
       "stylelint --syntax scss",
       "git add"
     ]

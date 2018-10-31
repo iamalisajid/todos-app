@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ContactsList from './ContactList';
 import ContactForm from './ContactForm';
 import AppLoader from '../../shared/loader';
+import * as contactSelectors from '../../selectors';
 import * as contactActions from './actions';
 
 class Contacts extends Component {
@@ -58,11 +59,12 @@ class Contacts extends Component {
     );
   }
 }
+
 const mapStateToProps = ({ contacts }) => ({
-  contactForm: contacts.contactForm,
-  contacts: contacts.contacts,
-  loading: contacts.loading,
-  error: contacts.error
+  contactForm: contactSelectors.selectContactForm(contacts),
+  contacts: contactSelectors.selectContacts(contacts),
+  loading: contactSelectors.selectLoading(contacts),
+  error: contactSelectors.selectError(contacts)
 });
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(contactActions, dispatch)

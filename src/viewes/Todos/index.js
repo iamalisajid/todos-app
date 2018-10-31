@@ -5,7 +5,7 @@ import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import TodoFilter from './TodoFilter';
 import AppLoader from '../../shared/loader';
-import { getVisibleTodos } from '../../selectors';
+import * as todoSelectors from '../../selectors';
 import * as todoActions from './actions';
 
 class Todos extends Component {
@@ -41,7 +41,6 @@ class Todos extends Component {
     const id = parseInt(event.target.value);
     this.props.actions.deleteTodo(id);
   };
-
   handleFilter = (event) => {
     const filter = event.target.value;
     this.props.actions.updateTodosFilter(filter);
@@ -73,10 +72,10 @@ class Todos extends Component {
 
 
 const mapStateToProps = ({ todos }) => ({
-  todoForm: todos.todoForm,
-  todos: getVisibleTodos(todos),
-  loading: todos.loading,
-  error: todos.error
+  todoForm: todoSelectors.selectTodosForm(todos),
+  todos: todoSelectors.selectFilteredTodos(todos),
+  loading: todoSelectors.selectLoading(todos),
+  error: todoSelectors.selectError(todos)
 });
 
 const mapDispatchToProps = (dispatch) => ({
