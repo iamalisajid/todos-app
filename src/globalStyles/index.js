@@ -132,7 +132,7 @@ export const RoundedImage = styled.img`
   max-width: 100%;
   height: auto;
 `;
-export const TextCenter = styled.div`
+export const Center = styled.div`
     text-align: center!important;
 `;
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { BTN_ACTIONS, FILTERS } from '../../../utils/constants';
-import { Button, TextCenter,ButtonGroup } from '../../../globalStyles';
+import { Button, Center,ButtonGroup } from '../../../globalStyles';
 import { FilterGroup } from '../styles';
 
 const TodoFilter = ({ handleFilter }) => (
   <FilterGroup>
-    <TextCenter>
+    <Center>
       <ButtonGroup>
         <Button default onClick={handleFilter} value={FILTERS.SHOW_ALL}>
           {BTN_ACTIONS.ALL}
@@ -18,7 +18,7 @@ const TodoFilter = ({ handleFilter }) => (
           {BTN_ACTIONS.COMPLETED}
         </Button>
       </ButtonGroup>
-    </TextCenter>
+    </Center>
   </FilterGroup>
 );
 

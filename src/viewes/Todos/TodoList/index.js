@@ -2,14 +2,14 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import TodoItem from '../TodoItem';
 import { TODOS_DONE } from '../../../utils/copies';
-import { TextCenter, ListGroup, Container } from '../../../globalStyles';
+import { Center, ListGroup, Container } from '../../../globalStyles';
 
 const TodoList = ({ todos, toggleTodo, handleDelete }) => {
   if (todos.length === 0)
     return (
-      <TextCenter>
+      <Center>
         {TODOS_DONE}
-      </TextCenter>
+      </Center>
     );
   return (
     <Container>
