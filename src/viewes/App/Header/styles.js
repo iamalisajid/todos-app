@@ -5,7 +5,10 @@ export const AppHeader = styled.div`
   grid-area: header;
   display: grid;
   grid-template-columns: 1fr .1fr;
-  background-color: #3cb5f9;
+  background-color: ${props => {
+    if (props.theme.mode === 'dark') return '#275f7d';
+    return '#3cb5f9;';
+  }}
   color: white;
   margin: 0 0 15px;
   overflow: hidden;

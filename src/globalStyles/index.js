@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
   color: #212529;
   text-align: left;
 `;
+
 export const Button = styled.button`
   display: inline-block;
   font-weight: 400;
