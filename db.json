@@ -32,6 +32,14 @@
       "mobile": "+02 3434 454545",
       "email": "ali.sajid@arbisoft.com",
       "avatar": "./avatars/avatar-image.png"
+    },
+    {
+      "id": 3,
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./avatars/avatar-image.png"
     }
   ],
   "login": [

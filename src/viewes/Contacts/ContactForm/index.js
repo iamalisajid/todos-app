@@ -1,63 +1,62 @@
 import React from 'react';
-import {object, func} from 'prop-types'
-import {BTN_ACTIONS} from '../../../utils/constants';
+import { object, func } from 'prop-types';
+import { BTN_ACTIONS } from '../../../utils/constants';
+import { FormRow, FormGroup, FormInput, Button } from '../../../styles';
+import { StyledContactForm, FirstName, LastName } from '../stlyes';
 
-const ContactForm = ({contactForm, handleContactState, handleSubmit}) => (
-  <div className="container">
+
+const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
+  <StyledContactForm>
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
-      <div className="form-row">
-        <div className="form-group col-md-6">
+      <FormRow>
+        <FirstName>
           <label>First Name</label>
-          <input
+          <FormInput
             type="text"
             name="firstName"
-            className="form-control"
             placeholder="First Name"
             value={contactForm.firstName}
             onChange={handleContactState}
           />
-        </div>
-        <div className="form-group col-md-6">
+        </FirstName>
+        <LastName>
           <label>Last Name</label>
-          <input
+          <FormInput
             type="text"
             name="lastName"
-            className="form-control"
             placeholder="Last Name"
             value={contactForm.lastName}
             onChange={handleContactState}
           />
-        </div>
-      </div>
-      <div className="form-group">
+        </LastName>
+      </FormRow>
+      <FormGroup>
         <label>Contact Number</label>
-        <input
+        <FormInput
           type="text"
           name="mobile"
-          className="form-control"
           placeholder="+92 322 7901620"
           value={contactForm.mobile}
           onChange={handleContactState}
         />
-      </div>
-      <div className="form-group">
+      </FormGroup>
+      <FormGroup>
         <label htmlFor="inputAddress2">Email</label>
-        <input
+        <FormInput
           type="email"
           name="email"
-          className="form-control"
           placeholder="Email"
           value={contactForm.email}
           onChange={handleContactState}
         />
-      </div>
+      </FormGroup>
 
-      <button type="submit" className="btn btn-success">
+      <Button success type="submit">
         {contactForm.id ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
-      </button>
+      </Button>
     </form>
-  </div>
+  </StyledContactForm>
 );
 
 ContactForm.propTypes = {

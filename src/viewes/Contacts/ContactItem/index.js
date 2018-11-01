@@ -1,7 +1,8 @@
-import React from 'react'
-import {object, func} from 'prop-types'
+import React from 'react';
+import { object, func } from 'prop-types';
 
-const ContactItem = ({contact, onDeletion, handleUpdate}) => {
+
+const ContactItem = ({ contact, onDeletion, handleUpdate }) => {
 
   return (
     <li className="list-group-item">

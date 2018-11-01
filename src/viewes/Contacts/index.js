@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ContactsList from './ContactList';
@@ -6,6 +6,7 @@ import ContactForm from './ContactForm';
 import AppLoader from '../../shared/loader';
 import * as contactSelectors from '../../selectors';
 import * as contactActions from './actions';
+import { ContactLayout } from './stlyes';
 
 class Contacts extends Component {
   componentDidMount() {
@@ -36,27 +37,20 @@ class Contacts extends Component {
     if (loading) return <AppLoader/>;
 
     return (
-      <Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <ContactForm
-                contactForm={contactForm}
-                handleContactState={this.handleContactState}
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-            <div className="col-md-6">
-              <ContactsList
-                contacts={contacts}
-                onDeletion={this.handleDelete}
-                handleUpdate={this.handleUpdate}
-              />
-            </div>
-          </div>
-        </div>
-      </Fragment>
-    );
+      <ContactLayout>
+        <ContactForm
+          contactForm={contactForm}
+          handleContactState={this.handleContactState}
+          handleSubmit={this.handleSubmit}
+        />
+        <ContactsList
+          contacts={contacts}
+          onDeletion={this.handleDelete}
+          handleUpdate={this.handleUpdate}
+        />
+      </ContactLayout>
+    )
+      ;
   }
 }
 

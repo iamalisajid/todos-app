@@ -1,9 +1,10 @@
 import React from 'react';
-import {object, func} from 'prop-types';
+import { object, func } from 'prop-types';
 import ContactItem from '../ContactItem';
+import { StyledContactList } from '../stlyes';
 
-const ContactList = ({contacts, onDeletion, handleUpdate}) => (
-  <div className="container">
+const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
+  <StyledContactList>
     <h2>Contacts</h2>
 
     <ul className="list-group">
@@ -16,7 +17,7 @@ const ContactList = ({contacts, onDeletion, handleUpdate}) => (
         />)
       }
     </ul>
-  </div>
+  </StyledContactList>
 );
 
 ContactList.propType = {
