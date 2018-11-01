@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LinkButton } from '../../../styles';
+import { LinkButton } from '../../../globalStyles';
 
 export const AppHeader = styled.div`
   grid-area: header;

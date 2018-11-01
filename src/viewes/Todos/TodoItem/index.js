@@ -1,11 +1,12 @@
-import React from 'react'
-import {string, number, bool, func} from 'prop-types'
-import {BTN_ACTIONS} from '../../../utils/constants'
+import React from 'react';
+import { string, number, bool, func } from 'prop-types';
+import { BTN_ACTIONS } from '../../../utils/constants';
+import { ListGroupItem, FormGroup, Button } from '../../../globalStyles';
 
-const TodoItem = ({text, isComplete, toggleTodo, handleDelete, id}) => {
+const TodoItem = ({ text, isComplete, toggleTodo, handleDelete, id }) => {
   return (
-    <li className="list-group-item">
-      <div className="form-group">
+    <ListGroupItem>
+      <FormGroup>
         <input
           type="checkbox"
           onChange={toggleTodo}
@@ -13,14 +14,15 @@ const TodoItem = ({text, isComplete, toggleTodo, handleDelete, id}) => {
           checked={isComplete}
         />
         {text}
-        <button
-          className="btn btn-danger float-right"
+        <Button
+          danger
+          right
           value={id}
           onClick={handleDelete}>
           {BTN_ACTIONS.DELETE}
-        </button>
-      </div>
-    </li>
+        </Button>
+      </FormGroup>
+    </ListGroupItem>
   );
 };
 
@@ -30,6 +32,6 @@ TodoItem.propTypes = {
   isComplete: bool.isRequired,
   toggleTodo: func.isRequired,
   handleDelete: func.isRequired
-}
+};
 
 export default TodoItem;

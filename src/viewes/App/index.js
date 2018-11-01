@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from './Header/index';
 import routes from '../../config/routes';
-import { GlobalStyle } from '../../styles';
+import { GlobalStyle } from '../../globalStyles';
 
 const App = () => (
   <Fragment>

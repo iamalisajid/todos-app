@@ -29,6 +29,3 @@ export const ContactFields = styled.span`
   font-size: 80%;
   font-weight: 400;
 `;
-export const ContactFonts = styled.span`
-  color: #6c757d!important;
-`;

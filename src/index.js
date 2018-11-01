@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom';
-import {PersistGate} from 'redux-persist/integration/react'
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './viewes/App';
-import {getStore, persistor} from './store'
+import { getStore, persistor } from './store';
 import * as serviceWorker from './serviceWorker';
-import './index.css';
 
 ReactDOM.render(
   <Provider store={getStore}>

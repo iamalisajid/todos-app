@@ -1,11 +1,10 @@
 import React from 'react';
 import { object, func } from 'prop-types';
-import { ListGroupItem, Row, RoundedImage } from '../../../styles';
-import { ContactImage, ContactDetails, ContactFields, ContactFonts } from '../stlyes';
+import { ListGroupItem, Row, RoundedImage, FontAws } from '../../../globalStyles';
+import { ContactImage, ContactDetails, ContactFields } from '../styles';
 
 
 const ContactItem = ({ contact, onDeletion, handleUpdate }) => {
-
   return (
     <ListGroupItem>
       <Row>
@@ -16,24 +15,18 @@ const ContactItem = ({ contact, onDeletion, handleUpdate }) => {
             alt={contact.firstName}/>
         </ContactImage>
         <ContactDetails>
-          <span
-            className="fa fa-pencil text-default float-right"
-            onClick={handleUpdate.bind(this, contact)}
-          />
+          <FontAws right className="fa fa-pencil" onClick={handleUpdate.bind(this, contact)}/>
           <label className="name lead">
             {contact.firstName} {contact.lastName}
           </label>
           <br/>
-          <span
-            className="fa fa-trash text-danger float-right"
-            onClick={onDeletion.bind(this, contact.id)}
-          />
-          <ContactFonts className="fa fa-phone fa-fw"/>
+          <FontAws danger right className="fa fa-trash" onClick={onDeletion.bind(this, contact.id)}/>
+          <FontAws className="fa fa-phone fa-fw"/>
           <ContactFields>
             {contact.mobile}
           </ContactFields>
           <br/>
-          <span className="fa fa-envelope fa-fw text-muted"/>
+          <FontAws className="fa fa-envelope fa-fw text-muted"/>
           <ContactFields>
             {contact.email}
           </ContactFields>

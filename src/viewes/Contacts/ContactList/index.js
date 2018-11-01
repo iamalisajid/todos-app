@@ -1,8 +1,8 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import ContactItem from '../ContactItem';
-import { ListGroup } from '../../../styles';
-import { StyledContactList } from '../stlyes';
+import { ListGroup } from '../../../globalStyles';
+import { StyledContactList } from '../styles';
 
 const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
   <StyledContactList>

@@ -17,6 +17,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
   }
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
 `;
 export const Button = styled.button`
   display: inline-block;
@@ -35,10 +38,17 @@ export const Button = styled.button`
   border-radius: .25rem;
   transition: color .15s 
   color: #fff;
+  float: ${ props => {
+    if(props.right) return 'right!important';
+    if(props.left) return 'left!important';
+    return 'none'
+  }}
   background: ${props => {
     if (props.primary) return '#007bff;';
     if (props.success) return '#28a745;';
     if (props.danger) return '#dc3545;';
+    if(props.warning) return  '#ffc107';
+    if(props.info) return  '#17a2b8';
     
     return '#a965cc;';
   }}
@@ -49,20 +59,29 @@ export const Button = styled.button`
       if (props.primary) return '#007bff;';
       if (props.success) return '#28a745;';
       if (props.danger) return '#dc3545;';
-    
+      if(props.warning) return  '#e0a800';
+      if(props.info) return  '#138496';
+      
       return '#a965cc;';
     }}
     border-color: ${props => {
       if (props.primary) return '#007bff;';
       if (props.success) return '#28a745;';
       if (props.danger) return '#dc3545;';
-    
+      if(props.warning) return  '#d39e00';
+      if(props.info) return  '#117a8b';
+      
       return '#a965cc;';
     }}
   }
   &:focus {
     text-decoration: none;
   }
+`;
+export const ButtonGroup = styled.div`
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
 `;
 
 export const LinkButton = styled(Button, Link)``;
@@ -113,4 +132,27 @@ export const RoundedImage = styled.img`
   max-width: 100%;
   height: auto;
 `;
+export const TextCenter = styled.div`
+    text-align: center!important;
+`;
 
+export const Container = styled.div`
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1140px;
+  
+`;
+export const FontAws = styled.span`
+  float: ${ props => {
+    if(props.right) return 'right!important';
+    if(props.left) return 'left!important';
+    return 'none'
+  }}
+  color: ${ props => {
+    if(props.danger) return 'red';
+    if(props.success) return 'green';
+    return '#423a3a'
+  }}
+`;

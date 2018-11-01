@@ -1,19 +1,20 @@
 import React from 'react';
-import {object, func} from 'prop-types';
+import { object, func } from 'prop-types';
 import TodoItem from '../TodoItem';
-import {TODOS_DONE} from '../../../utils/copies';
+import { TODOS_DONE } from '../../../utils/copies';
+import { TextCenter, ListGroup, Container } from '../../../globalStyles';
 
-const TodoList = ({todos, toggleTodo, handleDelete}) => {
+const TodoList = ({ todos, toggleTodo, handleDelete }) => {
   if (todos.length === 0)
     return (
-      <div className="text-center">
+      <TextCenter>
         {TODOS_DONE}
-      </div>
+      </TextCenter>
     );
   return (
-    <div className="container">
-      <h6>Todos</h6>
-      <ul className="list-group">
+    <Container>
+      <h4>Todos</h4>
+      <ListGroup>
         {todos.map(todo =>
           <TodoItem
             key={todo.id}
@@ -23,8 +24,8 @@ const TodoList = ({todos, toggleTodo, handleDelete}) => {
             toggleTodo={toggleTodo}
             handleDelete={handleDelete}/>)
         }
-      </ul>
-    </div>
+      </ListGroup>
+    </Container>
   );
 };
 

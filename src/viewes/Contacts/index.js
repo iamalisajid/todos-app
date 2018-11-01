@@ -6,7 +6,7 @@ import ContactForm from './ContactForm';
 import AppLoader from '../../shared/loader';
 import * as contactSelectors from '../../selectors';
 import * as contactActions from './actions';
-import { ContactLayout } from './stlyes';
+import { ContactLayout } from './styles';
 
 class Contacts extends Component {
   componentDidMount() {

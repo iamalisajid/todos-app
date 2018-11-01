@@ -1,29 +1,29 @@
-import React from 'react'
-import {string, func} from 'prop-types';
-import {BTN_ACTIONS} from '../../../utils/constants';
+import React from 'react';
+import { string, func } from 'prop-types';
+import { BTN_ACTIONS } from '../../../utils/constants';
+import { Button,Container } from '../../../globalStyles';
+import { TodoFormInput, StyledTodoForm, TodoFormSubmit } from '../styles';
 
-const TodoForm = ({todoForm, handleInput, handleSubmit}) => {
+const TodoForm = ({ todoForm, handleInput, handleSubmit }) => {
   return (
-    <div className="container">
+    <Container>
       <form onSubmit={handleSubmit}>
-        <div className="input-group mb-3">
-          <input
+        <StyledTodoForm>
+          <TodoFormInput
             type="text"
             onChange={handleInput}
-            className="form-control add-todo"
             value={todoForm}
             placeholder="Add todo"/>
-          <div className="input-group-append">
-            <input
-              type="submit"
-              className="btn btn-success"
-              value={BTN_ACTIONS.ADD}/>
-          </div>
-        </div>
+          <TodoFormSubmit>
+            <Button success type="submit">
+              {BTN_ACTIONS.ADD}
+            </Button>
+          </TodoFormSubmit>
+        </StyledTodoForm>
       </form>
-    </div>
+    </Container>
   );
-}
+};
 
 TodoForm.propTypes = {
   todoForm: string.isRequired,

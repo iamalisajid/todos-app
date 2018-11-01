@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {  LinkButton } from '../../styles';
+import {  LinkButton } from '../../globalStyles';
 
 export const Welcome = styled.div`
   padding: 40px 15px;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import { BTN_ACTIONS } from '../../../utils/constants';
-import { FormRow, FormGroup, FormInput, Button } from '../../../styles';
-import { StyledContactForm, FirstName, LastName } from '../stlyes';
+import { FormRow, FormGroup, FormInput, Button } from '../../../globalStyles';
+import { StyledContactForm, FirstName, LastName } from '../styles';
 
 
 const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
