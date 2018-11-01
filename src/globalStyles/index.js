@@ -20,6 +20,18 @@ export const GlobalStyle = createGlobalStyle`
   *, ::after, ::before {
     box-sizing: border-box;
   }
+  .btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    line-height: 1.2;
+  }
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
 `;
 export const Button = styled.button`
   display: inline-block;
@@ -39,40 +51,40 @@ export const Button = styled.button`
   transition: color .15s 
   color: #fff;
   float: ${ props => {
-    if(props.right) return 'right!important';
-    if(props.left) return 'left!important';
-    return 'none'
-  }}
+  if (props.right) return 'right!important';
+  if (props.left) return 'left!important';
+  return 'none';
+}}
   background: ${props => {
-    if (props.primary) return '#007bff;';
-    if (props.success) return '#28a745;';
-    if (props.danger) return '#dc3545;';
-    if(props.warning) return  '#ffc107';
-    if(props.info) return  '#17a2b8';
-    
-    return '#a965cc;';
-  }}
+  if (props.primary) return '#007bff;';
+  if (props.success) return '#28a745;';
+  if (props.danger) return '#dc3545;';
+  if (props.warning) return '#ffc107';
+  if (props.info) return '#17a2b8';
+
+  return '#a965cc;';
+}}
   &:hover {
     color: #fff;
     text-decoration: none;
     background-color: ${props => {
-      if (props.primary) return '#007bff;';
-      if (props.success) return '#28a745;';
-      if (props.danger) return '#dc3545;';
-      if(props.warning) return  '#e0a800';
-      if(props.info) return  '#138496';
-      
-      return '#a965cc;';
-    }}
+  if (props.primary) return '#007bff;';
+  if (props.success) return '#28a745;';
+  if (props.danger) return '#dc3545;';
+  if (props.warning) return '#e0a800';
+  if (props.info) return '#138496';
+
+  return '#a965cc;';
+}}
     border-color: ${props => {
-      if (props.primary) return '#007bff;';
-      if (props.success) return '#28a745;';
-      if (props.danger) return '#dc3545;';
-      if(props.warning) return  '#d39e00';
-      if(props.info) return  '#117a8b';
-      
-      return '#a965cc;';
-    }}
+  if (props.primary) return '#007bff;';
+  if (props.success) return '#28a745;';
+  if (props.danger) return '#dc3545;';
+  if (props.warning) return '#d39e00';
+  if (props.info) return '#117a8b';
+
+  return '#a965cc;';
+}}
   }
   &:focus {
     text-decoration: none;
@@ -110,7 +122,7 @@ export const FormInput = styled.input`
   border: 1px solid #ced4da;
   border-radius: .25rem;
 `;
-export const ListGroup  = styled.ul`
+export const ListGroup = styled.ul`
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -145,14 +157,25 @@ export const Container = styled.div`
   
 `;
 export const FontAws = styled.span`
-  float: ${ props => {
-    if(props.right) return 'right!important';
-    if(props.left) return 'left!important';
-    return 'none'
+   float: ${ props => {
+    if (props.right) return 'right!important';
+    if (props.left) return 'left!important';
+    return 'none';
   }}
   color: ${ props => {
-    if(props.danger) return 'red';
-    if(props.success) return 'green';
-    return '#423a3a'
+    if (props.danger) return 'red';
+    if (props.success) return 'green';
+    return '#423a3a';
   }}
+`;
+export const Card = styled.div`
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
 `;

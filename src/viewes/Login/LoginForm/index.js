@@ -1,41 +1,45 @@
 import React from 'react';
-import {object, string, func} from 'prop-types';
-import {BTN_ACTIONS} from '../../../utils/constants';
-import './index.css';
+import { object, string, func } from 'prop-types';
+import { BTN_ACTIONS } from '../../../utils/constants';
+import { FormInput } from '../../../globalStyles';
+import {
+  LoginButton,
+  LoginCard,
+  CardBody,
+  CardTitle,
+  StyledLoginForm,
+  FormLabelGroup,
+  Error
+} from '../styles';
 
-const LoginForm = ({loginForm, error, handleInput, handleSubmit}) => {
+const LoginForm = ({ loginForm, error, handleInput, handleSubmit }) => {
   return (
-    <div className="card card-signin my-5">
-      <div className="card-body">
-        <h5 className="card-title text-center">{BTN_ACTIONS.LOGIN}</h5>
-        <form className="form-signin" onSubmit={handleSubmit}>
-          <div className="form-label-group">
-            <input
+    <LoginCard>
+      <CardBody>
+        <CardTitle>{BTN_ACTIONS.LOGIN}</CardTitle>
+        <StyledLoginForm onSubmit={handleSubmit}>
+          <FormLabelGroup>
+            <FormInput
               type="email"
               name="email"
               value={loginForm.email}
-              onChange={handleInput}
-              className="form-control"/>
+              onChange={handleInput}/>
             <label htmlFor="inputEmail">Email address</label>
-          </div>
-          <div className="form-label-group">
-            <input
+          </FormLabelGroup>
+          <FormLabelGroup>
+            <FormInput
               type="password"
               name="password"
               value={loginForm.password}
-              onChange={handleInput}
-              className="form-control"/>
+              onChange={handleInput}/>
             <label htmlFor="inputEmail">Password</label>
-          </div>
-          <p className="error"> {error} </p>
-          <div className="custom-control custom-checkbox mb-3">
-            <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-            <label className="custom-control-label" htmlFor="customCheck1">Remember password</label>
-          </div>
-          <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-        </form>
-      </div>
-    </div>
+          </FormLabelGroup>
+          <Error> {error} </Error>
+
+          <LoginButton primary type="submit">Sign in</LoginButton>
+        </StyledLoginForm>
+      </CardBody>
+    </LoginCard>
   );
 };
 
@@ -47,3 +51,4 @@ LoginForm.propTypes = {
 };
 
 export default LoginForm;
+

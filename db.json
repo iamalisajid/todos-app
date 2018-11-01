@@ -1,20 +1,27 @@
 {
   "todos": [
     {
-      "text": "happy",
+      "text": "new todoo",
+      "is_complete": false,
+      "id": 1
+    },
+    {
+      "text": "hello",
       "is_complete": true,
-      "id": 8
+      "id": 2
+    },
+    {
+      "text": "new",
+      "is_complete": true,
+      "id": 3
+    },
+    {
+      "text": "story book",
+      "is_complete": false,
+      "id": 4
     }
   ],
   "contacts": [
-    {
-      "id": 1,
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "+92 322 7901620",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./avatars/avatar-image.png"
-    },
     {
       "id": 2,
       "first_name": "hey",
