@@ -1,21 +1,21 @@
 import React from 'react';
 import { object, func } from 'prop-types';
+import { ListGroupItem, Row, RoundedImage } from '../../../styles';
+import { ContactImage, ContactDetails, ContactFields, ContactFonts } from '../stlyes';
 
 
 const ContactItem = ({ contact, onDeletion, handleUpdate }) => {
 
   return (
-    <li className="list-group-item">
-      <div className="row w-100">
-        <div className="col-12 col-sm-6 col-md-3 px-0">
-          <img
+    <ListGroupItem>
+      <Row>
+        <ContactImage>
+          <RoundedImage
             className="rounded-circle mx-auto d-block img-fluid"
             src={contact.avatar}
             alt={contact.firstName}/>
-        </div>
-
-        <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-
+        </ContactImage>
+        <ContactDetails>
           <span
             className="fa fa-pencil text-default float-right"
             onClick={handleUpdate.bind(this, contact)}
@@ -28,15 +28,18 @@ const ContactItem = ({ contact, onDeletion, handleUpdate }) => {
             className="fa fa-trash text-danger float-right"
             onClick={onDeletion.bind(this, contact.id)}
           />
-          <span className="fa fa-phone fa-fw text-muted"/>
-          <span className="text-muted small">{contact.mobile}</span>
+          <ContactFonts className="fa fa-phone fa-fw"/>
+          <ContactFields>
+            {contact.mobile}
+          </ContactFields>
           <br/>
-
           <span className="fa fa-envelope fa-fw text-muted"/>
-          <span className="text-muted small text-truncate">{contact.email}</span>
-        </div>
-      </div>
-    </li>
+          <ContactFields>
+            {contact.email}
+          </ContactFields>
+        </ContactDetails>
+      </Row>
+    </ListGroupItem>
   );
 };
 

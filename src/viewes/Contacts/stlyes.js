@@ -6,7 +6,6 @@ export const ContactLayout = styled.div`
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 20px;
 `;
-
 export const StyledContactList = styled.div`
   grid-column: span 4;
 `;
@@ -18,4 +17,18 @@ export const FirstName = styled.div`
 `;
 export const LastName = styled.div`
   grid-column: span 6;
+`;
+export const ContactImage = styled.div`
+  grid-column: span 4;
+`;
+export const ContactDetails = styled.div`
+  grid-column: span 8
+`;
+export const ContactFields = styled.span`
+  color: #6c757d!important;
+  font-size: 80%;
+  font-weight: 400;
+`;
+export const ContactFonts = styled.span`
+  color: #6c757d!important;
 `;

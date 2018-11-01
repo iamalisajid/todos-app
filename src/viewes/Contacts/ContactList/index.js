@@ -1,13 +1,13 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import ContactItem from '../ContactItem';
+import { ListGroup } from '../../../styles';
 import { StyledContactList } from '../stlyes';
 
 const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
   <StyledContactList>
     <h2>Contacts</h2>
-
-    <ul className="list-group">
+    <ListGroup>
       {contacts.map(contact =>
         <ContactItem
           key={contact.id}
@@ -16,7 +16,7 @@ const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
           handleUpdate={handleUpdate}
         />)
       }
-    </ul>
+    </ListGroup>
   </StyledContactList>
 );
 

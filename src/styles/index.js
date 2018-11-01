@@ -91,3 +91,26 @@ export const FormInput = styled.input`
   border: 1px solid #ced4da;
   border-radius: .25rem;
 `;
+export const ListGroup  = styled.ul`
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+`;
+export const ListGroupItem = styled.li`
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+`;
+export const RoundedImage = styled.img`
+  border-radius: 50%!important;
+  margin-left: auto!important;
+  margin-right: auto!important;
+  display: block!important;
+  max-width: 100%;
+  height: auto;
+`;
+
