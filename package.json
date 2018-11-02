@@ -34,7 +34,9 @@
     "lint:watch": "esw --watch",
     "format": "prettier --config .prettierrc --write 'src/**/*.{js,jsx}'",
     "format:watch": "onchange '**/*.js' -- yarn format",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,7 +60,13 @@
     "onchange": "^5.0.2",
     "prettier": "^1.14.3",
     "redux-devtools-extension": "^2.13.5",
-    "stylelint": "^9.7.0"
+    "stylelint": "^9.7.0",
+    "@storybook/react": "^4.0.2",
+    "@storybook/addon-actions": "^4.0.2",
+    "@storybook/addon-links": "^4.0.2",
+    "@storybook/addons": "^4.0.2",
+    "@babel/core": "^7.1.2",
+    "babel-loader": "^8.0.4"
   },
   "husky": {
     "hooks": {
