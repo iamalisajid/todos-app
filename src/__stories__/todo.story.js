@@ -16,11 +16,4 @@ export const actions = {
 
 storiesOf('TodoItem', module)
   .add('default', () => <TodoItem {...todo} {...actions} />)
-  .add('completed', () => (
-    <TodoItem
-      id={todo.id}
-      text={todo.text}
-      isComplete={!todo.isComplete}
-      {...actions}
-    />
-  ));
+  .add('completed', () => <TodoItem id={todo.id} text={todo.text} isComplete={!todo.isComplete} {...actions} />);

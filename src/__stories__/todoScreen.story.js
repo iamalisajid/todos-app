@@ -17,20 +17,18 @@ const state = {
   filter: null,
 };
 const store = {
-  getState: () => {
-    return {
-      todos: {
-        todoForm: todoSelectors.selectTodosForm(state),
-        todos: todoSelectors.selectFilteredTodos(state),
-        loading: todoSelectors.selectLoading(state),
-        error: todoSelectors.selectError(state),
-      },
-    };
-  },
+  getState: () => ({
+    todos: {
+      todoForm: todoSelectors.selectTodosForm(state),
+      todos: todoSelectors.selectFilteredTodos(state),
+      loading: todoSelectors.selectLoading(state),
+      error: todoSelectors.selectError(state),
+    },
+  }),
   subscribe: () => 0,
   dispatch: action('dispatch'),
 };
 
 storiesOf('TodosScreen', module)
-  .addDecorator(story => <Provider store={store}>{story()}</Provider>)
+  .addDecorator((story) => <Provider store={store}>{story()}</Provider>)
   .add('default', () => <Todos />);
