@@ -8,21 +8,16 @@ const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
   <StyledContactList>
     <h2>Contacts</h2>
     <ListGroup>
-      {contacts.map(contact =>
-        <ContactItem
-          key={contact.id}
-          contact={contact}
-          onDeletion={onDeletion}
-          handleUpdate={handleUpdate}
-        />)
-      }
+      {contacts.map((contact) => (
+        <ContactItem key={contact.id} contact={contact} onDeletion={onDeletion} handleUpdate={handleUpdate} />
+      ))}
     </ListGroup>
   </StyledContactList>
 );
 
-ContactList.propType = {
+ContactList.propTypes = {
   contacts: object.isRequired,
   onDeletion: func.isRequired,
-  handleUpdate: func.isRequired
+  handleUpdate: func.isRequired,
 };
 export default ContactList;

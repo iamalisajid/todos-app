@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Provider } from 'react-redux';
-import Todos from '../../viewes/Todos';
-import * as todoSelectors from '../../selectors';
+import Todos from '../viewes/Todos/index';
+import * as todoSelectors from '../selectors/index';
 
 const state = {
   todos: [

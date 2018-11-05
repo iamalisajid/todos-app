@@ -4,7 +4,6 @@ import { BTN_ACTIONS } from '../../../utils/constants';
 import { FormRow, FormGroup, FormInput, Button } from '../../../globalStyles';
 import { StyledContactForm, FirstName, LastName } from '../styles';
 
-
 const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
   <StyledContactForm>
     <h2>Add Contact</h2>
@@ -62,7 +61,7 @@ const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
 ContactForm.propTypes = {
   contactForm: object.isRequired,
   handleContactState: func.isRequired,
-  handleSubmit: func.isRequired
+  handleSubmit: func.isRequired,
 };
 
 export default ContactForm;

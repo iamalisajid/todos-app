@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { func, bool, string, object } from 'prop-types';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import { APP_ROUTES } from '../../utils/constants';
@@ -14,14 +15,14 @@ class Login extends React.Component {
     this.props.actions.logoutUser();
   }
 
-  updateLoginFields = event => {
+  updateLoginFields = (event) => {
     const field = event.target.name;
-    let { loginForm, actions } = this.props;
+    const { loginForm, actions } = this.props;
     loginForm[field] = event.target.value;
     actions.updateLoginFields(loginForm);
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { loginForm, actions } = this.props;
     actions.loginUser(loginForm);
@@ -29,10 +30,8 @@ class Login extends React.Component {
 
   render() {
     const { loginForm, loading, error, user } = this.props;
-    if (loading)
-      return <AppLoader/>;
-    else if (user != null)
-      return <Redirect to={APP_ROUTES.DASHBOARD}/>;
+    if (loading) return <AppLoader />;
+    if (user != null) return <Redirect to={APP_ROUTES.DASHBOARD} />;
 
     return (
       <Row>
@@ -49,17 +48,25 @@ class Login extends React.Component {
   }
 }
 
+Login.propTypes = {
+  actions: func.isRequired,
+  loginForm: object.isRequired,
+  user: object.isRequired,
+  loading: bool.isRequired,
+  error: string.isRequired,
+};
 const mapStateToProps = ({ login }) => ({
-    loginForm: login.loginForm,
-    user: login.user,
-    loading: login.loading,
-    error: login.error
-  }
-);
+  loginForm: login.loginForm,
+  user: login.user,
+  loading: login.loading,
+  error: login.error,
+});
 
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(loginActions, dispatch)
-  }
-);
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(loginActions, dispatch),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

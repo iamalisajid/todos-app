@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { WELCOME } from '../../utils/copies';
 import { Welcome, ButtonGroup, NavButton } from './styles';
+import { APP_ROUTES } from '../../utils/constants';
 
 const Dashboard = () => (
   <Fragment>
@@ -8,8 +9,12 @@ const Dashboard = () => (
       <h1>{WELCOME.TITLE}</h1>
       {WELCOME.MESSAGE}
       <ButtonGroup>
-        <NavButton success as="a" href="/todos">Todos</NavButton>
-        <NavButton primary as="a" href="/contacts">Contacts</NavButton>
+        <NavButton success as="a" href={APP_ROUTES.TODOS}>
+          Todos
+        </NavButton>
+        <NavButton primary as="a" href={APP_ROUTES.CONTACTS}>
+          Contacts
+        </NavButton>
       </ButtonGroup>
     </Welcome>
   </Fragment>

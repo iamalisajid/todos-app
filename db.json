@@ -9,11 +9,6 @@
       "text": "new",
       "is_complete": true,
       "id": 3
-    },
-    {
-      "text": "story book",
-      "is_complete": true,
-      "id": 4
     }
   ],
   "contacts": [
@@ -23,7 +18,7 @@
       "last_name": "ali",
       "mobile": "+02 3434 454545",
       "email": "ali.sajid@arbisoft.com",
-      "avatar": "./avatars/avatar-image.png"
+      "avatar": "./../avatars/avatar-image.png"
     },
     {
       "id": 3,
@@ -31,7 +26,7 @@
       "last_name": "sajid",
       "mobile": "+92 123 4567890",
       "email": "ali.sajid@arbisoft.com",
-      "avatar": "./avatars/avatar-image.png"
+      "avatar": "./../avatars/avatar-image.png"
     }
   ],
   "login": [

@@ -1,5 +1,5 @@
-import { FILTERS } from '../utils/constants';
 import { createSelector } from 'reselect';
+import { FILTERS } from '../utils/constants';
 
 const visibleTodos = (todos, filter = FILTERS.SHOW_ALL) => {
   switch (filter) {
@@ -14,13 +14,10 @@ const visibleTodos = (todos, filter = FILTERS.SHOW_ALL) => {
   }
 };
 
-
 export const selectTodos = (state) => state.todos;
 export const selectTodosForm = (state) => state.todoForm;
 export const selectFilter = (state) => state.filter;
-export const selectLoading = (state) => state.loading;
-export const selectError = (state) => state.error;
+export const selectTodosLoadingState = (state) => state.loading;
+export const selectTodosErrors = (state) => state.error;
 
-export const selectFilteredTodos = createSelector(
-  selectTodos, selectFilter, visibleTodos
-);
+export const selectFilteredTodos = createSelector(selectTodos, selectFilter, visibleTodos);

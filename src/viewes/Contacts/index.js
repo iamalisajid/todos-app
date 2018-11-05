@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
+import { func, object, array, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
 import ContactsList from './ContactList';
 import ContactForm from './ContactForm';
@@ -27,14 +28,13 @@ class Contacts extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { contactForm, actions } = this.props;
-    contactForm.id
-      ? actions.updateContact(contactForm)
-      : actions.createContact(contactForm);
+    // eslint-disable-next-line no-unused-expressions
+    contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
   };
 
   render() {
     const { contactForm, contacts, loading } = this.props;
-    if (loading) return <AppLoader/>;
+    if (loading) return <AppLoader />;
 
     return (
       <ContactLayout>
@@ -43,25 +43,29 @@ class Contacts extends Component {
           handleContactState={this.handleContactState}
           handleSubmit={this.handleSubmit}
         />
-        <ContactsList
-          contacts={contacts}
-          onDeletion={this.handleDelete}
-          handleUpdate={this.handleUpdate}
-        />
+        <ContactsList contacts={contacts} onDeletion={this.handleDelete} handleUpdate={this.handleUpdate} />
       </ContactLayout>
-    )
-      ;
+    );
   }
 }
+
+Contacts.propTypes = {
+  actions: func.isRequired,
+  contactForm: object.isRequired,
+  contacts: array.isRequired,
+  loading: bool.isRequired,
+  error: string,
+};
 
 const mapStateToProps = ({ contacts }) => ({
   contactForm: contactSelectors.selectContactForm(contacts),
   contacts: contactSelectors.selectContacts(contacts),
-  loading: contactSelectors.selectLoading(contacts),
-  error: contactSelectors.selectError(contacts)
+  loading: contactSelectors.selectContactLoadingState(contacts),
+  error: contactSelectors.selectContactErrors(contacts),
 });
+
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(contactActions, dispatch)
+  actions: bindActionCreators(contactActions, dispatch),
 });
 
 export default connect(

@@ -9,12 +9,12 @@ const apiCaller = (url, method, data = {}, params = {}) =>
     data,
     params,
 
-    headers: {'Content-Type': 'application/json; charset=utf-8', Accept: 'application/json'},
+    headers: { 'Content-Type': 'application/json; charset=utf-8', Accept: 'application/json' },
     responseType: 'json',
 
-    paramsSerializer: params => queryString.stringify(params, {arrayFormat: 'brackets'}),
-    transformRequest: (data, headers) => JSON.stringify(changeCaseObject.snakeCase(data)),
-    transformResponse: data => changeCaseObject.camelCase(data)
+    paramsSerializer: (queryParams) => queryString.stringify(queryParams, { arrayFormat: 'brackets' }),
+    transformRequest: (request) => JSON.stringify(changeCaseObject.snakeCase(request)),
+    transformResponse: (response) => changeCaseObject.camelCase(response),
   });
 
 export default apiCaller;

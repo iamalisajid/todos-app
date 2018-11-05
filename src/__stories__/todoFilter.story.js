@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import TodoList from '../../viewes/Todos/TodoList';
-import TodoFilter from '../../viewes/Todos/TodoFilter';
+import TodoList from '../viewes/Todos/TodoList/index';
+import TodoFilter from '../viewes/Todos/TodoFilter/index';
 
 export const todos = [
   { text: 'Sample Todo', isComplete: false, id: 3 },

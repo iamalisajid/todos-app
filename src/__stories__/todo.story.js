@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import TodoItem from '../../viewes/Todos/TodoItem';
+import TodoItem from '../viewes/Todos/TodoItem/index';
 
 export const todo = {
   text: 'Sample Todo',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { BTN_ACTIONS, FILTERS } from '../../../utils/constants';
-import { Button, Center,ButtonGroup } from '../../../globalStyles';
+import { Button, Center, ButtonGroup } from '../../../globalStyles';
 import { FilterGroup } from '../styles';
 
 const TodoFilter = ({ handleFilter }) => (
@@ -22,7 +22,7 @@ const TodoFilter = ({ handleFilter }) => (
   </FilterGroup>
 );
 
-TodoFilter.propType = {
-  handleFilter: func.isRequired
+TodoFilter.propTypes = {
+  handleFilter: func.isRequired,
 };
 export default TodoFilter;
