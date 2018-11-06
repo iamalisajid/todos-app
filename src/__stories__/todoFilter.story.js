@@ -10,27 +10,31 @@ export const todos = [
   { text: 'Done Todo', isComplete: true, id: 1 },
 ];
 
-export const actions = {
+export const todoListActions = {
   toggleTodo: action('toggleTodo'),
   handleDelete: action('handleDelete'),
+  handleFilter: action('handleFilter'),
 };
 
+export const filterActions = {
+  handleFilter: action('handleFilter'),
+};
 storiesOf('TodoFilter', module)
   .add('default', () => (
     <Fragment>
-      <TodoList todos={todos} {...actions} />
-      <TodoFilter />
+      <TodoList todos={todos} {...todoListActions} />
+      <TodoFilter {...filterActions} />
     </Fragment>
   ))
   .add('active', () => (
     <Fragment>
-      <TodoList todos={todos.slice(0, 1)} {...actions} />
-      <TodoFilter />
+      <TodoList todos={todos.slice(0, 1)} {...todoListActions} />
+      <TodoFilter {...filterActions} />
     </Fragment>
   ))
   .add('completed', () => (
     <Fragment>
-      <TodoList todos={todos.splice(-1, 1)} {...actions} />
-      <TodoFilter />
+      <TodoList todos={todos.splice(-1, 1)} {...todoListActions} />
+      <TodoFilter {...filterActions} />
     </Fragment>
   ));

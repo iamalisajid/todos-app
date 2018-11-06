@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Provider } from 'react-redux';
 import Todos from '../viewes/Todos/index';
-import * as todoSelectors from '../selectors/index';
 
 const state = {
   todos: [
@@ -13,17 +12,12 @@ const state = {
   ],
   todoForm: '',
   loading: false,
-  errors: '',
+  errors: 'ERROR',
   filter: null,
 };
 const store = {
   getState: () => ({
-    todos: {
-      todoForm: todoSelectors.selectTodosForm(state),
-      todos: todoSelectors.selectFilteredTodos(state),
-      loading: todoSelectors.selectLoading(state),
-      error: todoSelectors.selectError(state),
-    },
+    todos: state,
   }),
   subscribe: () => 0,
   dispatch: action('dispatch'),
