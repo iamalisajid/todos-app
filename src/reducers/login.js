@@ -6,25 +6,25 @@ const login = (state = initialState.login, action) => {
     case types.LOGIN_INPUT_UPDATE:
       return {
         ...state,
-        loginForm: Object.assign({}, action.payload)
+        loginForm: Object.assign({}, action.payload),
       };
     case types.LOGIN_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    case  types.LOGIN_SUCCESS:
+    case types.LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         user: action.payload,
-        loginForm: initialState.loginForm
+        loginForm: initialState.loginForm,
       };
     case types.LOGIN_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;

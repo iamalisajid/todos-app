@@ -6,33 +6,33 @@ const contacts = (state = initialState.contacts, action) => {
     case types.CONTACT_INPUT_UPDATE:
       return {
         ...state,
-        contactForm: Object.assign({}, action.payload)
+        contactForm: Object.assign({}, action.payload),
       };
-    case  types.FETCH_CONTACT_SUCCESS:
+    case types.FETCH_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
-        contacts: action.payload
+        contacts: action.payload,
       };
-    case  types.CREATE_CONTACT_SUCCESS:
+    case types.CREATE_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
         contacts: [...state.contacts, action.payload],
-        contactForm: initialState.contacts.contactForm
+        contactForm: initialState.contacts.contactForm,
       };
-    case  types.UPDATE_CONTACT_SUCCESS:
+    case types.UPDATE_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
-        contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact),
-        contactForm: initialState.contacts.contactForm
+        contacts: state.contacts.map((contact) => (contact.id === action.payload.id ? action.payload : contact)),
+        contactForm: initialState.contacts.contactForm,
       };
-    case  types.DELETE_CONTACT_SUCCESS:
+    case types.DELETE_CONTACT_SUCCESS:
       return {
         ...state,
         loading: false,
-        contacts: state.contacts.filter(contact => contact.id !== action.payload)
+        contacts: state.contacts.filter((contact) => contact.id !== action.payload),
       };
     case types.FETCH_CONTACT_REQUEST:
     case types.CREATE_CONTACT_REQUEST:
@@ -40,7 +40,7 @@ const contacts = (state = initialState.contacts, action) => {
     case types.UPDATE_CONTACT_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case types.FETCH_CONTACT_FAILURE:
     case types.CREATE_CONTACT_FAILURE:
@@ -49,7 +49,7 @@ const contacts = (state = initialState.contacts, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;

@@ -1,27 +1,23 @@
 import React from 'react';
-import {object, func} from 'prop-types';
+import { array, func } from 'prop-types';
 import ContactItem from '../ContactItem';
+import { ListGroup } from '../../../globalStyles';
+import { GridCloumn } from '../styles';
 
-const ContactList = ({contacts, onDeletion, handleUpdate}) => (
-  <div className="container">
+const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
+  <GridCloumn span={4}>
     <h2>Contacts</h2>
-
-    <ul className="list-group">
-      {contacts.map(contact =>
-        <ContactItem
-          key={contact.id}
-          contact={contact}
-          onDeletion={onDeletion}
-          handleUpdate={handleUpdate}
-        />)
-      }
-    </ul>
-  </div>
+    <ListGroup>
+      {contacts.map((contact) => (
+        <ContactItem key={contact.id} contact={contact} onDeletion={onDeletion} handleUpdate={handleUpdate} />
+      ))}
+    </ListGroup>
+  </GridCloumn>
 );
 
-ContactList.propType = {
-  contacts: object.isRequired,
+ContactList.propTypes = {
+  contacts: array.isRequired,
   onDeletion: func.isRequired,
-  handleUpdate: func.isRequired
+  handleUpdate: func.isRequired,
 };
 export default ContactList;

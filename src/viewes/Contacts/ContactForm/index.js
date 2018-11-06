@@ -1,69 +1,67 @@
 import React from 'react';
-import {object, func} from 'prop-types'
-import {BTN_ACTIONS} from '../../../utils/constants';
+import { object, func } from 'prop-types';
+import { BTN_ACTIONS } from '../../../utils/constants';
+import { FormRow, FormGroup, FormInput, Button } from '../../../globalStyles';
+import { StyledContactForm, GridCloumn } from '../styles';
 
-const ContactForm = ({contactForm, handleContactState, handleSubmit}) => (
-  <div className="container">
+const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
+  <StyledContactForm>
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
-      <div className="form-row">
-        <div className="form-group col-md-6">
+      <FormRow>
+        <GridCloumn span={6}>
           <label>First Name</label>
-          <input
+          <FormInput
             type="text"
             name="firstName"
-            className="form-control"
             placeholder="First Name"
             value={contactForm.firstName}
             onChange={handleContactState}
           />
-        </div>
-        <div className="form-group col-md-6">
+        </GridCloumn>
+        <GridCloumn span={6}>
           <label>Last Name</label>
-          <input
+          <FormInput
             type="text"
             name="lastName"
-            className="form-control"
             placeholder="Last Name"
             value={contactForm.lastName}
             onChange={handleContactState}
           />
-        </div>
-      </div>
-      <div className="form-group">
+        </GridCloumn>
+      </FormRow>
+      <FormGroup>
         <label>Contact Number</label>
-        <input
+        <FormInput
           type="text"
           name="mobile"
-          className="form-control"
           placeholder="+92 322 7901620"
           value={contactForm.mobile}
           onChange={handleContactState}
         />
-      </div>
-      <div className="form-group">
+      </FormGroup>
+      <FormGroup>
         <label htmlFor="inputAddress2">Email</label>
-        <input
+        <FormInput
           type="email"
           name="email"
-          className="form-control"
           placeholder="Email"
           value={contactForm.email}
           onChange={handleContactState}
         />
-      </div>
+      </FormGroup>
 
-      <button type="submit" className="btn btn-success">
+      <Button success type="submit">
         {contactForm.id ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
-      </button>
+      </Button>
     </form>
-  </div>
+  </StyledContactForm>
 );
 
 ContactForm.propTypes = {
   contactForm: object.isRequired,
   handleContactState: func.isRequired,
-  handleSubmit: func.isRequired
+  handleSubmit: func.isRequired,
 };
 
 export default ContactForm;

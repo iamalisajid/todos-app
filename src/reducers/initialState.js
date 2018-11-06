@@ -5,15 +5,15 @@ export default {
     error: null,
     loginForm: {
       email: '',
-      password: ''
-    }
+      password: '',
+    },
   },
   todos: {
     todos: [],
     todoForm: '',
     loading: true,
     errors: null,
-    filter: null
+    filter: null,
   },
   contacts: {
     contacts: [],
@@ -23,8 +23,11 @@ export default {
       lastName: '',
       mobile: '',
       email: '',
-      avatar: './avatars/avatar-image.png'
+      avatar: './../avatars/avatar-image.png',
     },
-    loading: true
-  }
-}
+    loading: true,
+  },
+  theme: {
+    lightMode: true,
+  },
+};

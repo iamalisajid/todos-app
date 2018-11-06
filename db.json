@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "text": "hello",
-      "is_complete": true,
-      "id": 4
-    },
-    {
-      "text": "happy",
-      "is_complete": true,
-      "id": 8
-    },
-    {
-      "text": "new todo",
-      "is_complete": true,
-      "id": 9
-    },
-    {
-      "text": "new todo",
-      "is_complete": true,
-      "id": 10
+      "text": "new one",
+      "is_complete": false,
+      "id": 1
     }
   ],
   "contacts": [
@@ -26,17 +11,9 @@
       "id": 1,
       "first_name": "ali",
       "last_name": "sajid",
-      "mobile": "+92 322 7901620",
+      "mobile": "+92 123 4567890",
       "email": "ali.sajid@arbisoft.com",
-      "avatar": "./avatars/avatar-image.png"
-    },
-    {
-      "id": 2,
-      "first_name": "hey",
-      "last_name": "ali",
-      "mobile": "+02 3434 454545",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./avatars/avatar-image.png"
+      "avatar": "./../avatars/avatar-image.png"
     }
   ],
   "login": [
@@ -45,5 +22,5 @@
       "password": 123,
       "id": 1
     }
-  ]
+  ],
 }
