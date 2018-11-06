@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import login from './login';
 import todos from './todos';
 import contacts from './contacts';
@@ -9,6 +10,7 @@ const appReducer = combineReducers({
   todos,
   contacts,
   theme,
+  form: formReducer,
 });
 
 const rootReducer = (state, action) => {
