@@ -1,10 +1,33 @@
 import React from 'react';
-import {HEADER_TITILE} from '../../../utils/copies';
+import { object, func, bool } from 'prop-types';
+import { withRouter } from 'react-router';
+import { HEADER_TITILE } from '../../../utils/copies';
+import { APP_ROUTES, BTN_ACTIONS } from '../../../utils/constants';
+import { LightBulb, Hidden } from '../../../globalStyles';
+import { AppHeader, AppTitle, LogoutButton } from './styles';
 
-const Header = () => (
-  <header className="App-header">
-    <h2 className="App-title">{HEADER_TITILE}</h2>
-  </header>
+const Header = ({ location, themeValue, toggleTheme }) => (
+  <AppHeader>
+    <AppTitle>{HEADER_TITILE}</AppTitle>
+    <LightBulb lightOn={themeValue}>
+      <Hidden type="checkbox" onChange={toggleTheme} value={themeValue} checked={themeValue} />
+    </LightBulb>
+    {location.pathname !== APP_ROUTES.BASE &&
+      location.pathname !== APP_ROUTES.LOGIN && (
+        <div>
+          <LogoutButton danger as="a" href={APP_ROUTES.LOGIN}>
+            <span className="fa fa-sign-out" />
+            {BTN_ACTIONS.LOGOUT}
+          </LogoutButton>
+        </div>
+      )}
+  </AppHeader>
 );
 
-export default Header;
+Header.propTypes = {
+  location: object.isRequired,
+  toggleTheme: func.isRequired,
+  themeValue: bool.isRequired,
+};
+
+export default withRouter(Header);

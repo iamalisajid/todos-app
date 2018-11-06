@@ -3,22 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@storybook/addon-actions": "^4.0.2",
+    "@storybook/addon-knobs": "^4.0.4",
+    "@storybook/addon-links": "^4.0.2",
+    "@storybook/addons": "^4.0.2",
+    "@storybook/react": "^4.0.2",
     "axios": "^0.18.0",
     "change-case-object": "^2.0.0",
     "json-server": "^0.14.0",
+    "lodash": "latest",
     "node-sass": "^4.9.4",
+    "onchange": "^5.0.2",
+    "prop-types": "latest",
+    "qs": "^6.5.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-loader-spinner": "^2.0.6",
+    "react-redux": "^5.1.0",
+    "react-router": "latest",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
-    "prop-types": "latest"
+    "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "styled-components": "^4.0.3",
+    "styled-theming": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "esw",
+    "lint:watch": "esw --watch",
+    "format": "prettier --config .prettierrc --write 'src/**/*.{js,jsx}'",
+    "format:watch": "onchange '**/*.js' -- yarn format",
+    "lint:css": "stylelint './src/**/*.js'",
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,5 +52,42 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@commitlint/cli": "^7.2.1",
+    "babel-loader": "^8.0.4",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-watch": "^4.0.2",
+    "husky": "^1.1.2",
+    "lint-staged": "^8.0.3",
+    "onchange": "^5.0.2",
+    "prettier": "^1.14.3",
+    "redux-devtools-extension": "^2.13.5",
+    "stylelint": "^9.7.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ],
+    "**/*.{css,scss}": [
+      "stylelint --syntax scss",
+      "git add"
+    ]
+  }
 }

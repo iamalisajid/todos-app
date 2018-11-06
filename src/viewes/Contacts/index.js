@@ -1,131 +1,74 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { object, array, bool, string } from 'prop-types';
+import { connect } from 'react-redux';
 import ContactsList from './ContactList';
 import ContactForm from './ContactForm';
 import AppLoader from '../../shared/loader';
-import ApiCaller from '../../utils/apiCaller';
-import {API_ROUTES} from '../../utils/endpoints';
-import {REQUEST_TYPE} from '../../utils/constants';
+import * as contactSelectors from '../../selectors';
+import * as contactActions from './actions';
+import { ContactLayout } from './styles';
 
 class Contacts extends Component {
-  state = {
-    contacts: [],
-    currentContact: {
-      id: '',
-      firstName: '',
-      lastName: '',
-      mobile: '',
-      email: '',
-      avatar: './avatars/avatar-image.png'
-    },
-    loading: true
-  };
-
   componentDidMount() {
-    ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET)
-      .then(response =>
-        this.setState({
-          contacts: response.data,
-          loading: false
-        }));
+    this.props.actions.fetchContacts();
   }
 
-  onDeletion = id => {
-    this.setState({loading: true});
-    const {contacts} = this.state;
+  handleDelete = (id) => this.props.actions.deleteContact(id);
 
-    ApiCaller(`${API_ROUTES.CONTACTS}/${id}`, REQUEST_TYPE.DELETE)
-      .then(response => this.setState({
-        contacts: contacts.filter(contact => contact.id !== id),
-        loading: false,
-        currentContact: {
-          id: '',
-          firstName: '',
-          lastName: '',
-          mobile: '',
-          email: '',
-          avatar: './avatars/avatar-image.png'
-        }
-      }));
-  }
+  handleUpdate = (contact) => this.props.actions.updateContactField(contact);
 
-  handleContactState = event => {
+  handleContactState = (event) => {
+    const { contactForm, actions } = this.props;
     const field = event.target.name;
-    let currentContact = this.state.currentContact;
-    currentContact[field] = event.target.value;
-
-    return this.setState({
-      currentContact
-    });
+    contactForm[field] = event.target.value;
+    actions.updateContactField(contactForm);
   };
 
-  handleUpdate = contact => {
-    const {currentContact} = this.state;
-    this.setState({
-      currentContact: Object.assign(currentContact, contact)
-    })
-  };
-
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    const {currentContact, contacts} = this.state;
-    if (!currentContact.id)
-      ApiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.POST, currentContact)
-        .then(response => this.setState({
-          contacts: contacts.concat(response.data),
-          currentContact: {
-            id: '',
-            firstName: '',
-            lastName: '',
-            mobile: '',
-            email: '',
-            avatar: './avatars/avatar-image.png'
-          }
-        }));
-    else
-      ApiCaller(`${API_ROUTES.CONTACTS}/${currentContact.id}`, REQUEST_TYPE.PUT, currentContact)
-        .then(response => this.setState({
-          contacts: contacts.map(contact => contact.id === response.data.id ? response.data : contact),
-          currentContact: {
-            id: '',
-            firstName: '',
-            lastName: '',
-            mobile: '',
-            email: '',
-            avatar: './avatars/avatar-image.png'
-          }
-        }));
-
+    const { contactForm, actions } = this.props;
+    // eslint-disable-next-line no-unused-expressions
+    contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
   };
 
   render() {
-    const {loading, contacts} = this.state;
-
-    if (loading)
-      return <AppLoader/>;
+    const { contactForm, contacts, loading } = this.props;
+    if (loading) return <AppLoader />;
 
     return (
-      <Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <ContactForm
-                currentContact={this.state.currentContact}
-                handleContactState={this.handleContactState}
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-            <div className="col-md-6">
-              <ContactsList
-                contacts={contacts}
-                onDeletion={this.onDeletion}
-                handleUpdate={this.handleUpdate}
-              />
-            </div>
-          </div>
-        </div>
-      </Fragment>
+      <ContactLayout>
+        <ContactForm
+          contactForm={contactForm}
+          handleContactState={this.handleContactState}
+          handleSubmit={this.handleSubmit}
+        />
+        <ContactsList contacts={contacts} onDeletion={this.handleDelete} handleUpdate={this.handleUpdate} />
+      </ContactLayout>
     );
   }
 }
 
-export default Contacts;
+Contacts.propTypes = {
+  actions: object.isRequired,
+  contactForm: object.isRequired,
+  contacts: array.isRequired,
+  loading: bool.isRequired,
+  error: string,
+};
+
+const mapStateToProps = ({ contacts }) => ({
+  contactForm: contactSelectors.selectContactForm(contacts),
+  contacts: contactSelectors.selectContacts(contacts),
+  loading: contactSelectors.selectContactLoadingState(contacts),
+  error: contactSelectors.selectContactErrors(contacts),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(contactActions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contacts);

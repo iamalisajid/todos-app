@@ -1,26 +1,28 @@
 import React from 'react';
-import {func} from 'prop-types'
-import {BTN_ACTIONS, FILTERS} from '../../../utils/constants';
+import { func } from 'prop-types';
+import { BTN_ACTIONS, FILTERS } from '../../../utils/constants';
+import { Button, Center, ButtonGroup } from '../../../globalStyles';
+import { FilterGroup } from '../styles';
 
-const TodoFilter = ({handleFilter}) => (
-  <div id='toolbar' className="Filter-group">
-    <div className='wrapper text-center'>
-      <div className="btn-group">
-        <button className="btn btn-default" onClick={handleFilter} value={FILTERS.SHOW_ALL}>
+const TodoFilter = ({ handleFilter }) => (
+  <FilterGroup>
+    <Center>
+      <ButtonGroup>
+        <Button default onClick={handleFilter} value={FILTERS.SHOW_ALL}>
           {BTN_ACTIONS.ALL}
-        </button>
-        <button className="btn btn-warning" onClick={handleFilter} value={FILTERS.SHOW_ACTIVE}>
+        </Button>
+        <Button warning onClick={handleFilter} value={FILTERS.SHOW_ACTIVE}>
           {BTN_ACTIONS.ACTIVE}
-        </button>
-        <button className="btn btn-info" onClick={handleFilter} value={FILTERS.SHOW_COMPLETED}>
+        </Button>
+        <Button info onClick={handleFilter} value={FILTERS.SHOW_COMPLETED}>
           {BTN_ACTIONS.COMPLETED}
-        </button>
-      </div>
-    </div>
-  </div>
+        </Button>
+      </ButtonGroup>
+    </Center>
+  </FilterGroup>
 );
 
-TodoFilter.propType = {
-  handleFilter: func.isRequired
-}
+TodoFilter.propTypes = {
+  handleFilter: func.isRequired,
+};
 export default TodoFilter;

@@ -1,136 +1,88 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
+import { object, string, array, bool } from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
-import TodoFilter from "./TodoFilter";
+import TodoFilter from './TodoFilter';
 import AppLoader from '../../shared/loader';
-import ApiCaller from '../../utils/apiCaller';
-import {API_ROUTES} from '../../utils/endpoints';
-import {REQUEST_TYPE, FILTERS} from '../../utils/constants';
+import * as todoSelectors from '../../selectors';
+import * as todoActions from './actions';
 
 class Todos extends Component {
-  state = {
-    todos: [],
-    currentTodo: '',
-    loading: true,
-    errors: '',
-    filter: FILTERS.SHOW_ALL
-  };
-
   componentDidMount() {
-    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET)
-      .then(response => this.setState({
-        todos: response.data,
-        loading: false
-      }));
+    this.props.actions.fetchTodos();
   }
 
-  handleInput = event => {
-    let currentTodo = event.target.value;
-    this.setState({
-      currentTodo
-    });
+  handleInput = (event) => {
+    const todoForm = event.target.value;
+    this.props.actions.updateTodoField(todoForm);
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-
-    this.setState({loading: true});
-    const {todos, currentTodo} = this.state;
-    let todo = {
-      text: currentTodo,
-      isComplete: false
-    };
-
-    ApiCaller(API_ROUTES.TODOS, REQUEST_TYPE.POST, todo)
-      .then(response => this.setState({
-        todos: todos.concat(response.data),
-        currentTodo: '',
-        loading: false
-      }));
-  };
-
-  toggleTodo = event => {
-    this.setState({loading: true});
-    const {todos} = this.state;
-
-    const id = parseInt(event.target.value);
-    const todo = this.state.todos.find(todo => todo.id === id);
-    const toggled = {...todo, isComplete: !todo.isComplete};
-
-    ApiCaller(`${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled)
-      .then(response => {
-        this.setState({
-          todos: todos.map(todo => todo.id === response.data.id ? response.data : todo),
-          currentTodo: '',
-          loading: false
-        })
-      });
-  };
-
-  handleDelete = event => {
-    event.stopPropagation();
-
-    this.setState({loading: true});
-    const {todos} = this.state;
-    const id = parseInt(event.target.value);
-
-    ApiCaller(`${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE)
-      .then(response => {
-        this.setState({
-          todos: todos.filter(todo => todo.id !== id),
-          currentTodo: '',
-          loading: false
-        })
-      });
-  };
-
-  handleFilter = event => {
-    const filter = event.target.value;
-    this.setState({
-      filter
+    this.props.actions.createTodo({
+      text: this.props.todoForm,
+      isComplete: false,
     });
-  }
+  };
 
-  visibleTodos = () => {
-    const {todos, filter} = this.state;
+  toggleTodo = (event) => {
+    const { todos } = this.props;
 
-    switch (filter) {
-      case FILTERS.SHOW_ALL:
-        return todos;
-      case FILTERS.SHOW_ACTIVE:
-        return todos.filter(todo => !todo.isComplete);
-      case FILTERS.SHOW_COMPLETED:
-        return todos.filter(todo => todo.isComplete);
-      default:
-        return todos
-    }
+    const id = parseInt(event.target.value, 10);
+    const todo = todos.find((toggledTodo) => toggledTodo.id === id);
+    const toggled = { ...todo, isComplete: !todo.isComplete };
+
+    this.props.actions.toggleTodo(toggled);
+  };
+
+  handleDelete = (event) => {
+    event.stopPropagation();
+    const id = parseInt(event.target.value, 10);
+    this.props.actions.deleteTodo(id);
+  };
+
+  handleFilter = (event) => {
+    const filter = event.target.value;
+    this.props.actions.updateTodosFilter(filter);
   };
 
   render() {
-    const {loading, currentTodo, errors} = this.state;
+    const { todos, loading, todoForm, error } = this.props;
 
-    if (loading)
-      return <AppLoader/>;
+    if (loading) return <AppLoader />;
 
     return (
       <Fragment>
-        <p>{errors}</p>
-        <TodoForm
-          currentTodo={currentTodo}
-          handleInput={this.handleInput}
-          handleSubmit={this.handleSubmit}
-        />
-        <TodoList
-          todos={this.visibleTodos()}
-          toggleTodo={this.toggleTodo}
-          handleDelete={this.handleDelete}
-        />
-        <TodoFilter
-          handleFilter={this.handleFilter}
-        />
+        <p>{error}</p>
+        <TodoForm todoForm={todoForm} handleInput={this.handleInput} handleSubmit={this.handleSubmit} />
+        <TodoList todos={todos} toggleTodo={this.toggleTodo} handleDelete={this.handleDelete} />
+        <TodoFilter handleFilter={this.handleFilter} />
       </Fragment>
     );
   }
 }
 
-export default Todos;
+Todos.propTypes = {
+  actions: object.isRequired,
+  todoForm: string.isRequired,
+  todos: array.isRequired,
+  loading: bool.isRequired,
+  error: string,
+};
+const mapStateToProps = ({ todos }) => ({
+  todoForm: todoSelectors.selectTodosForm(todos),
+  todos: todoSelectors.selectFilteredTodos(todos),
+  loading: todoSelectors.selectTodosLoadingState(todos),
+  error: todoSelectors.selectTodosErrors(todos),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(todoActions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Todos);

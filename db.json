@@ -1,25 +1,26 @@
 {
   "todos": [
     {
-      "text": "things to do",
-      "is_complete": true,
+      "text": "new one",
+      "is_complete": false,
       "id": 1
-    },
-    {
-      "text": "hello",
-      "is_complete": true,
-      "id": 4
-    },
-    {
-      "text": "happy",
-      "is_complete": true,
-      "id": 8
-    },
-    {
-      "text": "happybirthday",
-      "is_complete": true,
-      "id": 9
     }
   ],
-  "contacts": []
+  "contacts": [
+    {
+      "id": 1,
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png"
+    }
+  ],
+  "login": [
+    {
+      "email": "ali.sajid@arbisoft.com",
+      "password": 123,
+      "id": 1
+    }
+  ],
 }
