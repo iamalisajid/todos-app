@@ -3,15 +3,15 @@ import { object, func, bool } from 'prop-types';
 import { withRouter } from 'react-router';
 import { HEADER_TITILE } from '../../../utils/copies';
 import { APP_ROUTES, BTN_ACTIONS } from '../../../utils/constants';
+import { LightBulb, Hidden } from '../../../globalStyles';
 import { AppHeader, AppTitle, LogoutButton } from './styles';
 
 const Header = ({ location, themeValue, toggleTheme }) => (
   <AppHeader>
     <AppTitle>{HEADER_TITILE}</AppTitle>
-    <div className="lightbulb-container">
-      <input type="checkbox" id="lightswitch" onChange={toggleTheme} value={themeValue} checked={themeValue} />
-      <div id="lightbulb" />
-    </div>
+    <LightBulb lightOn={themeValue}>
+      <Hidden type="checkbox" onChange={toggleTheme} value={themeValue} checked={themeValue} />
+    </LightBulb>
     {location.pathname !== APP_ROUTES.BASE &&
       location.pathname !== APP_ROUTES.LOGIN && (
         <div>

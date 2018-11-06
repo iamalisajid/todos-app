@@ -1,13 +1,13 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import './index.css';
+import { StyledAppLoader, LoaderCenter } from './styles';
 
 const AppLoader = () => (
-  <div className="Loader">
-    <div className="Loader-center">
+  <StyledAppLoader>
+    <LoaderCenter>
       <Loader type="Triangle" color="#00BFFF" height="100" width="100" />
-    </div>
-  </div>
+    </LoaderCenter>
+  </StyledAppLoader>
 );
 
 export default AppLoader;
