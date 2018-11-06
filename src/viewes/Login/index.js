@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { func, bool, string, object } from 'prop-types';
+import { bool, string, object } from 'prop-types';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import { APP_ROUTES } from '../../utils/constants';
@@ -49,11 +49,11 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  actions: func.isRequired,
-  loginForm: object.isRequired,
-  user: object.isRequired,
+  actions: object.isRequired,
+  loginForm: object,
+  user: object,
   loading: bool.isRequired,
-  error: string.isRequired,
+  error: string,
 };
 const mapStateToProps = ({ login }) => ({
   loginForm: login.loginForm,

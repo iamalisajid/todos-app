@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { func, object, bool } from 'prop-types';
+import { object, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -30,7 +30,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  actions: func.isRequired,
+  actions: object.isRequired,
   mode: object.isRequired,
   lightMode: bool.isRequired,
 };

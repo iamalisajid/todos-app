@@ -2,14 +2,14 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import { BTN_ACTIONS } from '../../../utils/constants';
 import { FormRow, FormGroup, FormInput, Button } from '../../../globalStyles';
-import { StyledContactForm, FirstName, LastName } from '../styles';
+import { StyledContactForm, GridCloumn } from '../styles';
 
 const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
   <StyledContactForm>
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
       <FormRow>
-        <FirstName>
+        <GridCloumn span={6}>
           <label>First Name</label>
           <FormInput
             type="text"
@@ -18,8 +18,8 @@ const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
             value={contactForm.firstName}
             onChange={handleContactState}
           />
-        </FirstName>
-        <LastName>
+        </GridCloumn>
+        <GridCloumn span={6}>
           <label>Last Name</label>
           <FormInput
             type="text"
@@ -28,7 +28,7 @@ const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
             value={contactForm.lastName}
             onChange={handleContactState}
           />
-        </LastName>
+        </GridCloumn>
       </FormRow>
       <FormGroup>
         <label>Contact Number</label>

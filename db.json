@@ -1,17 +1,17 @@
 {
   "todos": [
     {
-      "text": "hello",
-      "is_complete": true,
-      "id": 2
+      "text": "new one",
+      "is_complete": false,
+      "id": 1
     }
   ],
   "contacts": [
     {
-      "id": 2,
-      "first_name": "hey",
-      "last_name": "ali",
-      "mobile": "+02 3434 454545",
+      "id": 1,
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
       "email": "ali.sajid@arbisoft.com",
       "avatar": "./../avatars/avatar-image.png"
     }
@@ -22,5 +22,5 @@
       "password": 123,
       "id": 1
     }
-  ]
+  ],
 }

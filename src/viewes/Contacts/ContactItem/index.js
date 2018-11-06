@@ -1,19 +1,19 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import { ListGroupItem, Row, RoundedImage, FontAws } from '../../../globalStyles';
-import { ContactImage, ContactDetails, ContactFields } from '../styles';
+import { GridCloumn, ContactFields } from '../styles';
 
 const ContactItem = ({ contact, onDeletion, handleUpdate }) => (
   <ListGroupItem>
     <Row>
-      <ContactImage>
+      <GridCloumn span={4}>
         <RoundedImage
           className="rounded-circle mx-auto d-block img-fluid"
           src={contact.avatar}
           alt={contact.firstName}
         />
-      </ContactImage>
-      <ContactDetails>
+      </GridCloumn>
+      <GridCloumn span={8}>
         <FontAws right className="fa fa-pencil" onClick={handleUpdate.bind(this, contact)} />
         <label className="name lead">
           {contact.firstName} {contact.lastName}
@@ -25,7 +25,7 @@ const ContactItem = ({ contact, onDeletion, handleUpdate }) => (
         <br />
         <FontAws className="fa fa-envelope fa-fw text-muted" />
         <ContactFields>{contact.email}</ContactFields>
-      </ContactDetails>
+      </GridCloumn>
     </Row>
   </ListGroupItem>
 );

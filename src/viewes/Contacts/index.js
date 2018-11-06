@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { func, object, array, bool, string } from 'prop-types';
+import { object, array, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
 import ContactsList from './ContactList';
 import ContactForm from './ContactForm';
@@ -50,7 +50,7 @@ class Contacts extends Component {
 }
 
 Contacts.propTypes = {
-  actions: func.isRequired,
+  actions: object.isRequired,
   contactForm: object.isRequired,
   contacts: array.isRequired,
   loading: bool.isRequired,

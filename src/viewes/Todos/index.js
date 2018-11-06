@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { func, string, array, bool } from 'prop-types';
+import { object, string, array, bool } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TodoList from './TodoList';
@@ -65,7 +65,7 @@ class Todos extends Component {
 }
 
 Todos.propTypes = {
-  actions: func.isRequired,
+  actions: object.isRequired,
   todoForm: string.isRequired,
   todos: array.isRequired,
   loading: bool.isRequired,

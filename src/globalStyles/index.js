@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     background-image: url('/bg.png');
     font-family: "Ubuntu",sans-serif;
     margin: 0;
     padding: 0;
   }
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo
   }
   *, ::after, ::before {
     box-sizing: border-box;

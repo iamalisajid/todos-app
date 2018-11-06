@@ -1,5 +1,5 @@
 import React from 'react';
-import { object, func } from 'prop-types';
+import { array, func } from 'prop-types';
 import TodoItem from '../TodoItem';
 import { TODOS_DONE } from '../../../utils/copies';
 import { Center, ListGroup, Container } from '../../../globalStyles';
@@ -26,9 +26,9 @@ const TodoList = ({ todos, toggleTodo, handleDelete }) => {
 };
 
 TodoList.propTypes = {
-  todos: object.isRequired,
+  todos: array.isRequired,
   toggleTodo: func.isRequired,
-  handleDelete: func.onDeletion,
+  handleDelete: func.isRequired,
 };
 
 export default TodoList;

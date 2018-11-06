@@ -7,24 +7,10 @@ export const ContactLayout = styled.div`
   width: 100%;
 `;
 export const GridCloumn = styled.div`
-`;
-export const StyledContactList = styled.div`
-  grid-column: span 4;
+  grid-column: ${(props) => `span ${props.span}`};
 `;
 export const StyledContactForm = styled.div`
   grid-column: 3 / span 4;
-`;
-export const FirstName = styled.div`
-  grid-column: span 6;
-`;
-export const LastName = styled.div`
-  grid-column: span 6;
-`;
-export const ContactImage = styled.div`
-  grid-column: span 4;
-`;
-export const ContactDetails = styled.div`
-  grid-column: span 8;
 `;
 export const ContactFields = styled.span`
   color: #6c757d !important;

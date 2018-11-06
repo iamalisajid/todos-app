@@ -1,22 +1,22 @@
 import React from 'react';
-import { object, func } from 'prop-types';
+import { array, func } from 'prop-types';
 import ContactItem from '../ContactItem';
 import { ListGroup } from '../../../globalStyles';
-import { StyledContactList } from '../styles';
+import { GridCloumn } from '../styles';
 
 const ContactList = ({ contacts, onDeletion, handleUpdate }) => (
-  <StyledContactList>
+  <GridCloumn span={4}>
     <h2>Contacts</h2>
     <ListGroup>
       {contacts.map((contact) => (
         <ContactItem key={contact.id} contact={contact} onDeletion={onDeletion} handleUpdate={handleUpdate} />
       ))}
     </ListGroup>
-  </StyledContactList>
+  </GridCloumn>
 );
 
 ContactList.propTypes = {
-  contacts: object.isRequired,
+  contacts: array.isRequired,
   onDeletion: func.isRequired,
   handleUpdate: func.isRequired,
 };
