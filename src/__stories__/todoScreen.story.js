@@ -12,7 +12,7 @@ const state = {
   ],
   todoForm: '',
   loading: false,
-  errors: 'ERROR',
+  errors: '',
   filter: null,
 };
 const store = {

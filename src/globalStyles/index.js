@@ -50,15 +50,14 @@ export const Button = styled.button`
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
-   background: ${(props) => {
-     if (props.primary) return '#007bff;';
-     if (props.success) return '#28a745;';
-     if (props.danger) return '#dc3545;';
-     if (props.warning) return '#ffc107';
-     if (props.info) return '#17a2b8';
-
-     return '#a965cc;';
-   }}
+  background: ${(props) => {
+    if (props.primary) return props.theme.mode === 'dark' ? '#000000' : '#007bff;';
+    if (props.success) return props.theme.mode === 'dark' ? 'green' : '#28a745;';
+    if (props.danger) return props.theme.mode === 'dark' ? '#a70f0f' : '#dc3545;';
+    if (props.warning) return props.theme.mode === 'dark' ? 'blue' : '#ffc107';
+    if (props.info) return props.theme.mode === 'dark' ? '#09414a' : '#17a2b8';
+    return props.theme.mode === 'dark' ? '#4c0371' : '#a965cc;';
+  }}
   border-radius: .25rem;
   border: 1px solid transparent;
    border-color: ${(props) => {
