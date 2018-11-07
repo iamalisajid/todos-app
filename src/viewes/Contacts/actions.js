@@ -40,18 +40,20 @@ function* deleteContacts(action) {
   }
   yield put({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
 }
-export function* watchLoadContacts() {
+
+function* watchLoadContacts() {
   yield takeLatest(types.FETCH_CONTACT_REQUEST, loadContacts);
 }
-export function* watchAddContacts() {
+function* watchAddContacts() {
   yield takeLatest(types.CREATE_CONTACT_REQUEST, addContacts);
 }
-export function* watchUpdateContacts() {
+function* watchUpdateContacts() {
   yield takeLatest(types.UPDATE_CONTACT_REQUEST, updateContacts);
 }
-export function* watchDeleteContacts() {
+function* watchDeleteContacts() {
   yield takeLatest(types.DELETE_CONTACT_REQUEST, deleteContacts);
 }
+
 export const contactSagas = [
   fork(watchLoadContacts),
   fork(watchAddContacts),
