@@ -9,6 +9,16 @@
       "text": "completed one",
       "is_complete": true,
       "id": 2
+    },
+    {
+      "text": "xzxzx",
+      "is_complete": false,
+      "id": 3
+    },
+    {
+      "text": "sasas",
+      "is_complete": false,
+      "id": 4
     }
   ],
   "contacts": [
@@ -42,6 +52,14 @@
       "last_name": "test",
       "mobile": "+92 123 4567890",
       "email": "test@ad",
+      "avatar": "./../avatars/avatar-image.png"
+    },
+    {
+      "id": 5,
+      "first_name": "new ",
+      "last_name": "saaga",
+      "mobile": "+92 123 4567890",
+      "email": "ahmad.ali@arbisoft.com",
       "avatar": "./../avatars/avatar-image.png"
     }
   ],

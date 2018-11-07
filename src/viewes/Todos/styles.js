@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { FormInput } from '../../globalStyles';
 
@@ -20,3 +21,12 @@ export const TodoFormSubmit = styled.div`
 export const FilterGroup = styled.div`
   padding-top: 2%;
 `;
+
+export const StyledInput = (field) => (
+  <TodoFormInput
+    type="text"
+    placeholder="Add Todo"
+    value={field.input.value}
+    onChange={(param) => field.input.onChange(param.target.value)}
+  />
+);

@@ -4,7 +4,6 @@ import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
 import * as types from './actionTypes';
 
-export const updateTodoField = (todoForm) => ({ type: types.TODO_INPUT_UPDATE, payload: todoForm });
 export const updateTodosFilter = (filter) => ({ type: types.TODOS_FILTER_UPDATE, payload: filter });
 export const fetchTodos = () => ({ type: types.FETCH_TODO_REQUEST });
 export const createTodo = (todo) => ({ type: types.CREATE_TODO_REQUEST, payload: todo });

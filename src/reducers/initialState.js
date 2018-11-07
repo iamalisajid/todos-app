@@ -10,7 +10,6 @@ export default {
   },
   todos: {
     todos: [],
-    todoForm: '',
     loading: true,
     errors: null,
     filter: null,

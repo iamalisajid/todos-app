@@ -14,15 +14,9 @@ class Todos extends Component {
     this.props.actions.fetchTodos();
   }
 
-  handleInput = (event) => {
-    const todoForm = event.target.value;
-    this.props.actions.updateTodoField(todoForm);
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (values) => {
     this.props.actions.createTodo({
-      text: this.props.todoForm,
+      text: values.todo,
       isComplete: false,
     });
   };
@@ -49,14 +43,14 @@ class Todos extends Component {
   };
 
   render() {
-    const { todos, loading, todoForm, error } = this.props;
+    const { todos, loading, error } = this.props;
 
     if (loading) return <AppLoader />;
 
     return (
       <Fragment>
         <p>{error}</p>
-        <TodoForm todoForm={todoForm} handleInput={this.handleInput} handleSubmit={this.handleSubmit} />
+        <TodoForm onSubmit={this.handleSubmit} />
         <TodoList todos={todos} toggleTodo={this.toggleTodo} handleDelete={this.handleDelete} />
         <TodoFilter handleFilter={this.handleFilter} />
       </Fragment>
@@ -66,13 +60,11 @@ class Todos extends Component {
 
 Todos.propTypes = {
   actions: object.isRequired,
-  todoForm: string.isRequired,
   todos: array.isRequired,
   loading: bool.isRequired,
   error: string,
 };
 const mapStateToProps = ({ todos }) => ({
-  todoForm: todoSelectors.selectTodosForm(todos),
   todos: todoSelectors.selectFilteredTodos(todos),
   loading: todoSelectors.selectTodosLoadingState(todos),
   error: todoSelectors.selectTodosErrors(todos),
