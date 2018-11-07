@@ -1,50 +1,60 @@
+import { call, put, takeLatest, fork } from 'redux-saga/effects';
 import apiCaller from '../../utils/apiCaller';
 import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
 import * as types from './actionTypes';
 
 export const updateContactField = (contactForm) => ({ type: types.CONTACT_INPUT_UPDATE, payload: contactForm });
+export const fetchContacts = () => ({ type: types.FETCH_CONTACT_REQUEST });
+export const createContact = (contact) => ({ type: types.CREATE_CONTACT_REQUEST, payload: contact });
+export const updateContact = (contact) => ({ type: types.UPDATE_CONTACT_SUCCESS, payload: contact });
+export const deleteContact = (id) => ({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
 
-const fetchContactRequest = () => ({ type: types.FETCH_CONTACT_REQUEST });
-const fetchContactSuccess = (contact) => ({ type: types.FETCH_CONTACT_SUCCESS, payload: contact });
-const fetchContactFailure = (msg) => ({ type: types.FETCH_CONTACT_FAILURE, payload: msg });
-
-const createContactRequest = () => ({ type: types.CREATE_CONTACT_REQUEST });
-const createContactSuccess = (contact) => ({ type: types.CREATE_CONTACT_SUCCESS, payload: contact });
-const createContactFailure = (msg) => ({ type: types.CREATE_CONTACT_FAILURE, payload: msg });
-
-const updateContactRequest = () => ({ type: types.UPDATE_CONTACT_REQUEST });
-const updateContactSuccess = (contact) => ({ type: types.UPDATE_CONTACT_SUCCESS, payload: contact });
-const updateContactFailure = (msg) => ({ type: types.UPDATE_CONTACT_FAILURE, payload: msg });
-
-const deleteContactRequest = () => ({ type: types.DELETE_CONTACT_REQUEST });
-const deleteContactSuccess = (id) => ({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
-const deleteContactFailure = (msg) => ({ type: types.DELETE_CONTACT_FAILURE, payload: msg });
-
-export const fetchContacts = () => (dispatch) => {
-  dispatch(fetchContactRequest());
-  apiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.GET)
-    .then((response) => dispatch(fetchContactSuccess(response.data)))
-    .catch((error) => dispatch(fetchContactFailure(error)));
-};
-
-export const createContact = (contact) => (dispatch) => {
-  dispatch(createContactRequest());
-  apiCaller(API_ROUTES.CONTACTS, REQUEST_TYPE.POST, contact)
-    .then((response) => dispatch(createContactSuccess(response.data)))
-    .catch((error) => dispatch(createContactFailure(error)));
-};
-
-export const updateContact = (contact) => (dispatch) => {
-  dispatch(updateContactRequest());
-  apiCaller(`${API_ROUTES.CONTACTS}/${contact.id}`, REQUEST_TYPE.PUT, contact)
-    .then((response) => dispatch(updateContactSuccess(response.data)))
-    .catch((error) => dispatch(updateContactFailure(error)));
-};
-
-export const deleteContact = (id) => (dispatch) => {
-  dispatch(deleteContactRequest());
-  apiCaller(`${API_ROUTES.CONTACTS}/${id}`, REQUEST_TYPE.DELETE)
-    .then(dispatch(deleteContactSuccess(id)))
-    .catch((error) => dispatch(deleteContactFailure(error)));
-};
+function* loadContacts() {
+  const { error, data } = yield call(apiCaller, API_ROUTES.CONTACTS, REQUEST_TYPE.GET);
+  if (error) {
+    yield put({ type: types.FETCH_CONTACT_FAILURE, payload: error });
+  }
+  yield put({ type: types.FETCH_CONTACT_SUCCESS, payload: data });
+}
+function* addContacts(action) {
+  const { error, data } = yield call(apiCaller, API_ROUTES.CONTACTS, REQUEST_TYPE.POST, action.payload);
+  if (error) {
+    yield put({ type: types.CREATE_CONTACT_FAILURE, payload: error });
+  }
+  yield put({ type: types.CREATE_CONTACT_SUCCESS, payload: data });
+}
+function* updateContacts(action) {
+  const contact = action.payload;
+  const { error, data } = yield call(apiCaller, `${API_ROUTES.CONTACTS}/${contact.id}`, REQUEST_TYPE.PUT, contact);
+  if (error) {
+    yield put({ type: types.UPDATE_CONTACT_FAILURE, payload: error });
+  }
+  yield put({ type: types.UPDATE_CONTACT_SUCCESS, payload: data });
+}
+function* deleteContacts(action) {
+  const id = action.payload;
+  const { error } = yield call(apiCaller, `${API_ROUTES.CONTACTS}/${id}`, REQUEST_TYPE.DELETE);
+  if (error) {
+    yield put({ type: types.DELETE_CONTACT_REQUEST, payload: error });
+  }
+  yield put({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
+}
+export function* watchLoadContacts() {
+  yield takeLatest(types.FETCH_CONTACT_REQUEST, loadContacts);
+}
+export function* watchAddContacts() {
+  yield takeLatest(types.CREATE_CONTACT_REQUEST, addContacts);
+}
+export function* watchUpdateContacts() {
+  yield takeLatest(types.UPDATE_CONTACT_REQUEST, updateContacts);
+}
+export function* watchDeleteContacts() {
+  yield takeLatest(types.DELETE_CONTACT_REQUEST, deleteContacts);
+}
+export const contactSagas = [
+  fork(watchLoadContacts),
+  fork(watchAddContacts),
+  fork(watchUpdateContacts),
+  fork(watchDeleteContacts),
+];

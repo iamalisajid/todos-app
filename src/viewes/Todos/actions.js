@@ -1,3 +1,4 @@
+import { call, put, takeLatest, fork } from 'redux-saga/effects';
 import apiCaller from '../../utils/apiCaller';
 import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
@@ -5,47 +6,54 @@ import * as types from './actionTypes';
 
 export const updateTodoField = (todoForm) => ({ type: types.TODO_INPUT_UPDATE, payload: todoForm });
 export const updateTodosFilter = (filter) => ({ type: types.TODOS_FILTER_UPDATE, payload: filter });
+export const fetchTodos = () => ({ type: types.FETCH_TODO_REQUEST });
+export const createTodo = (todo) => ({ type: types.CREATE_TODO_REQUEST, payload: todo });
+export const toggleTodo = (todo) => ({ type: types.TOGGLE_TODO_REQUEST, payload: todo });
+export const deleteTodo = (id) => ({ type: types.DELETE_TODO_REQUEST, payload: id });
 
-const fetchTodoRequest = () => ({ type: types.FETCH_TODO_REQUEST });
-const fetchTodoSuccess = (todo) => ({ type: types.FETCH_TODO_SUCCESS, payload: todo });
-const fetchTodoFailure = (msg) => ({ type: types.FETCH_TODO_FAILURE, payload: msg });
+function* loadTodos() {
+  const { error, data } = yield call(apiCaller, API_ROUTES.TODOS, REQUEST_TYPE.GET);
+  if (error) {
+    yield put({ type: types.FETCH_TODO_FAILURE, payload: error });
+  }
+  yield put({ type: types.FETCH_TODO_SUCCESS, payload: data });
+}
+function* addTodos(action) {
+  const todo = action.payload;
+  const { error, data } = yield call(apiCaller, API_ROUTES.TODOS, REQUEST_TYPE.POST, todo);
+  if (error) {
+    yield put({ type: types.CREATE_TODO_FAILURE, payload: error });
+  }
+  yield put({ type: types.CREATE_TODO_SUCCESS, payload: data });
+}
+function* toggleTodos(action) {
+  const toggled = action.payload;
+  const { error, data } = yield call(apiCaller, `${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled);
+  if (error) {
+    yield put({ type: types.TOGGLE_TODO_FAILURE, payload: error });
+  }
+  yield put({ type: types.TOGGLE_TODO_SUCCESS, payload: data });
+}
+function* deleteTodos(action) {
+  const id = action.payload;
+  const { error } = yield call(apiCaller, `${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE);
+  if (error) {
+    yield put({ type: types.DELETE_TODO_FAILURE, payload: error });
+  }
+  yield put({ type: types.DELETE_TODO_SUCCESS, payload: id });
+}
 
-const createTodoRequest = () => ({ type: types.CREATE_TODO_REQUEST });
-const createTodoSuccess = (todo) => ({ type: types.CREATE_TODO_SUCCESS, payload: todo });
-const createTodoFailure = (msg) => ({ type: types.CREATE_TODO_FAILURE, payload: msg });
+function* watchLoadTodos() {
+  yield takeLatest(types.FETCH_TODO_REQUEST, loadTodos);
+}
+function* watchAddTodos() {
+  yield takeLatest(types.CREATE_TODO_REQUEST, addTodos);
+}
+function* watchToggleTodos() {
+  yield takeLatest(types.TOGGLE_TODO_REQUEST, toggleTodos);
+}
+function* watchDeleteTodos() {
+  yield takeLatest(types.DELETE_TODO_REQUEST, deleteTodos);
+}
 
-const toggleTodoRequest = () => ({ type: types.TOGGLE_TODO_REQUEST });
-const toggleTodoSuccess = (todo) => ({ type: types.TOGGLE_TODO_SUCCESS, payload: todo });
-const toggleTodoFailure = (msg) => ({ type: types.TOGGLE_TODO_FAILURE, payload: msg });
-
-const deleteTodoRequest = () => ({ type: types.DELETE_TODO_REQUEST });
-const deleteTodoSuccess = (id) => ({ type: types.DELETE_TODO_SUCCESS, payload: id });
-const deleteTodoFailure = (msg) => ({ type: types.DELETE_TODO_FAILURE, payload: msg });
-
-export const fetchTodos = () => (dispatch) => {
-  dispatch(fetchTodoRequest());
-  apiCaller(API_ROUTES.TODOS, REQUEST_TYPE.GET)
-    .then((response) => dispatch(fetchTodoSuccess(response.data)))
-    .catch((error) => dispatch(fetchTodoFailure(error)));
-};
-
-export const createTodo = (todo) => (dispatch) => {
-  dispatch(createTodoRequest());
-  apiCaller(API_ROUTES.TODOS, REQUEST_TYPE.POST, todo)
-    .then((response) => dispatch(createTodoSuccess(response.data)))
-    .catch((error) => dispatch(createTodoFailure(error)));
-};
-
-export const toggleTodo = (toggled) => (dispatch) => {
-  dispatch(toggleTodoRequest());
-  apiCaller(`${API_ROUTES.TODOS}/${toggled.id}`, REQUEST_TYPE.PUT, toggled)
-    .then((response) => dispatch(toggleTodoSuccess(response.data)))
-    .catch((error) => dispatch(toggleTodoFailure(error)));
-};
-
-export const deleteTodo = (id) => (dispatch) => {
-  dispatch(deleteTodoRequest());
-  apiCaller(`${API_ROUTES.TODOS}/${id}`, REQUEST_TYPE.DELETE)
-    .then(() => dispatch(deleteTodoSuccess(id)))
-    .catch((error) => dispatch(deleteTodoFailure(error)));
-};
+export const todoSagas = [fork(watchLoadTodos), fork(watchAddTodos), fork(watchToggleTodos), fork(watchDeleteTodos)];
