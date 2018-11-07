@@ -1,54 +1,31 @@
 import React from 'react';
 import { object, func } from 'prop-types';
+import { reduxForm, Field } from 'redux-form';
 import { BTN_ACTIONS } from '../../../utils/constants';
-import { FormRow, FormGroup, FormInput, Button } from '../../../globalStyles';
+import { FormRow, FormGroup, Button, StyledField } from '../../../globalStyles';
 import { StyledContactForm, GridCloumn } from '../styles';
 
-const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
+const ContactForm = ({ contactForm, handleSubmit }) => (
   <StyledContactForm>
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
       <FormRow>
         <GridCloumn span={6}>
           <label>First Name</label>
-          <FormInput
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={contactForm.firstName}
-            onChange={handleContactState}
-          />
+          <Field type="text" name="firstName" placeholder="First Name" component={StyledField} />
         </GridCloumn>
         <GridCloumn span={6}>
           <label>Last Name</label>
-          <FormInput
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={contactForm.lastName}
-            onChange={handleContactState}
-          />
+          <Field type="text" name="lastName" placeholder="Last Name" component={StyledField} />
         </GridCloumn>
       </FormRow>
       <FormGroup>
         <label>Contact Number</label>
-        <FormInput
-          type="text"
-          name="mobile"
-          placeholder="+92 322 7901620"
-          value={contactForm.mobile}
-          onChange={handleContactState}
-        />
+        <Field type="text" name="mobile" placeholder="+92 322 7901620" component={StyledField} />
       </FormGroup>
       <FormGroup>
-        <label htmlFor="inputAddress2">Email</label>
-        <FormInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={contactForm.email}
-          onChange={handleContactState}
-        />
+        <label>Email</label>
+        <Field type="email" name="email" placeholder="Email" component={StyledField} />
       </FormGroup>
 
       <Button success type="submit">
@@ -60,8 +37,9 @@ const ContactForm = ({ contactForm, handleContactState, handleSubmit }) => (
 
 ContactForm.propTypes = {
   contactForm: object.isRequired,
-  handleContactState: func.isRequired,
   handleSubmit: func.isRequired,
 };
 
-export default ContactForm;
+export default reduxForm({
+  form: 'addContact',
+})(ContactForm);

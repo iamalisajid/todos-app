@@ -8,6 +8,7 @@ import AppLoader from '../../shared/loader';
 import * as contactSelectors from '../../selectors';
 import * as contactActions from './actions';
 import { ContactLayout } from './styles';
+import { AVATAR } from '../../utils/copies';
 
 class Contacts extends Component {
   componentDidMount() {
@@ -25,11 +26,11 @@ class Contacts extends Component {
     actions.updateContactField(contactForm);
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { contactForm, actions } = this.props;
-    // eslint-disable-next-line no-unused-expressions
-    contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
+  handleSubmit = (contact) => {
+    const newContact = contact;
+    newContact.avatar = AVATAR;
+    this.props.actions.createContact(newContact);
+    // contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
   };
 
   render() {
@@ -38,11 +39,7 @@ class Contacts extends Component {
 
     return (
       <ContactLayout>
-        <ContactForm
-          contactForm={contactForm}
-          handleContactState={this.handleContactState}
-          handleSubmit={this.handleSubmit}
-        />
+        <ContactForm contactForm={contactForm} onSubmit={this.handleSubmit} />
         <ContactsList contacts={contacts} onDeletion={this.handleDelete} handleUpdate={this.handleUpdate} />
       </ContactLayout>
     );

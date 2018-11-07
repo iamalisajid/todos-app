@@ -14,8 +14,7 @@ function* authUser(action) {
   if (error) {
     yield put({ type: types.LOGIN_FAILURE, payload: error });
   } else if (data.length) yield put({ type: types.LOGIN_SUCCESS, payload: data });
-
-  yield put({ type: types.LOGIN_FAILURE, payload: 'Invalid Username/Password' });
+  else yield put({ type: types.LOGIN_FAILURE, payload: 'Invalid Username/Password' });
 }
 
 function* watchAuthUser() {

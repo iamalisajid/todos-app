@@ -3,10 +3,6 @@ export default {
     user: null,
     loading: false,
     error: null,
-    loginForm: {
-      email: '',
-      password: '',
-    },
   },
   todos: {
     todos: [],

@@ -1,20 +1,21 @@
 import React from 'react';
-import { object, string, func } from 'prop-types';
+import { string, func } from 'prop-types';
+import { reduxForm, Field } from 'redux-form';
 import { BTN_ACTIONS } from '../../../utils/constants';
-import { FormInput } from '../../../globalStyles';
+import { StyledField } from '../../../globalStyles';
 import { LoginButton, LoginCard, CardBody, CardTitle, StyledLoginForm, FormLabelGroup, Error } from '../styles';
 
-const LoginForm = ({ loginForm, error, handleInput, handleSubmit }) => (
+const LoginForm = ({ error, handleSubmit }) => (
   <LoginCard>
     <CardBody>
       <CardTitle>{BTN_ACTIONS.LOGIN}</CardTitle>
       <StyledLoginForm onSubmit={handleSubmit}>
         <FormLabelGroup>
-          <FormInput type="email" name="email" value={loginForm.email} onChange={handleInput} />
+          <Field type="email" name="email" component={StyledField} />
           <label htmlFor="inputEmail">Email address</label>
         </FormLabelGroup>
         <FormLabelGroup>
-          <FormInput type="password" name="password" value={loginForm.password} onChange={handleInput} />
+          <Field type="password" name="password" component={StyledField} />
           <label htmlFor="inputEmail">Password</label>
         </FormLabelGroup>
         <Error> {error} </Error>
@@ -28,10 +29,10 @@ const LoginForm = ({ loginForm, error, handleInput, handleSubmit }) => (
 );
 
 LoginForm.propTypes = {
-  loginForm: object.isRequired,
   error: string,
   handleSubmit: func.isRequired,
-  handleInput: func.isRequired,
 };
 
-export default LoginForm;
+export default reduxForm({
+  form: 'loginForm',
+})(LoginForm);

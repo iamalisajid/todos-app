@@ -3,11 +3,6 @@ import initialState from './initialState';
 
 const login = (state = initialState.login, action) => {
   switch (action.type) {
-    case types.LOGIN_INPUT_UPDATE:
-      return {
-        ...state,
-        loginForm: Object.assign({}, action.payload),
-      };
     case types.LOGIN_REQUEST:
       return {
         ...state,
