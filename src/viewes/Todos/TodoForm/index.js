@@ -1,15 +1,23 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import { BTN_ACTIONS } from '../../../utils/constants';
+import renderField from '../../../shared/field';
+import { required } from '../../../utils/validations';
+import { BTN_ACTIONS, MODULES } from '../../../utils/constants';
 import { Button, Container } from '../../../globalStyles';
-import { StyledInput, StyledTodoForm, TodoFormSubmit } from '../styles';
+import { StyledTodoForm, TodoFormSubmit } from '../styles';
 
 const TodoForm = ({ handleSubmit }) => (
   <Container>
     <form onSubmit={handleSubmit}>
       <StyledTodoForm>
-        <Field name="todo" component={StyledInput} />
+        <Field
+          name="todo"
+          placeholder="Add Todo"
+          forComponent={MODULES.TODOS}
+          component={renderField}
+          validate={[required]}
+        />
         <TodoFormSubmit>
           <Button success type="submit">
             {BTN_ACTIONS.ADD}

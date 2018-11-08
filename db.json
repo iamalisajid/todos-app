@@ -19,6 +19,21 @@
       "text": "sasas",
       "is_complete": false,
       "id": 4
+    },
+    {
+      "text": "new todo",
+      "is_complete": false,
+      "id": 5
+    },
+    {
+      "text": "ok",
+      "is_complete": false,
+      "id": 6
+    },
+    {
+      "text": "new todo",
+      "is_complete": false,
+      "id": 7
     }
   ],
   "contacts": [
@@ -37,6 +52,14 @@
       "mobile": "+92 123 4567890",
       "email": "test@ad",
       "avatar": "./../avatars/avatar-image.png"
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 5
     }
   ],
   "login": [

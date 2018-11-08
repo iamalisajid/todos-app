@@ -2,8 +2,10 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import renderField from '../../../shared/field';
+import { required } from '../../../utils/validations';
 import { BTN_ACTIONS } from '../../../utils/constants';
-import { FormRow, FormGroup, Button, StyledField } from '../../../globalStyles';
+import { FormRow, FormGroup, Button } from '../../../globalStyles';
 import { StyledContactForm, GridCloumn } from '../styles';
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -14,20 +16,20 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
       <FormRow>
         <GridCloumn span={6}>
           <label>First Name</label>
-          <Field type="text" name="firstName" placeholder="First Name" component={StyledField} />
+          <Field type="text" name="firstName" placeholder="First Name" component={renderField} validate={[required]} />
         </GridCloumn>
         <GridCloumn span={6}>
           <label>Last Name</label>
-          <Field type="text" name="lastName" placeholder="Last Name" component={StyledField} />
+          <Field type="text" name="lastName" placeholder="Last Name" component={renderField} validate={[required]} />
         </GridCloumn>
       </FormRow>
       <FormGroup>
         <label>Contact Number</label>
-        <Field type="text" name="mobile" placeholder="+92 322 7901620" component={StyledField} />
+        <Field type="text" name="mobile" placeholder="+92 322 7901620" component={renderField} validate={[required]} />
       </FormGroup>
       <FormGroup>
         <label>Email</label>
-        <Field type="email" name="email" placeholder="Email" component={StyledField} />
+        <Field type="email" name="email" placeholder="Email" component={renderField} validate={[required]} />
       </FormGroup>
 
       <Button success type="submit">
@@ -49,6 +51,5 @@ ContactForm = reduxForm({
 ContactForm = connect(({ contacts }) => ({
   initialValues: contacts.contactForm,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true, // pull initial values from account reducer
 }))(ContactForm);
 export default ContactForm;

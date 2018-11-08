@@ -93,6 +93,3 @@ export const FormLabelGroup = styled.div`
     padding-top: calc(var(--input-padding-y) / 3);
   }
 `;
-export const Error = styled.p`
-  color: red;
-`;

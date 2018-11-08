@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { SubmissionError } from 'redux-form';
 import { bool, string, array, object } from 'prop-types';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
@@ -17,6 +18,9 @@ class Login extends React.Component {
 
   handleSubmit = (user) => {
     const { actions } = this.props;
+    if (!(user.email && user.password)) {
+      throw new SubmissionError({ password: 'Required Fields', _error: 'Email/Password Required!' });
+    }
     actions.loginUser(user);
   };
 

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -191,11 +190,6 @@ export const LightBulb = styled.label`
 export const Hidden = styled.input`
   display: none;
 `;
-export const StyledField = (field) => (
-  <FormInput
-    type={field.type}
-    placeholder={field.placeholder}
-    value={field.input.value}
-    onChange={(param) => field.input.onChange(param.target.value)}
-  />
-);
+export const Error = styled.p`
+  color: red;
+`;
