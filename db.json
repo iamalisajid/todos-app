@@ -31,83 +31,12 @@
       "avatar": "./../avatars/avatar-image.png"
     },
     {
-      "id": 2,
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "+92 123 4567890",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "id": 3,
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "+92 123 4567890",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
       "id": 4,
       "first_name": "test",
       "last_name": "test",
       "mobile": "+92 123 4567890",
       "email": "test@ad",
       "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "id": 5,
-      "first_name": "new ",
-      "last_name": "saaga",
-      "mobile": "+92 123 4567890",
-      "email": "ahmad.ali@arbisoft.com",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "id": 6,
-      "first_name": "",
-      "last_name": "",
-      "mobile": "",
-      "email": "",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "first_name": "df",
-      "last_name": "qdsd",
-      "mobile": "+23232",
-      "email": "iam@gma.com",
-      "id": 7
-    },
-    {
-      "first_name": "redux",
-      "last_name": "form",
-      "mobile": "+923227901620",
-      "email": "ali@gmail.com",
-      "avatar": "./../avatars/avatar-image.png",
-      "id": 8
-    },
-    {
-      "first_name": "sds",
-      "last_name": "dsds",
-      "mobile": "sdsdsd",
-      "email": "dsdas@fd.com",
-      "avatar": "./../avatars/avatar-image.png",
-      "id": 9
-    },
-    {
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "32332",
-      "email": "alI@gmai.co",
-      "avatar": "./../avatars/avatar-image.png",
-      "id": 10
-    },
-    {
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "dsadsa",
-      "email": "ali@fmai.com",
-      "avatar": "./../avatars/avatar-image.png",
-      "id": 11
     }
   ],
   "login": [

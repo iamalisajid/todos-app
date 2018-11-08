@@ -1,4 +1,3 @@
-export const LOGIN_INPUT_UPDATE = 'LOGIN_INPUT_UPDATE';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';

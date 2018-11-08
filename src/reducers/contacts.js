@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 const contacts = (state = initialState.contacts, action) => {
   switch (action.type) {
-    case types.CONTACT_INPUT_UPDATE:
+    case types.LOAD_CONTACT_FIELDS:
       return {
         ...state,
         contactForm: Object.assign({}, action.payload),

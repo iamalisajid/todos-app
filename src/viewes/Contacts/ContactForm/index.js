@@ -1,11 +1,13 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 import { BTN_ACTIONS } from '../../../utils/constants';
 import { FormRow, FormGroup, Button, StyledField } from '../../../globalStyles';
 import { StyledContactForm, GridCloumn } from '../styles';
 
-const ContactForm = ({ contactForm, handleSubmit }) => (
+// eslint-disable-next-line import/no-mutable-exports
+let ContactForm = ({ contactForm, handleSubmit }) => (
   <StyledContactForm>
     <h2>Add Contact</h2>
     <form onSubmit={handleSubmit}>
@@ -29,17 +31,24 @@ const ContactForm = ({ contactForm, handleSubmit }) => (
       </FormGroup>
 
       <Button success type="submit">
-        {contactForm.id ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
+        {contactForm !== null ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
       </Button>
     </form>
   </StyledContactForm>
 );
 
 ContactForm.propTypes = {
-  contactForm: object.isRequired,
+  contactForm: object,
   handleSubmit: func.isRequired,
 };
 
-export default reduxForm({
+ContactForm = reduxForm({
   form: 'addContact',
 })(ContactForm);
+
+ContactForm = connect(({ contacts }) => ({
+  initialValues: contacts.contactForm,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true, // pull initial values from account reducer
+}))(ContactForm);
+export default ContactForm;

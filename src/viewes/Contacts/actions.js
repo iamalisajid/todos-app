@@ -4,9 +4,9 @@ import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
 import * as types from './actionTypes';
 
-export const updateContactField = (contactForm) => ({ type: types.CONTACT_INPUT_UPDATE, payload: contactForm });
 export const fetchContacts = () => ({ type: types.FETCH_CONTACT_REQUEST });
 export const createContact = (contact) => ({ type: types.CREATE_CONTACT_REQUEST, payload: contact });
+export const loadContactFields = (contact) => ({ type: types.LOAD_CONTACT_FIELDS, payload: contact });
 export const updateContact = (contact) => ({ type: types.UPDATE_CONTACT_SUCCESS, payload: contact });
 export const deleteContact = (id) => ({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
 

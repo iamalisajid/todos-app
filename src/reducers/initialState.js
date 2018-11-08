@@ -12,14 +12,7 @@ export default {
   },
   contacts: {
     contacts: [],
-    contactForm: {
-      id: '',
-      firstName: '',
-      lastName: '',
-      mobile: '',
-      email: '',
-      avatar: './../avatars/avatar-image.png',
-    },
+    contactForm: null,
     loading: true,
   },
   theme: {

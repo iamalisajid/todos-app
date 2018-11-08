@@ -4,7 +4,6 @@ import * as types from './actionTypes';
 import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
 
-export const updateLoginFields = (user) => ({ type: types.LOGIN_INPUT_UPDATE, payload: user });
 export const logoutUser = () => ({ type: types.LOGOUT_USER });
 export const loginUser = (user) => ({ type: types.LOGIN_REQUEST, payload: user });
 

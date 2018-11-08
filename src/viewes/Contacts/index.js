@@ -17,7 +17,9 @@ class Contacts extends Component {
 
   handleDelete = (id) => this.props.actions.deleteContact(id);
 
-  handleUpdate = (contact) => this.props.actions.updateContactField(contact);
+  handleUpdate = (contact) => {
+    this.props.actions.loadContactFields(contact);
+  };
 
   handleContactState = (event) => {
     const { contactForm, actions } = this.props;
@@ -28,9 +30,13 @@ class Contacts extends Component {
 
   handleSubmit = (contact) => {
     const newContact = contact;
-    newContact.avatar = AVATAR;
-    this.props.actions.createContact(newContact);
-    // contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
+    const { actions } = this.props;
+    if (newContact.id) {
+      actions.updateContact(newContact);
+    } else {
+      newContact.avatar = AVATAR;
+      actions.createContact(newContact);
+    }
   };
 
   render() {
@@ -48,7 +54,7 @@ class Contacts extends Component {
 
 Contacts.propTypes = {
   actions: object.isRequired,
-  contactForm: object.isRequired,
+  contactForm: object,
   contacts: array.isRequired,
   loading: bool.isRequired,
   error: string,
