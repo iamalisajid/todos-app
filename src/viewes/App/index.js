@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { object, bool } from 'prop-types';
+import { object, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -15,13 +15,24 @@ class App extends Component {
     this.props.actions.toggleTheme(event.target.checked);
   };
 
+  handleLogout = () => {
+    const { actions, history } = this.props;
+    actions.logoutUser();
+    history.push('/');
+  };
+
   render() {
-    const { mode, lightMode } = this.props;
+    const { mode, lightMode, location } = this.props;
     return (
       <ThemeProvider theme={mode}>
         <Fragment>
           <GlobalStyle />
-          <Header themeValue={lightMode} toggleTheme={this.toggleUserTheme} />
+          <Header
+            themeValue={lightMode}
+            toggleTheme={this.toggleUserTheme}
+            location={location}
+            handleDelete={this.handleLogout}
+          />
           {routes}
         </Fragment>
       </ThemeProvider>
@@ -33,6 +44,8 @@ App.propTypes = {
   actions: object.isRequired,
   mode: object.isRequired,
   lightMode: bool.isRequired,
+  history: object.isRequired,
+  location: string.isRequired,
 };
 
 const mapStateToProps = ({ theme }) => ({

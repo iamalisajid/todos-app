@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LinkButton } from '../../../globalStyles';
+import { Button } from '../../../globalStyles';
 
 export const AppHeader = styled.div`
   background-color: ${(props) => {
@@ -23,7 +23,7 @@ export const AppTitle = styled.h2`
   word-spacing: 5px;
 `;
 
-export const LogoutButton = styled(LinkButton)`
+export const LogoutButton = styled(Button)`
   float: right;
   margin: 10px 0 4px;
 `;
