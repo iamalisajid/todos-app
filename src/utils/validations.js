@@ -1,18 +1,26 @@
-export const required = (value) => (value || typeof value === 'number' ? undefined : '*Field Required');
-export const maxLength = (max) => (value) =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined;
-export const maxLength15 = maxLength(15);
-export const minLength = (min) => (value) =>
-  value && value.length < min ? `Must be ${min} characters or more` : undefined;
-export const minLength2 = minLength(2);
-export const minValue = (min) => (value) => (value && value < min ? `Must be at least ${min}` : undefined);
-export const minValue13 = minValue(13);
+/*
+Validates the field is not empty.
+*/
+export const required = (value) => (value || typeof value === 'number' ? undefined : '*Required');
+/*
+Validates the field minimum length.
+*/
+export const minValue = (min) => (value) =>
+  value && value.length < min ? `Must be at least ${min} characters.` : undefined;
+/*
+Validates the field maximum length.
+*/
+export const maxValue = (max) => (value) =>
+  value && value.length < max ? `Should be less than ${max} characters.` : undefined;
+/*
+Validates the standard email format.
+*/
 export const email = (value) =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : undefined;
-export const tooYoung = (value) => (value && value < 13 ? 'You do not meet the minimum age requirement!' : undefined);
-export const aol = (value) =>
-  value && /.+@aol\.com/.test(value) ? 'Really? You still use AOL for your email?' : undefined;
-export const alphaNumeric = (value) =>
-  value && /[^a-zA-Z0-9 ]/i.test(value) ? 'Only alphanumeric characters' : undefined;
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address.' : undefined;
+/*
+Validates the mobile phone format.
+*/
 export const phoneNumber = (value) =>
-  value && !/^(0|[1-9][0-9]{9})$/i.test(value) ? 'Invalid phone number, must be 10 digits' : undefined;
+  value && !/^(\+)[0-9]{12}$/i.test(value)
+    ? 'Invalid phone number, must be according to the format(+921111111111).'
+    : undefined;

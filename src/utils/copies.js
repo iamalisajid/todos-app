@@ -6,5 +6,3 @@ export const WELCOME = {
 };
 
 export const TODOS_DONE = 'Everything Done!';
-
-export const AVATAR = './../avatars/avatar-image.png';

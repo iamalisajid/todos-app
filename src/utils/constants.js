@@ -32,9 +32,11 @@ export const FILTERS = {
   SHOW_ACTIVE: 'SHOW_ACTIVE',
 };
 
-export const MODULES = {
+export const VIEWS = {
   LOGIN: 'LOGIN',
   DASHBOARD: 'DASHBOARD',
   TODOS: 'TODOS',
   CONTACTS: 'CONTACTS',
 };
+
+export const AVATAR = './../avatars/avatar-image.png';

@@ -1,12 +1,17 @@
 import React, { Fragment } from 'react';
-import { MODULES } from '../../utils/constants';
+import { VIEWS } from '../../utils/constants';
 import { FormInput, Error } from '../../globalStyles';
 import { TodoFormInput } from '../../viewes/Todos/styles';
 
 const renderField = ({ input, type, label, placeholder, forComponent, meta: { touched, error, warning } }) => (
   <Fragment>
-    {forComponent === MODULES.TODOS ? (
-      <TodoFormInput {...input} placeholder={error || placeholder} type={type} />
+    {forComponent === VIEWS.TODOS ? (
+      <TodoFormInput
+        {...input}
+        placeholder={touched && error ? error : placeholder}
+        error={touched && error}
+        type={type}
+      />
     ) : (
       <Fragment>
         <FormInput {...input} placeholder={placeholder} type={type} />

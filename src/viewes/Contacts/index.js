@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { object, array, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
-import { SubmissionError } from 'redux-form';
 import ContactsList from './ContactList';
 import ContactForm from './ContactForm';
 import AppLoader from '../../shared/loader';
 import * as contactSelectors from '../../selectors';
 import * as contactActions from './actions';
 import { ContactLayout } from './styles';
-import { AVATAR } from '../../utils/copies';
 
 class Contacts extends Component {
   componentDidMount() {
@@ -23,17 +21,8 @@ class Contacts extends Component {
   };
 
   handleSubmit = (contact) => {
-    const newContact = contact;
     const { actions } = this.props;
-    if (!(contact.firstName && contact.lastName && contact.mobile && contact.email)) {
-      throw new SubmissionError({ email: 'Required Fields', _error: 'All Fields are Required' });
-    }
-    if (newContact.id) {
-      actions.updateContact(newContact);
-    } else {
-      newContact.avatar = AVATAR;
-      actions.createContact(newContact);
-    }
+    actions.saveContact(contact);
   };
 
   render() {

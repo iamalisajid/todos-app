@@ -2,8 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { SubmissionError } from 'redux-form';
-import { bool, string, array, object } from 'prop-types';
+import { bool, string, object } from 'prop-types';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import { APP_ROUTES } from '../../utils/constants';
@@ -12,15 +11,8 @@ import { Row } from '../../globalStyles';
 import { LoginFormLayout } from './styles';
 
 class Login extends React.Component {
-  componentDidMount() {
-    this.props.actions.logoutUser();
-  }
-
   handleSubmit = (user) => {
     const { actions } = this.props;
-    if (!(user.email && user.password)) {
-      throw new SubmissionError({ password: 'Required Fields', _error: 'Email/Password Required!' });
-    }
     actions.loginUser(user);
   };
 
@@ -41,7 +33,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   actions: object.isRequired,
-  user: array,
+  user: object,
   loading: bool.isRequired,
   error: string,
 };

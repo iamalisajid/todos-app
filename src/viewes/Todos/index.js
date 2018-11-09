@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { object, string, array, bool } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { SubmissionError } from 'redux-form';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import TodoFilter from './TodoFilter';
@@ -16,10 +15,8 @@ class Todos extends Component {
   }
 
   handleSubmit = (values) => {
-    if (!values.todo) {
-      throw new SubmissionError({ todo: 'Required Field', _error: 'Text Required!' });
-    }
-    this.props.actions.createTodo({
+    const { actions } = this.props;
+    actions.createTodo({
       text: values.todo,
       isComplete: false,
     });

@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import renderField from '../../../shared/field';
 import { required } from '../../../utils/validations';
-import { BTN_ACTIONS, MODULES } from '../../../utils/constants';
+import { BTN_ACTIONS, VIEWS } from '../../../utils/constants';
 import { Button, Container } from '../../../globalStyles';
 import { StyledTodoForm, TodoFormSubmit } from '../styles';
 
@@ -14,7 +14,7 @@ const TodoForm = ({ handleSubmit }) => (
         <Field
           name="todo"
           placeholder="Add Todo"
-          forComponent={MODULES.TODOS}
+          forComponent={VIEWS.TODOS}
           component={renderField}
           validate={[required]}
         />

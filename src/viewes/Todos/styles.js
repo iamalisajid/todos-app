@@ -4,6 +4,13 @@ import { FormInput } from '../../globalStyles';
 export const TodoFormInput = styled(FormInput)`
   flex: 1 1 auto;
   margin-bottom: 0;
+  ::placeholder {
+    color: ${(props) => {
+      if (props.error) return 'red';
+      return 'grey';
+    }};
+    opacity: 1;
+  }
   width: 1%;
 `;
 export const StyledTodoForm = styled.div`

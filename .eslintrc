@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "react", "prettier"
+    "react",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -27,6 +28,7 @@
   ],
   "rules": {
     "global-require": 0,
+    "import/no-mutable-exports": 0,
     "no-console": 0,
     "no-use-before-define": 0,
     "react/display-name": 0,
