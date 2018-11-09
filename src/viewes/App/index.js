@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { object, bool, string } from 'prop-types';
+import { object, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -45,7 +45,7 @@ App.propTypes = {
   mode: object.isRequired,
   lightMode: bool.isRequired,
   history: object.isRequired,
-  location: string.isRequired,
+  location: object.isRequired,
 };
 
 const mapStateToProps = ({ theme }) => ({

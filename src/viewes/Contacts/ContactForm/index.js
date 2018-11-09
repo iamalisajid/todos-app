@@ -69,4 +69,5 @@ ContactForm = connect(({ contacts }) => ({
   initialValues: contacts.contactForm,
   enableReinitialize: true,
 }))(ContactForm);
+
 export default ContactForm;
