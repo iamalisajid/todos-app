@@ -14,7 +14,7 @@ const Header = ({ location, themeValue, toggleTheme, handleDelete }) => (
     {location.pathname !== APP_ROUTES.BASE &&
       location.pathname !== APP_ROUTES.LOGIN && (
         <div>
-          <LogoutButton danger onClick={handleDelete}>
+          <LogoutButton variant="danger" onClick={handleDelete}>
             <span className="fa fa-sign-out" />
             {BTN_ACTIONS.LOGOUT}
           </LogoutButton>

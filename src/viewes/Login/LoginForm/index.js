@@ -38,7 +38,7 @@ const LoginForm = ({ error, handleSubmit, submitting }) => (
           />
         </FormLabelGroup>
         <Error> {error} </Error>
-        <LoginButton primary type="submit" disabled={submitting || error}>
+        <LoginButton variant="primary" type="submit" disabled={submitting || error}>
           Sign in
         </LoginButton>
       </StyledLoginForm>

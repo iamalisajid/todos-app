@@ -9,10 +9,10 @@ const Dashboard = () => (
       <h1>{WELCOME.TITLE}</h1>
       {WELCOME.MESSAGE}
       <ButtonGroup>
-        <NavButton success as="a" href={APP_ROUTES.TODOS}>
+        <NavButton variant="success" as="a" href={APP_ROUTES.TODOS}>
           Todos
         </NavButton>
-        <NavButton primary as="a" href={APP_ROUTES.CONTACTS}>
+        <NavButton variant="primary" as="a" href={APP_ROUTES.CONTACTS}>
           Contacts
         </NavButton>
       </ButtonGroup>

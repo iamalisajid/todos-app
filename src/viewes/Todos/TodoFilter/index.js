@@ -8,13 +8,13 @@ const TodoFilter = ({ handleFilter }) => (
   <FilterGroup>
     <Center>
       <ButtonGroup>
-        <Button default onClick={handleFilter} value={FILTERS.SHOW_ALL}>
+        <Button variant="default" onClick={handleFilter} value={FILTERS.SHOW_ALL}>
           {BTN_ACTIONS.ALL}
         </Button>
-        <Button warning onClick={handleFilter} value={FILTERS.SHOW_ACTIVE}>
+        <Button variant="warning" onClick={handleFilter} value={FILTERS.SHOW_ACTIVE}>
           {BTN_ACTIONS.ACTIVE}
         </Button>
-        <Button info onClick={handleFilter} value={FILTERS.SHOW_COMPLETED}>
+        <Button variant="primary" onClick={handleFilter} value={FILTERS.SHOW_COMPLETED}>
           {BTN_ACTIONS.COMPLETED}
         </Button>
       </ButtonGroup>

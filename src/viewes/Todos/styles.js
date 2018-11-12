@@ -13,7 +13,7 @@ export const TodoFormInput = styled(FormInput)`
   }
   width: 1%;
 `;
-export const StyledTodoForm = styled.div`
+export const StyledTodoForm = styled.form`
   align-items: stretch;
   display: flex;
   flex-wrap: wrap;
@@ -26,4 +26,7 @@ export const TodoFormSubmit = styled.div`
 `;
 export const FilterGroup = styled.div`
   padding-top: 2%;
+`;
+export const TodoRow = styled.label`
+  color: black;
 `;

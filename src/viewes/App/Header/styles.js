@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { Button } from '../../../globalStyles';
+import { HeaderColor } from '../../../globalStyles/theme';
 
 export const AppHeader = styled.div`
-  background-color: ${(props) => {
-    if (props.theme.mode === 'dark') return '#275f7d';
-    return '#3cb5f9;';
-  }}
+  background-color: ${HeaderColor}
   color: white;
   display: grid;
   grid-area: header;

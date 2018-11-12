@@ -1,14 +1,14 @@
 {
   "todos": [
     {
-      "text": "new",
-      "is_complete": false,
-      "id": 10
-    },
-    {
       "text": "redux",
       "is_complete": false,
       "id": 11
+    },
+    {
+      "text": "k",
+      "is_complete": false,
+      "id": 12
     }
   ],
   "contacts": [
@@ -67,6 +67,14 @@
       "mobile": "+921234567890",
       "avatar": "./../avatars/avatar-image.png",
       "id": 9
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+921245678900",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 10
     }
   ],
   "login": [

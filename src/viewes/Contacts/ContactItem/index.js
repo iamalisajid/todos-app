@@ -1,7 +1,7 @@
 import React from 'react';
 import { object, func } from 'prop-types';
 import { ListGroupItem, Row, RoundedImage, FontAws } from '../../../globalStyles';
-import { GridCloumn, ContactFields } from '../styles';
+import { GridCloumn, ContactFields, ContactName } from '../styles';
 
 const ContactItem = ({ contact, onDeletion, handleUpdate }) => (
   <ListGroupItem>
@@ -15,9 +15,9 @@ const ContactItem = ({ contact, onDeletion, handleUpdate }) => (
       </GridCloumn>
       <GridCloumn span={8}>
         <FontAws right className="fa fa-pencil" onClick={handleUpdate.bind(this, contact)} />
-        <label className="name lead">
+        <ContactName>
           {contact.firstName} {contact.lastName}
-        </label>
+        </ContactName>
         <br />
         <FontAws danger right className="fa fa-trash" onClick={onDeletion.bind(this, contact.id)} />
         <FontAws className="fa fa-phone fa-fw" />

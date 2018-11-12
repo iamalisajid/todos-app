@@ -9,22 +9,20 @@ import { StyledTodoForm, TodoFormSubmit } from '../styles';
 
 const TodoForm = ({ handleSubmit }) => (
   <Container>
-    <form onSubmit={handleSubmit}>
-      <StyledTodoForm>
-        <Field
-          name="todo"
-          placeholder="Add Todo"
-          forComponent={VIEWS.TODOS}
-          component={renderField}
-          validate={[required]}
-        />
-        <TodoFormSubmit>
-          <Button success type="submit">
-            {BTN_ACTIONS.ADD}
-          </Button>
-        </TodoFormSubmit>
-      </StyledTodoForm>
-    </form>
+    <StyledTodoForm onSubmit={handleSubmit}>
+      <Field
+        name="todo"
+        placeholder="Add Todo"
+        forComponent={VIEWS.TODOS}
+        component={renderField}
+        validate={[required]}
+      />
+      <TodoFormSubmit>
+        <Button variant="success" type="submit">
+          {BTN_ACTIONS.ADD}
+        </Button>
+      </TodoFormSubmit>
+    </StyledTodoForm>
   </Container>
 );
 
