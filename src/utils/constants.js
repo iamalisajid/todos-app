@@ -40,3 +40,9 @@ export const VIEWS = {
 };
 
 export const AVATAR = './../avatars/avatar-image.png';
+
+export const FORM = {
+  LOGIN_USER: 'LOGIN_USER',
+  TODO_ADD: 'TODO_ADD',
+  CONTACT_ADD: 'CONTACT_ADD',
+};

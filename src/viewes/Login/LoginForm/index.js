@@ -3,9 +3,16 @@ import { string, func, bool } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import renderField from '../../../shared/field';
 import { email, required } from '../../../utils/validations';
-import { BTN_ACTIONS } from '../../../utils/constants';
+import { BTN_ACTIONS, FORM } from '../../../utils/constants';
 import { Error } from '../../../globalStyles';
-import { LoginButton, LoginCard, CardBody, CardTitle, StyledLoginForm, FormLabelGroup } from '../styles';
+import {
+  LoginButton,
+  LoginCard,
+  CardBody,
+  CardTitle,
+  StyledLoginForm,
+  FormLabelGroup,
+} from '../styles';
 
 const LoginForm = ({ error, handleSubmit, submitting }) => (
   <LoginCard>
@@ -13,10 +20,22 @@ const LoginForm = ({ error, handleSubmit, submitting }) => (
       <CardTitle>{BTN_ACTIONS.LOGIN}</CardTitle>
       <StyledLoginForm onSubmit={handleSubmit}>
         <FormLabelGroup>
-          <Field type="email" name="email" label="Email" component={renderField} validate={[required, email]} />
+          <Field
+            type="email"
+            name="email"
+            label="Email"
+            component={renderField}
+            validate={[required, email]}
+          />
         </FormLabelGroup>
         <FormLabelGroup>
-          <Field type="password" name="password" label="Password" component={renderField} validate={[required]} />
+          <Field
+            type="password"
+            name="password"
+            label="Password"
+            component={renderField}
+            validate={[required]}
+          />
         </FormLabelGroup>
         <Error> {error} </Error>
         <LoginButton primary type="submit" disabled={submitting || error}>
@@ -34,5 +53,5 @@ LoginForm.propTypes = {
 };
 
 export default reduxForm({
-  form: 'loginForm',
+  form: FORM.LOGIN_USER,
 })(LoginForm);

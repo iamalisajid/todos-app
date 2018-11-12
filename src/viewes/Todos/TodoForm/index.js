@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import renderField from '../../../shared/field';
 import { required } from '../../../utils/validations';
-import { BTN_ACTIONS, VIEWS } from '../../../utils/constants';
+import { BTN_ACTIONS, FORM, VIEWS } from '../../../utils/constants';
 import { Button, Container } from '../../../globalStyles';
 import { StyledTodoForm, TodoFormSubmit } from '../styles';
 
@@ -33,5 +33,5 @@ TodoForm.propTypes = {
 };
 
 export default reduxForm({
-  form: 'addTodo',
+  form: FORM.TODO_ADD,
 })(TodoForm);

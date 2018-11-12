@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import renderField from '../../../shared/field';
 import { email, minValue, phoneNumber, required } from '../../../utils/validations';
-import { BTN_ACTIONS } from '../../../utils/constants';
+import { BTN_ACTIONS, FORM } from '../../../utils/constants';
 import { FormRow, FormGroup, Button } from '../../../globalStyles';
 import { StyledContactForm, GridCloumn } from '../styles';
 
@@ -46,7 +46,13 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
       </FormGroup>
       <FormGroup>
         <label>Email</label>
-        <Field type="email" name="email" placeholder="Email" component={renderField} validate={[required, email]} />
+        <Field
+          type="email"
+          name="email"
+          placeholder="Email"
+          component={renderField}
+          validate={[required, email]}
+        />
       </FormGroup>
 
       <Button success type="submit">
@@ -62,7 +68,7 @@ ContactForm.propTypes = {
 };
 
 ContactForm = reduxForm({
-  form: 'addContact',
+  form: FORM.CONTACT_ADD,
 })(ContactForm);
 
 ContactForm = connect(({ contacts }) => ({

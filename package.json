@@ -31,7 +31,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "styled-components": "^4.0.3",
-    "styled-theming": "^2.2.0"
+    "styled-theming": "^2.2.0",
+    "validator": "^10.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

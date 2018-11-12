@@ -9,6 +9,7 @@ import routes from '../../config/routes';
 import { GlobalStyle } from '../../globalStyles';
 import * as themeSelectors from '../../selectors/themeSelector';
 import * as appActions from './actions';
+import { APP_ROUTES } from '../../utils/constants';
 
 class App extends Component {
   toggleUserTheme = (event) => {
@@ -18,7 +19,7 @@ class App extends Component {
   handleLogout = () => {
     const { actions, history } = this.props;
     actions.logoutUser();
-    history.push('/');
+    history.push(APP_ROUTES.BASE);
   };
 
   render() {
