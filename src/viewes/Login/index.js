@@ -11,37 +11,20 @@ import { Row } from '../../globalStyles';
 import { LoginFormLayout } from './styles';
 
 class Login extends React.Component {
-  componentDidMount() {
-    this.props.actions.logoutUser();
-  }
-
-  updateLoginFields = (event) => {
-    const field = event.target.name;
-    const { loginForm, actions } = this.props;
-    loginForm[field] = event.target.value;
-    actions.updateLoginFields(loginForm);
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { loginForm, actions } = this.props;
-    actions.loginUser(loginForm);
+  handleSubmit = (user) => {
+    const { actions } = this.props;
+    actions.loginUser(user);
   };
 
   render() {
-    const { loginForm, loading, error, user } = this.props;
+    const { loading, error, user } = this.props;
     if (loading) return <AppLoader />;
     if (user != null) return <Redirect to={APP_ROUTES.DASHBOARD} />;
 
     return (
       <Row>
         <LoginFormLayout>
-          <LoginForm
-            loginForm={loginForm}
-            error={error}
-            handleInput={this.updateLoginFields}
-            handleSubmit={this.handleSubmit}
-          />
+          <LoginForm error={error} onSubmit={this.handleSubmit} />
         </LoginFormLayout>
       </Row>
     );
@@ -50,7 +33,6 @@ class Login extends React.Component {
 
 Login.propTypes = {
   actions: object.isRequired,
-  loginForm: object,
   user: object,
   loading: bool.isRequired,
   error: string,

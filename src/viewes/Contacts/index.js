@@ -16,20 +16,13 @@ class Contacts extends Component {
 
   handleDelete = (id) => this.props.actions.deleteContact(id);
 
-  handleUpdate = (contact) => this.props.actions.updateContactField(contact);
-
-  handleContactState = (event) => {
-    const { contactForm, actions } = this.props;
-    const field = event.target.name;
-    contactForm[field] = event.target.value;
-    actions.updateContactField(contactForm);
+  handleUpdate = (contact) => {
+    this.props.actions.loadContactFields(contact);
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { contactForm, actions } = this.props;
-    // eslint-disable-next-line no-unused-expressions
-    contactForm.id ? actions.updateContact(contactForm) : actions.createContact(contactForm);
+  handleSubmit = (contact) => {
+    const { actions } = this.props;
+    actions.saveContact(contact);
   };
 
   render() {
@@ -38,11 +31,7 @@ class Contacts extends Component {
 
     return (
       <ContactLayout>
-        <ContactForm
-          contactForm={contactForm}
-          handleContactState={this.handleContactState}
-          handleSubmit={this.handleSubmit}
-        />
+        <ContactForm contactForm={contactForm} onSubmit={this.handleSubmit} />
         <ContactsList contacts={contacts} onDeletion={this.handleDelete} handleUpdate={this.handleUpdate} />
       </ContactLayout>
     );
@@ -51,7 +40,7 @@ class Contacts extends Component {
 
 Contacts.propTypes = {
   actions: object.isRequired,
-  contactForm: object.isRequired,
+  contactForm: object,
   contacts: array.isRequired,
   loading: bool.isRequired,
   error: string,

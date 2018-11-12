@@ -1,14 +1,16 @@
 import { call, put, takeLatest, fork } from 'redux-saga/effects';
 import apiCaller from '../../utils/apiCaller';
 import API_ROUTES from '../../utils/endpoints';
-import { REQUEST_TYPE } from '../../utils/constants';
+import { AVATAR, REQUEST_TYPE } from '../../utils/constants';
 import * as types from './actionTypes';
 
-export const updateContactField = (contactForm) => ({ type: types.CONTACT_INPUT_UPDATE, payload: contactForm });
 export const fetchContacts = () => ({ type: types.FETCH_CONTACT_REQUEST });
-export const createContact = (contact) => ({ type: types.CREATE_CONTACT_REQUEST, payload: contact });
-export const updateContact = (contact) => ({ type: types.UPDATE_CONTACT_SUCCESS, payload: contact });
+export const loadContactFields = (contact) => ({ type: types.CONTACT_FIELDS_LOAD, payload: contact });
 export const deleteContact = (id) => ({ type: types.DELETE_CONTACT_SUCCESS, payload: id });
+export const saveContact = (contact) =>
+  contact.id
+    ? { type: types.UPDATE_CONTACT_SUCCESS, payload: contact }
+    : { type: types.CREATE_CONTACT_REQUEST, payload: contact };
 
 function* loadContacts() {
   const { error, data } = yield call(apiCaller, API_ROUTES.CONTACTS, REQUEST_TYPE.GET);
@@ -18,7 +20,9 @@ function* loadContacts() {
   yield put({ type: types.FETCH_CONTACT_SUCCESS, payload: data });
 }
 function* addContacts(action) {
-  const { error, data } = yield call(apiCaller, API_ROUTES.CONTACTS, REQUEST_TYPE.POST, action.payload);
+  const contact = action.payload;
+  contact.avatar = AVATAR;
+  const { error, data } = yield call(apiCaller, API_ROUTES.CONTACTS, REQUEST_TYPE.POST, contact);
   if (error) {
     yield put({ type: types.CREATE_CONTACT_FAILURE, payload: error });
   }

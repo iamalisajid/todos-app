@@ -4,8 +4,6 @@ import * as types from './actionTypes';
 import API_ROUTES from '../../utils/endpoints';
 import { REQUEST_TYPE } from '../../utils/constants';
 
-export const updateLoginFields = (user) => ({ type: types.LOGIN_INPUT_UPDATE, payload: user });
-export const logoutUser = () => ({ type: types.LOGOUT_USER });
 export const loginUser = (user) => ({ type: types.LOGIN_REQUEST, payload: user });
 
 function* authUser(action) {
@@ -14,8 +12,7 @@ function* authUser(action) {
   if (error) {
     yield put({ type: types.LOGIN_FAILURE, payload: error });
   } else if (data.length) yield put({ type: types.LOGIN_SUCCESS, payload: data });
-
-  yield put({ type: types.LOGIN_FAILURE, payload: 'Invalid Username/Password' });
+  else yield put({ type: types.LOGIN_FAILURE, payload: 'Invalid Username/Password' });
 }
 
 function* watchAuthUser() {

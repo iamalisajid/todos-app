@@ -31,3 +31,18 @@ export const FILTERS = {
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE',
 };
+
+export const VIEWS = {
+  LOGIN: 'LOGIN',
+  DASHBOARD: 'DASHBOARD',
+  TODOS: 'TODOS',
+  CONTACTS: 'CONTACTS',
+};
+
+export const AVATAR = './../avatars/avatar-image.png';
+
+export const FORM = {
+  LOGIN_USER: 'LOGIN_USER',
+  TODO_ADD: 'TODO_ADD',
+  CONTACT_ADD: 'CONTACT_ADD',
+};

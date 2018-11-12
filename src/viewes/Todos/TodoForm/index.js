@@ -1,28 +1,35 @@
 import React from 'react';
-import { string, func } from 'prop-types';
-import { BTN_ACTIONS } from '../../../utils/constants';
+import { func } from 'prop-types';
+import { reduxForm, Field } from 'redux-form';
+import renderField from '../../../shared/field';
+import { required } from '../../../utils/validations';
+import { BTN_ACTIONS, FORM, VIEWS } from '../../../utils/constants';
 import { Button, Container } from '../../../globalStyles';
-import { TodoFormInput, StyledTodoForm, TodoFormSubmit } from '../styles';
+import { StyledTodoForm, TodoFormSubmit } from '../styles';
 
-const TodoForm = ({ todoForm, handleInput, handleSubmit }) => (
+const TodoForm = ({ handleSubmit }) => (
   <Container>
-    <form onSubmit={handleSubmit}>
-      <StyledTodoForm>
-        <TodoFormInput type="text" onChange={handleInput} value={todoForm} placeholder="Add todo" />
-        <TodoFormSubmit>
-          <Button success type="submit">
-            {BTN_ACTIONS.ADD}
-          </Button>
-        </TodoFormSubmit>
-      </StyledTodoForm>
-    </form>
+    <StyledTodoForm onSubmit={handleSubmit}>
+      <Field
+        name="todo"
+        placeholder="Add Todo"
+        forComponent={VIEWS.TODOS}
+        component={renderField}
+        validate={[required]}
+      />
+      <TodoFormSubmit>
+        <Button variant="success" type="submit">
+          {BTN_ACTIONS.ADD}
+        </Button>
+      </TodoFormSubmit>
+    </StyledTodoForm>
   </Container>
 );
 
 TodoForm.propTypes = {
-  todoForm: string.isRequired,
-  handleInput: func.isRequired,
   handleSubmit: func.isRequired,
 };
 
-export default TodoForm;
+export default reduxForm({
+  form: FORM.TODO_ADD,
+})(TodoForm);

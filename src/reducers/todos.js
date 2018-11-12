@@ -3,11 +3,6 @@ import initialState from './initialState';
 
 const todos = (state = initialState.todos, action) => {
   switch (action.type) {
-    case types.TODO_INPUT_UPDATE:
-      return {
-        ...state,
-        todoForm: action.payload,
-      };
     case types.TODOS_FILTER_UPDATE:
       return {
         ...state,

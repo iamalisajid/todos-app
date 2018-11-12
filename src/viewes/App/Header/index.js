@@ -1,12 +1,11 @@
 import React from 'react';
 import { object, func, bool } from 'prop-types';
-import { withRouter } from 'react-router';
 import { HEADER_TITILE } from '../../../utils/copies';
 import { APP_ROUTES, BTN_ACTIONS } from '../../../utils/constants';
 import { LightBulb, Hidden } from '../../../globalStyles';
 import { AppHeader, AppTitle, LogoutButton } from './styles';
 
-const Header = ({ location, themeValue, toggleTheme }) => (
+const Header = ({ location, themeValue, toggleTheme, handleDelete }) => (
   <AppHeader>
     <AppTitle>{HEADER_TITILE}</AppTitle>
     <LightBulb lightOn={themeValue}>
@@ -15,7 +14,7 @@ const Header = ({ location, themeValue, toggleTheme }) => (
     {location.pathname !== APP_ROUTES.BASE &&
       location.pathname !== APP_ROUTES.LOGIN && (
         <div>
-          <LogoutButton danger as="a" href={APP_ROUTES.LOGIN}>
+          <LogoutButton variant="danger" onClick={handleDelete}>
             <span className="fa fa-sign-out" />
             {BTN_ACTIONS.LOGOUT}
           </LogoutButton>
@@ -28,6 +27,7 @@ Header.propTypes = {
   location: object.isRequired,
   toggleTheme: func.isRequired,
   themeValue: bool.isRequired,
+  handleDelete: func.isRequired,
 };
 
-export default withRouter(Header);
+export default Header;

@@ -1,35 +1,19 @@
 {
   "todos": [
     {
-      "text": "new one",
+      "text": "redux",
       "is_complete": false,
-      "id": 1
+      "id": 11
     },
     {
-      "text": "completed one",
-      "is_complete": true,
-      "id": 2
+      "text": "k",
+      "is_complete": false,
+      "id": 12
     }
   ],
   "contacts": [
     {
       "id": 1,
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "+92 123 4567890",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "id": 2,
-      "first_name": "ali",
-      "last_name": "sajid",
-      "mobile": "+92 123 4567890",
-      "email": "ali.sajid@arbisoft.com",
-      "avatar": "./../avatars/avatar-image.png"
-    },
-    {
-      "id": 3,
       "first_name": "ali",
       "last_name": "sajid",
       "mobile": "+92 123 4567890",
@@ -43,6 +27,54 @@
       "mobile": "+92 123 4567890",
       "email": "test@ad",
       "avatar": "./../avatars/avatar-image.png"
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 5
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 323 12345454",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 6
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+92 123 4567890",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 7
+    },
+    {
+      "first_name": "ali",
+      "mobile": "+932312345454",
+      "last_name": "sajid",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 8
+    },
+    {
+      "email": "ali.sajid@arbisoft.com",
+      "first_name": "new ",
+      "last_name": "saga",
+      "mobile": "+921234567890",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 9
+    },
+    {
+      "first_name": "ali",
+      "last_name": "sajid",
+      "mobile": "+921245678900",
+      "email": "ali.sajid@arbisoft.com",
+      "avatar": "./../avatars/avatar-image.png",
+      "id": 10
     }
   ],
   "login": [
