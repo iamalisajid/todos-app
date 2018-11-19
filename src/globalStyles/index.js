@@ -22,23 +22,6 @@ export const GlobalStyle = createGlobalStyle`
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  
-  * {
-	font-family: arial;
-}
-  
-  .roundborders {
-    border-radius: 5px;
-  }
-  
-  .large:hover {
-    /* 
-    don't forget the 1px border!
-    The first language is 40px heigh, 
-    the others are 41px
-    */
-    height: 245px;
-  }
 `;
 
 export const Button = styled.button`

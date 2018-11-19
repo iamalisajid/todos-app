@@ -1,9 +1,10 @@
 import React from 'react';
 import { string, func, bool } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 import renderField from '../../../shared/field';
 import { email, required } from '../../../utils/validations';
-import { BTN_ACTIONS, FORM } from '../../../utils/constants';
+import { BTN_ACTIONS, FORM, VIEWS } from '../../../utils/constants';
 import { Error } from '../../../globalStyles';
 import {
   LoginButton,
@@ -17,7 +18,9 @@ import {
 const LoginForm = ({ error, handleSubmit, submitting }) => (
   <LoginCard>
     <CardBody>
-      <CardTitle>{BTN_ACTIONS.LOGIN}</CardTitle>
+      <CardTitle>
+        <FormattedMessage id="login" defaultMessage={VIEWS.LOGIN} />
+      </CardTitle>
       <StyledLoginForm onSubmit={handleSubmit}>
         <FormLabelGroup>
           <Field
@@ -39,7 +42,7 @@ const LoginForm = ({ error, handleSubmit, submitting }) => (
         </FormLabelGroup>
         <Error> {error} </Error>
         <LoginButton variant="primary" type="submit" disabled={submitting || error}>
-          Sign in
+          <FormattedMessage id="signin" defaultMessage={BTN_ACTIONS.SIGN_IN} />
         </LoginButton>
       </StyledLoginForm>
     </CardBody>

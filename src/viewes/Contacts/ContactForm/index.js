@@ -2,18 +2,24 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import renderField from '../../../shared/field';
 import { email, minValue, phoneNumber, required } from '../../../utils/validations';
 import { BTN_ACTIONS, FORM } from '../../../utils/constants';
 import { FormRow, FormGroup, Button } from '../../../globalStyles';
 import { StyledContactForm, GridCloumn } from '../styles';
+import { CONTACT_ADD, CONTACT_FORM } from '../../../utils/copies';
 
 let ContactForm = ({ contactForm, handleSubmit }) => (
   <StyledContactForm onSubmit={handleSubmit}>
-    <h2>Add Contact</h2>
+    <h2>
+      <FormattedMessage id="contact.header" defaultMessage={CONTACT_ADD} />
+    </h2>
     <FormRow>
       <GridCloumn span={6}>
-        <label>First Name</label>
+        <label>
+          <FormattedMessage id="contact.firstName" defaultMessage={CONTACT_FORM.FIRST_NAME} />
+        </label>
         <Field
           type="text"
           name="firstName"
@@ -23,7 +29,9 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
         />
       </GridCloumn>
       <GridCloumn span={6}>
-        <label>Last Name</label>
+        <label>
+          <FormattedMessage id="contact.lastName" defaultMessage={CONTACT_FORM.LAST_NAME} />
+        </label>
         <Field
           type="text"
           name="lastName"
@@ -34,7 +42,9 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
       </GridCloumn>
     </FormRow>
     <FormGroup>
-      <label>Contact Number</label>
+      <label>
+        <FormattedMessage id="contact.phone" defaultMessage={CONTACT_FORM.PHONE} />
+      </label>
       <Field
         type="text"
         name="mobile"
@@ -44,7 +54,9 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
       />
     </FormGroup>
     <FormGroup>
-      <label>Email</label>
+      <label>
+        <FormattedMessage id="contact.email" defaultMessage={CONTACT_FORM.EMAIL} />
+      </label>
       <Field
         type="email"
         name="email"
@@ -55,7 +67,11 @@ let ContactForm = ({ contactForm, handleSubmit }) => (
     </FormGroup>
 
     <Button variant="success" type="submit">
-      {contactForm !== null ? BTN_ACTIONS.UPDATE : BTN_ACTIONS.ADD}
+      {contactForm !== null ? (
+        <FormattedMessage id="update" defaultMessage={BTN_ACTIONS.UPDATE} />
+      ) : (
+        <FormattedMessage id="add" defaultMessage={BTN_ACTIONS.ADD} />
+      )}
     </Button>
   </StyledContactForm>
 );

@@ -11,13 +11,16 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['login', 'theme'],
+  whitelist: ['login', 'theme', 'locale'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middlewares = [sagaMiddleware];
 
-export const getStore = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+export const getStore = createStore(
+  persistedReducer,
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
 
 sagaMiddleware.run(rootSaga);
 

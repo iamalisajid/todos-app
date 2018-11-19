@@ -18,4 +18,7 @@ export default {
   theme: {
     lightMode: true,
   },
+  locale: {
+    lang: 'en',
+  },
 };
