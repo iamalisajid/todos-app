@@ -22,6 +22,23 @@ export const GlobalStyle = createGlobalStyle`
   line-height: 1.5;
   color: #212529;
   text-align: left;
+  
+  * {
+	font-family: arial;
+}
+  
+  .roundborders {
+    border-radius: 5px;
+  }
+  
+  .large:hover {
+    /* 
+    don't forget the 1px border!
+    The first language is 40px heigh, 
+    the others are 41px
+    */
+    height: 245px;
+  }
 `;
 
 export const Button = styled.button`
@@ -147,13 +164,49 @@ export const LightBulb = styled.label`
   background-image: url(${bulbImage});
   background-size: 50px 50px;
   height: 50px;
-  margin-left: 70%;
+  margin-left: 17%;
   transition: ease-in 0.1s;
   width: 50px;
+`;
+export const LanguagePicker = styled.ul`
+  background-color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  float: left;
+  height: 40px;
+  margin-top: 10px;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.3s ease;
+  vertical-align: top;
+  &:hover {
+    height: 81px;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+    &:first-child li {
+      border: none;
+      background: #eee !important;
+    }
+  }
+  li {
+    border-top: 1px solid #eee;
+    display: block;
+    line-height: 40px;
+    padding: 0 20px;
+    &:hover {
+      background-color: #eee;
+    }
+    img {
+      margin-right: 5px;
+    }
+  }
 `;
 export const Hidden = styled.input`
   display: none;
 `;
+
 export const Error = styled.p`
   color: red;
 `;
