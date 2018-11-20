@@ -25,7 +25,8 @@ class App extends Component {
   };
 
   handleLocale = (lang) => {
-    this.props.actions.setLocale(lang);
+    const locale = lang === 'US' ? 'EN' : 'RU';
+    this.props.actions.setLocale(locale);
   };
 
   render() {

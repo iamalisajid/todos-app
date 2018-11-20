@@ -19,6 +19,6 @@ export default {
     lightMode: true,
   },
   locale: {
-    lang: 'en',
+    lang: 'EN',
   },
 };

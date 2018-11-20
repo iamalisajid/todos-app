@@ -151,41 +151,7 @@ export const LightBulb = styled.label`
   transition: ease-in 0.1s;
   width: 50px;
 `;
-export const LanguagePicker = styled.ul`
-  background-color: #fff;
-  border-radius: 5px;
-  display: inline-block;
-  float: left;
-  height: 40px;
-  margin-top: 10px;
-  overflow: hidden;
-  padding: 0;
-  transition: all 0.3s ease;
-  vertical-align: top;
-  &:hover {
-    height: 81px;
-  }
-  a {
-    color: #000;
-    text-decoration: none;
-    &:first-child li {
-      border: none;
-      background: #eee !important;
-    }
-  }
-  li {
-    border-top: 1px solid #eee;
-    display: block;
-    line-height: 40px;
-    padding: 0 20px;
-    &:hover {
-      background-color: #eee;
-    }
-    img {
-      margin-right: 5px;
-    }
-  }
-`;
+
 export const Hidden = styled.input`
   display: none;
 `;

@@ -9,7 +9,7 @@ export const AppHeader = styled.div`
   grid-area: header;
   grid-template-columns: 1fr .1fr .05fr .05fr;
   margin: 0 0 15px;
-  overflow: hidden;
+/*  overflow: hidden;*/
   padding: 10px 15px;
 `;
 

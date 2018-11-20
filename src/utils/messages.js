@@ -1,5 +1,5 @@
 export default {
-  en: {
+  EN: {
     signin: 'Sign In',
     login: 'LogIn',
     logout: 'LogOut',
@@ -22,7 +22,7 @@ export default {
     'contact.phone': 'Phone',
     'contact.email': 'Email',
   },
-  ru: {
+  RU: {
     signin: 'Войти в систему',
     login: 'Авторизоваться',
     logout: 'выйти',
