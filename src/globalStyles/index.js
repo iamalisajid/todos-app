@@ -147,13 +147,15 @@ export const LightBulb = styled.label`
   background-image: url(${bulbImage});
   background-size: 50px 50px;
   height: 50px;
-  margin-left: 70%;
+  margin-left: 17%;
   transition: ease-in 0.1s;
   width: 50px;
 `;
+
 export const Hidden = styled.input`
   display: none;
 `;
+
 export const Error = styled.p`
   color: red;
 `;

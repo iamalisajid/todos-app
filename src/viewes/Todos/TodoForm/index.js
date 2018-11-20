@@ -1,6 +1,7 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 import renderField from '../../../shared/field';
 import { required } from '../../../utils/validations';
 import { BTN_ACTIONS, FORM, VIEWS } from '../../../utils/constants';
@@ -19,7 +20,7 @@ const TodoForm = ({ handleSubmit }) => (
       />
       <TodoFormSubmit>
         <Button variant="success" type="submit">
-          {BTN_ACTIONS.ADD}
+          <FormattedMessage id="add" defaultMessage={BTN_ACTIONS.ADD} />
         </Button>
       </TodoFormSubmit>
     </StyledTodoForm>

@@ -4,12 +4,14 @@ import login from './login';
 import todos from './todos';
 import contacts from './contacts';
 import theme from './theme';
+import locale from './locale';
 
 const appReducer = combineReducers({
   login,
   todos,
   contacts,
   theme,
+  locale,
   form: formReducer,
 });
 

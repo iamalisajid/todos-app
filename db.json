@@ -1,14 +1,9 @@
 {
   "todos": [
     {
-      "text": "redux",
+      "text": "new todo",
       "is_complete": false,
-      "id": 11
-    },
-    {
-      "text": "k",
-      "is_complete": false,
-      "id": 12
+      "id": 1
     }
   ],
   "contacts": [
