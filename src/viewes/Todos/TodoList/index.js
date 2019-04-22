@@ -16,7 +16,7 @@ const TodoList = ({ todos, toggleTodo, handleDelete }) => {
   return (
     <Container>
       <h4>
-        <FormattedMessage id="logout" defaultMessage={VIEWS.TODOS} />
+        <FormattedMessage id="todos" defaultMessage={VIEWS.TODOS} />
       </h4>
       <ListGroup>
         {todos.map((todo) => (

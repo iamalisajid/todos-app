@@ -1,9 +1,19 @@
 {
   "todos": [
     {
-      "text": "new todo",
+      "text": "dfvdsdf",
       "is_complete": false,
       "id": 1
+    },
+    {
+      "text": "fgdfd",
+      "is_complete": false,
+      "id": 2
+    },
+    {
+      "text": "dfdf",
+      "is_complete": false,
+      "id": 3
     }
   ],
   "contacts": [

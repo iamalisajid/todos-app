@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { bool, string, object } from 'prop-types';
+import { bool, string, object, array } from 'prop-types';
 import LoginForm from './LoginForm';
 import AppLoader from '../../shared/loader';
 import { APP_ROUTES } from '../../utils/constants';
@@ -33,7 +33,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   actions: object.isRequired,
-  user: object,
+  user: array,
   loading: bool.isRequired,
   error: string,
 };
